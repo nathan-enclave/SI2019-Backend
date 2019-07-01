@@ -1,4 +1,4 @@
-# RESTful API base — Starter Files
+# RESTful API — Starter Files
 
 ## Requirements
 
