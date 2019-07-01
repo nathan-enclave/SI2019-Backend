@@ -4,9 +4,11 @@ const Models = require('../models');
 
 exports.seed = knex =>
   // Deletes ALL existing entries
-  knex('managers')
+  // knex('managers')
+  //   .del()
+  // .then(() => knex('roles').del())
+  knex('roles')
     .del()
-    .then(() => knex('roles').del())
     .then(async () =>
       Models.Role.query().insertGraph([
         {
@@ -15,7 +17,7 @@ exports.seed = knex =>
         },
         {
           name: 'admin',
-          description: 'Admin'
+          description: 'Normal Admin'
         }
       ])
     );
