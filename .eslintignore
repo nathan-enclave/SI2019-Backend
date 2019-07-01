@@ -1,0 +1,11 @@
+node_modules
+README.md
+package.json
+package-lock.json
+yarn.lock
+.editorconfig
+.env
+.env.example
+.env.staging
+.gitignore
+.prettierrc
