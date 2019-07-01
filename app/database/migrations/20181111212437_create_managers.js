@@ -1,6 +1,7 @@
 exports.up = knex =>
   knex.schema.createTable('managers', table => {
     table.increments('id').primary();
+    table.integer('engineerId');
     table.string('username', 191).unique();
     table.string('password');
     table.integer('roleId').defaultTo(2);
