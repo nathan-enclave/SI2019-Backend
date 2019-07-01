@@ -1,9 +1,6 @@
 // const bcrypt = require('bcrypt');
-const faker = require('faker');
 const Models = require('../models');
 // const { SALT_ROUNDS } = require('../../constants');
-const Factory = require('../factory');
-const samples = require('../factory/samples');
 
 exports.seed = knex =>
   // Deletes ALL existing entries
@@ -21,5 +18,4 @@ exports.seed = knex =>
           description: 'Admin'
         }
       ])
-    )
-   
+    );
