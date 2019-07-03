@@ -27,3 +27,13 @@ exports.createOne = {
     payload: validator.create
   }
 };
+exports.getMany = {
+  description: 'Get Engineer list',
+  notes: 'Return User items',
+  tags: ['api', 'v1'],
+  handler: controller.getMany.bind(controller),
+  auth: false,
+  validate: {
+    query: validator.queryParams
+  }
+};

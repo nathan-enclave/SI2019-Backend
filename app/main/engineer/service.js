@@ -9,6 +9,7 @@ class EngineerService extends BaseService {
   }
 
   // start GetOne
+  // eslint-disable-next-line consistent-return
   async getOne(id) {
     try {
       const result = await Models.Engineer.query() // select skill
