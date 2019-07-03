@@ -16,6 +16,17 @@ exports.getOne = {
     }
   }
 };
+
+exports.createOne = {
+  description: 'Create a new Engineer',
+  notes: 'Return created User',
+  tags: ['api', 'v1'],
+  handler: controller.createOne.bind(controller),
+  auth: false,
+  validate: {
+    payload: validator.create
+  }
+};
 exports.getMany = {
   description: 'Get Engineer list',
   notes: 'Return User items',

@@ -1,5 +1,5 @@
 const Boom = require('boom');
-const _ = require('lodash');
+// const _ = require('lodash');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
 // const PasswordUtils = require('../../services/password');
@@ -52,5 +52,13 @@ class EngineerService extends BaseService {
   }
   // end GetOne
   // I Love you => so much
+
+  async createOne(payload) {
+    const { skills } = payload;
+    delete payload.skills;
+    const engineer = await Models.Engineer.query().insert(payload);
+    await engineer.$relatedQuery('skills').relate(skills);
+    return engineer;
+  }
 }
 module.exports = EngineerService;
