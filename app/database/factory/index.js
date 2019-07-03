@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt');
-// const Models = require('../models');
+// const Models = require('../models');\
+const faker = require('faker');
 const samples = require('./samples');
 const { SALT_ROUNDS } = require('../../constants');
 const json = require('./data.json');
-const faker = require('faker');
 
 class Factory {
   static manager(num) {
