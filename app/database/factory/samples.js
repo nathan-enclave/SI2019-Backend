@@ -3,11 +3,11 @@ const bcrypt = require('bcrypt');
 const { SALT_ROUNDS } = require('../../constants');
 const data = require('./data.json');
 
-exports.createManager = id => ({
+exports.createManager = (roleId, engineerId) => ({
   username: faker.internet.userName(),
   password: bcrypt.hashSync('123456', SALT_ROUNDS),
-  engineerId: id,
-  roleId: id
+  engineerId,
+  roleId
 });
 
 exports.createEngineer = () => {
