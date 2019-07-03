@@ -27,7 +27,7 @@ class AuthService {
         return Boom.forbidden('Incorrect password');
       }
 
-      const data = _.pick(user, ['username', 'id', 'scope']);
+      const data = _.pick(user, ['username', 'id', 'scope', 'engineerId']);
       return _.assign({ token: jwt.issue(data) }, data);
     } catch (error) {
       throw error;
