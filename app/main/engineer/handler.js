@@ -37,3 +37,17 @@ exports.getMany = {
     query: validator.queryParams
   }
 };
+
+exports.updateOne = {
+  description: 'Update Engineer',
+  notes: 'Return updated User by id',
+  tags: ['api', 'v1'],
+  handler: controller.updateOne.bind(controller),
+  auth: false,
+  validate: {
+    params: {
+      id: validator.idParam
+    },
+    payload: validator.update
+  }
+};
