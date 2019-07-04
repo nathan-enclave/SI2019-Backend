@@ -60,5 +60,25 @@ class EngineerService extends BaseService {
     await engineer.$relatedQuery('skills').relate(skills);
     return engineer;
   }
+
+  async updateOne(id, payload) {
+    try {
+      const { skills } = payload;
+      delete payload.skills;
+      const engineer = await Models.Engineer.query().patchAndFetchById(id, payload);
+      if (!engineer) {
+        throw Boom.notFound(`Engineer is not found`);
+      }
+      await engineer.$relatedQuery('skills').unrelate();
+      await engineer.$relatedQuery('skills').relate(skills);
+      const skillList = await Models.Skill.query()
+        .whereIn('id', skills)
+        .select('id', 'name');
+      engineer.skills = skillList;
+      return engineer;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 module.exports = EngineerService;
