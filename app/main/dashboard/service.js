@@ -9,6 +9,7 @@ class dashboardService {
     try {
       return model
         .query()
+        .whereNull('deletedAt')
         .count(`id as ${name}`)
         .first();
     } catch (error) {
