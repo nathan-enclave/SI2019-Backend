@@ -32,7 +32,12 @@ class dashboardService {
     const project = await this.count(Models.Project, 'Project');
     const team = await this.count(Models.Team, 'Team');
     const manager = await this.countMn(Models.Manager, 'Manager');
-    return [engineer, project, team, manager];
+    return {
+      engineer: engineer.Engineer,
+      project: project.Project,
+      team: team.Team,
+      manager: manager.Manager
+    };
   }
 }
 module.exports = dashboardService;
