@@ -37,7 +37,8 @@ class EngineerService extends BaseService {
           'address',
           'email',
           'skype',
-          'expYear'
+          'expYear',
+          'status'
         );
       const n = result.teams.length;
       result.totalProject = n;
