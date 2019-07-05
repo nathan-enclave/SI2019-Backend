@@ -15,6 +15,11 @@ const Routes = [
     method: 'POST',
     path: '/api/v1/engineers',
     config: Handler.createOne
+  },
+  {
+    method: 'DELETE',
+    path: '/api/v1/engineers/{id}',
+    config: Handler.deleteOne
   }
 ];
 module.exports = Routes;
