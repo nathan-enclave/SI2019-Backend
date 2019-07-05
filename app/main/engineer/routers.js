@@ -20,6 +20,11 @@ const Routes = [
     method: 'PUT',
     path: '/api/v1/engineers/{id}',
     config: Handler.updateOne
+  },
+  {
+    method: 'DELETE',
+    path: '/api/v1/engineers/{id}',
+    config: Handler.deleteOne
   }
 ];
 module.exports = Routes;

@@ -51,3 +51,15 @@ exports.updateOne = {
     payload: validator.update
   }
 };
+exports.deleteOne = {
+  description: 'Delete a Engineer',
+  notes: 'Return deleted User by id',
+  tags: ['api', 'v1'],
+  handler: controller.deleteOne.bind(controller),
+  auth: false,
+  validate: {
+    params: {
+      id: validator.idParam
+    }
+  }
+};
