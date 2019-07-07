@@ -22,4 +22,5 @@ const Routes = [
     config: Handler.updateOne
   }
 ];
+
 module.exports = Routes;
