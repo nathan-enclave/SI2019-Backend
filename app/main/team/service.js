@@ -104,5 +104,22 @@ class TeamService extends BaseService {
       throw error;
     }
   }
+
+  async deleteOne(id) {
+    try {
+      const result = await Models.Team.query()
+        .findById(id)
+        .update({
+          deletedAt: new Date()
+        })
+        .returning('id', 'deletedAt');
+      if (!result) {
+        throw Boom.notFound(`Not found`);
+      }
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 module.exports = TeamService;

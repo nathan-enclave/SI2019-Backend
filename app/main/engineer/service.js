@@ -9,7 +9,6 @@ class EngineerService extends BaseService {
   }
 
   // start GetOne
-  // eslint-disable-next-line consistent-return
   async getOne(id) {
     try {
       const result = await Models.Engineer.query() // select skill
@@ -38,7 +37,8 @@ class EngineerService extends BaseService {
           'address',
           'email',
           'skype',
-          'expYear'
+          'expYear',
+          'status'
         );
       const n = result.teams.length;
       result.totalProject = n;
@@ -47,12 +47,11 @@ class EngineerService extends BaseService {
       }
       return result;
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
-  // end GetOne
-  // I Love you => so much
 
+  // end GetOne
   async createOne(payload) {
     const { skills } = payload;
     delete payload.skills;
@@ -80,5 +79,24 @@ class EngineerService extends BaseService {
       throw error;
     }
   }
+
+  // start delete (update deleteAt)
+  async deleteOne(id) {
+    try {
+      const result = await Models.Engineer.query()
+        .findById(id)
+        .update({
+          deletedAt: new Date()
+        })
+        .returning('id', 'deletedAt');
+      if (!result) {
+        throw Boom.notFound(`Not found`);
+      }
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+  // end delete
 }
 module.exports = EngineerService;
