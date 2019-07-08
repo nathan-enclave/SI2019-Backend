@@ -71,7 +71,7 @@ class Factory {
 
     const data = [];
     for (let index = 0; index < num; index += 1) {
-      data.push(samples.createTeam(num + 1));
+      data.push(samples.createTeam(index + 1));
     }
     return data;
   }
