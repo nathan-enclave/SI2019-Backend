@@ -52,3 +52,16 @@ exports.updateOne = {
     payload: validator.update
   }
 };
+
+exports.deleteOne = {
+  description: 'Delete a Team',
+  notes: 'Return deleted Team by id',
+  tags: ['api', 'v1'],
+  handler: controller.deleteOne.bind(controller),
+  auth: false,
+  validate: {
+    params: {
+      id: validator.idParam
+    }
+  }
+};

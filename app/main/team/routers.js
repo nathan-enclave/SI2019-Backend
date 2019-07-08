@@ -20,6 +20,11 @@ const Routes = [
     method: 'PUT',
     path: '/api/v1/teams/{id}',
     config: Handler.updateOne
+  },
+  {
+    method: 'DELETE',
+    path: '/api/v1/teams/{id}',
+    config: Handler.deleteOne
   }
 ];
 
