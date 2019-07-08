@@ -52,9 +52,10 @@ exports.createTeam = projectId => ({
   projectId
 });
 
-exports.createEngineerTeam = (engineerId, teamId) => ({
+exports.createEngineerTeam = (engineerId, teamId, role = 'member') => ({
   engineerId,
-  teamId
+  teamId,
+  role
 });
 
 exports.createSkill = name => ({
