@@ -19,7 +19,7 @@ class Project extends CustomModel {
     return {
       team: {
         relation: CustomModel.BelongsToOneRelation,
-        modelClass: path.join(__dirname, './Project'),
+        modelClass: path.join(__dirname, './Team'),
         join: {
           from: 'teams.projectId',
           to: 'projects.id'
