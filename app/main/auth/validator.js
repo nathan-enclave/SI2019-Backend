@@ -1,4 +1,4 @@
-const Joi = require('joi');
+// const Joi = require('joi');
 const BaseValidator = require('../../base/BaseValidator');
 
 class AuthValidator extends BaseValidator {
