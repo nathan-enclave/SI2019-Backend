@@ -18,7 +18,7 @@ class Project extends CustomModel {
   static get relationMappings() {
     return {
       team: {
-        relation: CustomModel.BelongsToOneRelation,
+        relation: CustomModel.HasOneRelation,
         modelClass: path.join(__dirname, './Team'),
         join: {
           from: 'teams.projectId',

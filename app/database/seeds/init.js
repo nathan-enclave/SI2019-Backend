@@ -61,15 +61,28 @@ exports.seed = knex =>
       const data = [];
       for (let index = 0; index < totalTeams; index += 1) {
         for (let i = 0; i < 5; i += 1) {
-          data.push(
-            samples.createEngineerTeam(
-              faker.random.number({
-                min: 1,
-                max: totalEngineers
-              }),
-              index + 1
-            )
-          );
+          if (i === 0) {
+            data.push(
+              samples.createEngineerTeam(
+                faker.random.number({
+                  min: 1,
+                  max: totalEngineers
+                }),
+                index + 1,
+                'leader'
+              )
+            );
+          } else {
+            data.push(
+              samples.createEngineerTeam(
+                faker.random.number({
+                  min: 1,
+                  max: totalEngineers
+                }),
+                index + 1
+              )
+            );
+          }
         }
       }
       await Models.EngineerTeam.query().insertGraph(data);
