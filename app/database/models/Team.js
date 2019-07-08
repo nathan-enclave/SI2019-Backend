@@ -30,7 +30,7 @@ class Team extends CustomModel {
         }
       },
       projects: {
-        relation: CustomModel.BelongsToOneRelation,
+        relation: CustomModel.HasOneRelation,
         modelClass: path.join(__dirname, './Project'),
         join: {
           from: 'teams.projectId',

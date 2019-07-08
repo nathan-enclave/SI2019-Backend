@@ -11,10 +11,8 @@ const CONSTANTS = require('./constants/index');
 require('dotenv').config();
 
 const server = new Hapi.Server({
-  // host: process.env.APP_HOST,
-  host: process.env.HOST,
-  // port: process.env.APP_PORT,
-  port: process.env.PORT,
+  host: process.env.APP_HOST || process.env.HOST,
+  port: process.env.APP_PORT || process.env.PORT,
   routes: {
     cors: true,
     validate: {
@@ -48,6 +46,7 @@ const apiVersionOptions = {
 const swaggerOptions = {
   pathPrefixSize: 3,
   host: process.env.HOST,
+  // port: process.env.PORT,
   basePath: apiVersionOptions.basePath,
   info: {
     title: ' Enclave Engineering Management RESTful API Documentation',

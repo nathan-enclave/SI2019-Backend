@@ -11,6 +11,7 @@ exports.up = knex =>
       .foreign('teamId')
       .references('teams.id')
       .onDelete('CASCADE');
+    table.string('role');
   });
 
 exports.down = knex => knex.schema.dropTableIfExists('engineer_team ');
