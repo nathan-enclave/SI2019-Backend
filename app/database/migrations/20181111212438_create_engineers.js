@@ -7,6 +7,7 @@ exports.up = knex =>
     table.string('phoneNumber');
     table.string('address');
     table.string('email', 191).unique();
+    table.date('birthday').notNullable();
     table.string('skype', 191).unique();
     table.integer('expYear');
     table.integer('dayOffRemain').defaultTo(12);
@@ -18,7 +19,7 @@ exports.up = knex =>
       );
     table.integer('salary');
     table.date('dateIn');
-    table.date('dateOut');
+    table.date('dateOut').defaultTo(null);
     table.timestamp('createdAt').defaultTo(knex.fn.now());
     table.timestamp('updatedAt').defaultTo(knex.fn.now());
     table.timestamp('deletedAt').defaultTo(null);

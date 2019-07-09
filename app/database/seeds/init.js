@@ -1,5 +1,6 @@
 // const bcrypt = require('bcrypt');
 const faker = require('faker');
+const _ = require('lodash');
 const Models = require('../models');
 // const { SALT_ROUNDS } = require('../../constants');
 const Factory = require('../factory');
@@ -52,8 +53,9 @@ exports.seed = knex =>
       }
       await Models.EngineerSkill.query().insertGraph(data);
     })
-    .then(() => Models.Project.query().insertGraph(Factory.project(100)))
-    .then(async () => Models.Team.query().insertGraph(await Factory.team(20)))
+    .then(() => Models.Category.query().insertGraph(Factory.categories()))
+    .then(async () => Models.Project.query().insertGraph(await Factory.project(200)))
+    .then(async () => Models.Team.query().insertGraph(await Factory.team()))
     // Adding members to team
     .then(async () => {
       const totalEngineers = (await Models.Engineer.query().count())[0].count;
@@ -86,4 +88,25 @@ exports.seed = knex =>
         }
       }
       await Models.EngineerTeam.query().insertGraph(data);
-    });
+    })
+    // Handle status of engineers
+    .then(async () => {
+      const team = await Models.Team.query()
+        .joinRelation('projects')
+        .eager('engineers(selectEngineer)', {
+          selectEngineer: builder => builder.select('engineers.id')
+        })
+        .where('projects.status', 'inProgress')
+        .select('teams.id', 'projects.status');
+      let listEngineers = _.map(team, 'engineers');
+      // listEngineers = _.map(listEngineers, 'id');
+      listEngineers = [].concat(...listEngineers);
+      listEngineers = _.map(listEngineers, 'id');
+      listEngineers = [...new Set(listEngineers)];
+      await Models.Engineer.query()
+        .whereIn('id', listEngineers)
+        .update({
+          status: 0
+        });
+    })
+    .then(() => Models.CashFlow.query().insertGraph(Factory.cashFlow()));

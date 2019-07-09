@@ -2,6 +2,8 @@ exports.up = knex =>
   knex.schema.createTable('projects', table => {
     table.increments('id').primary();
     table.string('name');
+    table.integer('categoryId');
+    table.foreign('categoryId').references('categories.id');
     table.string('technology');
     table.text('description');
     table.date('start');

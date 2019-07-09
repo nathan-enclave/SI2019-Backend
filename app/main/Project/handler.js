@@ -65,3 +65,11 @@ exports.deleteOne = {
     }
   }
 };
+
+exports.getProjectByProgress = {
+  description: 'Statistic project',
+  notes: 'Return project count based on status',
+  tags: ['api', 'v1'],
+  handler: controller.getProjectByProgress.bind(controller),
+  auth: false
+};
