@@ -52,8 +52,8 @@ exports.seed = knex =>
       }
       await Models.EngineerSkill.query().insertGraph(data);
     })
-    .then(() => Models.Project.query().insertGraph(Factory.project(30)))
-    .then(() => Models.Team.query().insertGraph(Factory.team(20)))
+    .then(() => Models.Project.query().insertGraph(Factory.project(100)))
+    .then(async () => Models.Team.query().insertGraph(await Factory.team(20)))
     // Adding members to team
     .then(async () => {
       const totalEngineers = (await Models.Engineer.query().count())[0].count;
