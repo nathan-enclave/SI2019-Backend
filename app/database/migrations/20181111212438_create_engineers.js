@@ -11,6 +11,14 @@ exports.up = knex =>
     table.integer('expYear');
     table.integer('dayOffRemain').defaultTo(12);
     table.integer('status');
+    table
+      .string('avatar')
+      .defaultTo(
+        'https://i1.wp.com/www.mvhsoracle.com/wp-content/uploads/2018/08/default-avatar.jpg?ssl=1'
+      );
+    table.integer('salary');
+    table.date('dateIn');
+    table.date('dateOut');
     table.timestamp('createdAt').defaultTo(knex.fn.now());
     table.timestamp('updatedAt').defaultTo(knex.fn.now());
     table.timestamp('deletedAt').defaultTo(null);
