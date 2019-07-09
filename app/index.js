@@ -50,9 +50,7 @@ const swaggerOptions = {
   basePath: apiVersionOptions.basePath,
   info: {
     title: ' Enclave Engineering Management RESTful API Documentation',
-    description:
-      'This is API documentation.' 
-      
+    description: 'This is API documentation.'
   },
   deReference: false
 };
