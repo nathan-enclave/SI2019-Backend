@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
-// const Models = require('../models');\
 const faker = require('faker');
+const _ = require('lodash');
+const Models = require('../models');
 const samples = require('./samples');
 const { SALT_ROUNDS } = require('../../constants');
 const json = require('./data.json');
@@ -66,9 +67,12 @@ class Factory {
     return data;
   }
 
-  static team(num) {
-    // const projectNum = (await Models.Project.query().count())[0].count;
-
+  static async team(num) {
+    const project = await Models.Project.query()
+      .whereNot('status', 'pending')
+      .select('id');
+    const listId = _.pick(project, 'id');
+    console.log(listId);
     const data = [];
     for (let index = 0; index < num; index += 1) {
       data.push(samples.createTeam(index + 1));
