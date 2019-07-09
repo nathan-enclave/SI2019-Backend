@@ -6,6 +6,7 @@ exports.up = knex =>
     table.text('description');
     table.date('start');
     table.date('end');
+    table.string('status');
     table.timestamp('createdAt').defaultTo(knex.fn.now());
     table.timestamp('updatedAt').defaultTo(knex.fn.now());
     table.timestamp('deletedAt').defaultTo(null);

@@ -1,5 +1,6 @@
 const faker = require('faker/locale/en');
 const bcrypt = require('bcrypt');
+const _ = require('lodash');
 const { SALT_ROUNDS } = require('../../constants');
 const data = require('./data.json');
 
@@ -44,7 +45,8 @@ exports.createProject = number => ({
     ],
   description: `This is the description of project ${number}`,
   start: faker.date.past((1 / 365) * 10),
-  end: faker.date.future((1 / 365) * 20)
+  end: faker.date.future((1 / 365) * 20),
+  status: _.sample(['progress', 'pending', 'done'])
 });
 
 exports.createTeam = projectId => ({
