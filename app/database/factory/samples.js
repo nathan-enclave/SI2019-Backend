@@ -66,7 +66,27 @@ exports.createProject = (number, categoryId) => ({
   description: `This is the description of project ${number}`,
   start: faker.date.past((1 / 365) * 10),
   end: faker.date.future((1 / 365) * 20),
-  status: _.sample(['inProgress', 'pending', 'done', 'done', 'inProgress'])
+  status: _.sample(['inProgress', 'pending', 'done', 'done', 'inProgress']),
+  earning: _.sample([
+    60000000,
+    20000000,
+    310000000,
+    42000000,
+    70000000,
+    52000000,
+    40000000,
+    40000000,
+    20000000,
+    49000000,
+    90000000,
+    29000000,
+    69000000,
+    20000000,
+    99000000,
+    89000000,
+    99000000,
+    299000000
+  ])
 });
 
 exports.createTeam = projectId => ({
