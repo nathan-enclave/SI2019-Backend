@@ -24,9 +24,6 @@ class BaseController {
       const { id } = request.params;
       return await this.service.getOne(id);
     } catch (err) {
-      console.log('====================================');
-      console.log(err);
-      console.log('====================================');
       throw err;
     }
   }
