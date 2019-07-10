@@ -65,3 +65,11 @@ exports.deleteOne = {
     }
   }
 };
+
+exports.statistic = {
+  description: 'Skill statistic ratio',
+  notes: 'Return skill used by engineer in ratio',
+  tags: ['api', 'v1'],
+  handler: controller.skillStatistic.bind(controller),
+  auth: false
+};
