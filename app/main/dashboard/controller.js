@@ -23,6 +23,14 @@ class DashboardController extends BaseController {
       throw err;
     }
   }
+
+  async getTotal(request) {
+    try {
+      return await this.service.getTotal(request.query);
+    } catch (err) {
+      throw err;
+    }
+  }
 }
 
 module.exports = DashboardController;
