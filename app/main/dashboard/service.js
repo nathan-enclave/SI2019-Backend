@@ -28,7 +28,7 @@ class DashboardService {
     }
   }
 
-  async getMany() {
+  async getTotal() {
     const engineer = await this.count(Models.Engineer, 'Engineer');
     const project = await this.count(Models.Project, 'Project');
     const team = await this.count(Models.Team, 'Team');

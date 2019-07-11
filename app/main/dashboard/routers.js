@@ -4,7 +4,7 @@ const Routes = [
   {
     method: 'GET',
     path: '/api/v1/dashboard/total',
-    config: Handler.getMany
+    config: Handler.getTotal
   },
   {
     method: 'GET',
