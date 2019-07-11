@@ -25,6 +25,11 @@ const Routes = [
     method: 'DELETE',
     path: '/api/v1/projects/{id}',
     config: Handler.deleteOne
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/projects/statistic/progress',
+    config: Handler.getProjectByProgress
   }
 ];
 

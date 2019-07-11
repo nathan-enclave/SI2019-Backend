@@ -1,9 +1,8 @@
-const _ = require('lodash');
+// const _ = require('lodash');
 const Models = require('../../database/models/index');
 // const BaseService = require('../../base/BaseService');
 
 class dashboardService {
-  // eslint-disable-next-line consistent-return
   async count(model, name) {
     try {
       return model
@@ -12,7 +11,7 @@ class dashboardService {
         .count(`id as ${name}`)
         .first();
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
