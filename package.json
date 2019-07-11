@@ -49,6 +49,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.17.3",
     "lodash": "^4.17.11",
+    "moment": "^2.24.0",
     "objection": "^1.6.9",
     "objection-filter": "hoang3553/objection-filter#15c2a512509401dbf3477b11454ac02a30c095c8",
     "pg": "^7.11.0",

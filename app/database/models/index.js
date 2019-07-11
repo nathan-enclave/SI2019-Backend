@@ -6,6 +6,8 @@ const Project = require('./Project');
 const Skill = require('./Skill');
 const EngineerTeam = require('./EngineerTeam');
 const EngineerSkill = require('./EngineerSkill');
+const CashFlow = require('./CashFlow');
+const Category = require('./Category');
 
 module.exports = {
   Manager,
@@ -15,5 +17,7 @@ module.exports = {
   Project,
   Skill,
   EngineerTeam,
-  EngineerSkill
+  EngineerSkill,
+  CashFlow,
+  Category
 };

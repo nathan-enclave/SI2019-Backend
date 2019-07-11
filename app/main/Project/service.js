@@ -61,6 +61,30 @@ class projectService extends BaseService {
     }
   }
   // end deleteOne Project
+
+  async count(statusofProject) {
+    try {
+      return Models.Project.query()
+        .where({
+          status: statusofProject
+        })
+        .count(`id as ${statusofProject}`)
+        .first();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getProjectByProgress() {
+    const inProgress = await this.count('inProgress');
+    const pending = await this.count('pending');
+    const done = await this.count('done');
+    return {
+      inProgress: inProgress.inProgress,
+      pending: pending.pending,
+      done: done.done
+    };
+  }
 }
 
 module.exports = projectService;
