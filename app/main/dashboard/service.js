@@ -1,5 +1,7 @@
 const _ = require('lodash');
 const moment = require('moment');
+const Boom = require('boom');
+
 const Models = require('../../database/models/index');
 // const BaseService = require('../../base/BaseService');
 class DashboardService {
@@ -55,8 +57,6 @@ class DashboardService {
       return Models.Project.query()
         .whereRaw(`DATE_PART('year', start)=${year}`)
         .select('id', 'start');
-      // .count(`id as numProject`)
-      // .first();
     } catch (error) {
       throw error;
     }
@@ -64,11 +64,14 @@ class DashboardService {
 
   async cashFlow(year) {
     const cash = await this.pickCash(year);
+    if (cash.length === 0) {
+      throw Boom.notFound(`Not found`);
+    }
     const project = await this.pickProject(year);
     try {
       let result;
       if (project.length === 0) {
-        result = null;
+        throw Boom.notFound(`Not found`);
       } else {
         project.forEach(e => {
           e.start = moment(e.start).month();
