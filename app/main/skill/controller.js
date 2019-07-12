@@ -10,9 +10,6 @@ class SkillController extends BaseController {
     try {
       return await this.service.skillStatistic();
     } catch (error) {
-      console.log('====================================');
-      console.log(error);
-      console.log('====================================');
       throw error;
     }
   }

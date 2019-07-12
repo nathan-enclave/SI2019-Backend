@@ -25,6 +25,11 @@ const Routes = [
     method: 'GET',
     path: '/api/v1/dashboard/workstatus/{year}',
     config: Handler.workStatus
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/dashboard/statistic/engineers/status',
+    config: Handler.getStatisticEngineerStatus
   }
 ];
 module.exports = Routes;

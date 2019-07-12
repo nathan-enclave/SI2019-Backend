@@ -112,6 +112,23 @@ class DashboardService {
       done: done.done
     };
   }
+  // Status of engineers in company (Available or in team)
+
+  async getStatisticEngineerStatus() {
+    try {
+      const engineers = await Models.Engineer.query()
+        .whereNull('deletedAt')
+        .select('id', 'status');
+      const availableCounr = _.filter(engineers, e => e.status === 1).length;
+      return {
+        totalEngineer: engineers.length,
+        available: availableCounr,
+        inTeam: engineers.length - availableCounr
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
 
   // get salary
   async getSalary() {
@@ -121,7 +138,6 @@ class DashboardService {
         .whereNull('deletedAt')
         .select('birthday', 'salary');
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
