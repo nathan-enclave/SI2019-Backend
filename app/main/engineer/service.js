@@ -41,6 +41,7 @@ class EngineerService extends BaseService {
           'dateIn',
           'email',
           'skype',
+          'avatar',
           'expYear',
           'status'
         );
