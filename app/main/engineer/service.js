@@ -1,5 +1,6 @@
 const Boom = require('boom');
 // const _ = require('lodash');
+const moment = require('moment');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
 // const PasswordUtils = require('../../services/password');
@@ -35,6 +36,9 @@ class EngineerService extends BaseService {
           'englishName',
           'phoneNumber',
           'address',
+          'birthday',
+          'salary',
+          'dateIn',
           'email',
           'skype',
           'expYear',
@@ -55,6 +59,9 @@ class EngineerService extends BaseService {
   async createOne(payload) {
     const { skills } = payload;
     delete payload.skills;
+    payload.birthday = moment(payload.birthday);
+    payload.dateIn = moment(payload.dateIn);
+    payload.expYear = moment().diff(payload.dateIn, 'year', false);
     const engineer = await Models.Engineer.query().insert(payload);
     await engineer.$relatedQuery('skills').relate(skills);
     return engineer;
@@ -64,6 +71,16 @@ class EngineerService extends BaseService {
     try {
       const { skills } = payload;
       delete payload.skills;
+      if (payload.birthday) {
+        payload.birthday = moment(payload.birthday);
+      }
+      if (payload.dateIn) {
+        payload.dateIn = moment(payload.dateIn);
+        payload.expYear = moment().diff(payload.dateIn, 'year', false);
+      }
+      if (payload.dateOut) {
+        payload.dateOut = moment(payload.dateIn);
+      }
       const engineer = await Models.Engineer.query().patchAndFetchById(id, payload);
       if (!engineer) {
         throw Boom.notFound(`Engineer is not found`);
