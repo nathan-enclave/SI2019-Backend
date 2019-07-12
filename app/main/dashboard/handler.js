@@ -28,8 +28,13 @@ exports.getProject = {
   notes: 'Return dashboard',
   tags: ['api', 'v1'],
   handler: controller.getProject.bind(controller),
-  auth: false,
-  validate: {
-    query: validator.queryParams
-  }
+  auth: false
+};
+
+exports.getStatisticEngineerStatus = {
+  description: 'Get statistic of engineer status (available or not)',
+  notes: 'Return dashboard',
+  tags: ['api', 'v1'],
+  handler: controller.getStatisticEngineerStatus.bind(controller),
+  auth: false
 };

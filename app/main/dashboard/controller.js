@@ -3,7 +3,6 @@ const DashboardService = require('./service');
 
 class DashboardController extends BaseController {
   constructor() {
-    // eslint-disable-next-line new-cap
     super(new DashboardService());
   }
 
@@ -29,6 +28,14 @@ class DashboardController extends BaseController {
       return await this.service.getTotal(request.query);
     } catch (err) {
       throw err;
+    }
+  }
+
+  async getStatisticEngineerStatus() {
+    try {
+      return await this.service.getStatisticEngineerStatus();
+    } catch (error) {
+      throw error;
     }
   }
 }
