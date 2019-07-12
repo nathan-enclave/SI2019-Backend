@@ -2,8 +2,8 @@
 const BaseValidator = require('../../base/BaseValidator');
 
 class dashboardValidator extends BaseValidator {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 }
 module.exports = dashboardValidator;

@@ -64,8 +64,8 @@ exports.createProject = (number, categoryId) => ({
       })
     ],
   description: `This is the description of project ${number}`,
-  start: faker.date.past((1 / 365) * 10),
-  end: faker.date.future((1 / 365) * 20),
+  start: faker.date.past(2),
+  end: faker.date.future(1),
   status: _.sample(['inProgress', 'pending', 'done', 'done', 'inProgress']),
   earning: _.sample([
     60000000,

@@ -1,8 +1,7 @@
-// const _ = require('lodash');
+const _ = require('lodash');
 const Models = require('../../database/models/index');
-// const BaseService = require('../../base/BaseService');
 
-class dashboardService {
+class DashboardService {
   async count(model, name) {
     try {
       return model
@@ -38,5 +37,21 @@ class dashboardService {
       manager: manager.Manager
     };
   }
+
+  async getStatisticEngineerStatus() {
+    try {
+      const engineers = await Models.Engineer.query()
+        .whereNull('deletedAt')
+        .select('id', 'status');
+      const availableCounr = _.filter(engineers, e => e.status === 1).length;
+      return {
+        totalEngineer: engineers.length,
+        available: availableCounr,
+        inTeam: engineers.length - availableCounr
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
 }
-module.exports = dashboardService;
+module.exports = DashboardService;

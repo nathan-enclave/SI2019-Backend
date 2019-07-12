@@ -1,11 +1,18 @@
 const BaseController = require('../../base/BaseController');
-const dashboardService = require('./service');
+const DashboardService = require('./service');
 
-class dashboardController extends BaseController {
+class DashboardController extends BaseController {
   constructor() {
-    // eslint-disable-next-line new-cap
-    super(new dashboardService());
+    super(new DashboardService());
+  }
+
+  async getStatisticEngineerStatus() {
+    try {
+      return await this.service.getStatisticEngineerStatus();
+    } catch (error) {
+      throw error;
+    }
   }
 }
 
-module.exports = dashboardController;
+module.exports = DashboardController;
