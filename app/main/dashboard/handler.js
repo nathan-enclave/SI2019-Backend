@@ -28,10 +28,7 @@ exports.getProject = {
   notes: 'Return dashboard',
   tags: ['api', 'v1'],
   handler: controller.getProject.bind(controller),
-  auth: false,
-  validate: {
-    query: validator.queryParams
-  }
+  auth: false
 };
 
 exports.getStatisticEngineerStatus = {
