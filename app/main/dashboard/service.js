@@ -112,8 +112,8 @@ class DashboardService {
       done: done.done
     };
   }
-
   // Status of engineers in company (Available or in team)
+
   async getStatisticEngineerStatus() {
     try {
       const engineers = await Models.Engineer.query()
@@ -125,6 +125,90 @@ class DashboardService {
         available: availableCounr,
         inTeam: engineers.length - availableCounr
       };
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // get salary
+  async getSalary() {
+    try {
+      return Models.Engineer.query()
+        .whereNull('dateOut')
+        .whereNull('deletedAt')
+        .select('birthday', 'salary');
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async salary() {
+    try {
+      let totalSalary = 0;
+      let sumAge = 0;
+      const salary = await this.getSalary();
+      // total and avg salary
+      const array = _.map(salary, 'salary');
+      for (let i = 0; i < array.length; i += 1) {
+        totalSalary += array[i];
+      }
+      const avgSalary = Math.round(totalSalary / array.length);
+      // avg birthday
+      const birthday = _.map(salary, 'birthday');
+      for (let i = 0; i < birthday.length; i += 1) {
+        sumAge += moment().diff(birthday[i], 'years');
+      }
+      const avgAge = Math.round(sumAge / birthday.length);
+
+      if (salary.length === 0) {
+        throw Boom.notFound(`Not found`);
+      }
+      return {
+        totalSalary,
+        avgSalary,
+        avgAge
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // work status
+  async getWorkStatus(year) {
+    try {
+      return Models.Engineer.query()
+        .whereRaw(`DATE_PART('year', "dateIn")=${year}`)
+        .whereNull('deletedAt')
+        .select('dateIn', 'dateOut');
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async workStatus(year) {
+    try {
+      const status = await this.getWorkStatus(year);
+      if (status.length === 0) {
+        throw Boom.notFound(`Not found`);
+      } else {
+        const hired = _.map(status, 'dateIn');
+        const left = _.map(status, 'dateOut');
+        for (let index = 0; index < hired.length; index += 1) {
+          hired[index] = moment(hired[index]).month();
+          left[index] = moment(left[index]).month();
+        }
+        const workStatus = [];
+        for (let i = 0; i < 12; i += 1) {
+          const numHired = hired.filter(x => x === i).length;
+          const numLeft = left.filter(x => x === i).length;
+          workStatus.push({
+            month: i + 1,
+            numHired,
+            numLeft
+          });
+        }
+        return workStatus;
+      }
     } catch (error) {
       throw error;
     }
