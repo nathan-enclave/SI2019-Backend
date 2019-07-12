@@ -15,7 +15,7 @@ exports.up = knex =>
     table
       .string('avatar')
       .defaultTo(
-        'https://i1.wp.com/www.mvhsoracle.com/wp-content/uploads/2018/08/default-avatar.jpg?ssl=1'
+        'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'
       );
     table.integer('salary');
     table.date('dateIn');
