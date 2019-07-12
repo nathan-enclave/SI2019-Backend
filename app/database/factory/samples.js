@@ -53,41 +53,44 @@ exports.createEngineer = code => {
   };
 };
 
-exports.createProject = (number, categoryId) => ({
-  name: `Project ${number}`,
-  categoryId,
-  technology:
-    data.lang[
-      faker.random.number({
-        min: 0,
-        max: data.lang.length - 1
-      })
-    ],
-  description: `This is the description of project ${number}`,
-  start: faker.date.past(2),
-  end: faker.date.future(1),
-  status: _.sample(['inProgress', 'pending', 'done', 'done', 'inProgress']),
-  earning: _.sample([
-    60000000,
-    20000000,
-    310000000,
-    42000000,
-    70000000,
-    52000000,
-    40000000,
-    40000000,
-    20000000,
-    49000000,
-    90000000,
-    29000000,
-    69000000,
-    20000000,
-    99000000,
-    89000000,
-    99000000,
-    299000000
-  ])
-});
+exports.createProject = (number, categoryId) => {
+  const ranDate = faker.date.between('2018-01-01', '2019-12-31');
+  return {
+    name: `Project ${number}`,
+    categoryId,
+    technology:
+      data.lang[
+        faker.random.number({
+          min: 0,
+          max: data.lang.length - 1
+        })
+      ],
+    description: `This is the description of project ${number}`,
+    start: ranDate,
+    end: moment(ranDate).add(_.sample([30, 40, 60, 50, 90]), 'days'),
+    status: _.sample(['inProgress', 'pending', 'done', 'done', 'inProgress']),
+    earning: _.sample([
+      60000000,
+      20000000,
+      310000000,
+      42000000,
+      70000000,
+      52000000,
+      40000000,
+      40000000,
+      20000000,
+      49000000,
+      90000000,
+      29000000,
+      69000000,
+      20000000,
+      99000000,
+      89000000,
+      99000000,
+      299000000
+    ])
+  };
+};
 
 exports.createTeam = projectId => ({
   name: `Team ${projectId}`,

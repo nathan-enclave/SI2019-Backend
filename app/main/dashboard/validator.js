@@ -1,9 +1,9 @@
 // const Joi = require('joi');
 const BaseValidator = require('../../base/BaseValidator');
 
-class dashboardValidator extends BaseValidator {
+class DashboardValidator extends BaseValidator {
   // constructor() {
   //   super();
   // }
 }
-module.exports = dashboardValidator;
+module.exports = DashboardValidator;

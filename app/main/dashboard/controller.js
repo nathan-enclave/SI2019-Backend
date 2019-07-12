@@ -6,6 +6,31 @@ class DashboardController extends BaseController {
     super(new DashboardService());
   }
 
+  async cashFlow(request) {
+    try {
+      const { year } = request.params;
+      return await this.service.cashFlow(year);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async getProject(request) {
+    try {
+      return await this.service.getProject(request.query);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async getTotal(request) {
+    try {
+      return await this.service.getTotal(request.query);
+    } catch (err) {
+      throw err;
+    }
+  }
+
   async getStatisticEngineerStatus() {
     try {
       return await this.service.getStatisticEngineerStatus();
