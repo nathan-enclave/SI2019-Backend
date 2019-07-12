@@ -15,6 +15,16 @@ const Routes = [
     method: 'GET',
     path: '/api/v1/dashboard/projects',
     config: Handler.getProject
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/dashboard/salary',
+    config: Handler.salary
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/dashboard/workstatus/{year}',
+    config: Handler.workStatus
   }
 ];
 module.exports = Routes;

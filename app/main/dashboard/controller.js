@@ -31,6 +31,23 @@ class DashboardController extends BaseController {
       throw err;
     }
   }
+
+  async salary(request) {
+    try {
+      return await this.service.salary(request.params);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async workStatus(request) {
+    try {
+      const { year } = request.params;
+      return await this.service.workStatus(year);
+    } catch (err) {
+      throw err;
+    }
+  }
 }
 
 module.exports = DashboardController;
