@@ -60,3 +60,17 @@ exports.workStatus = {
     }
   }
 };
+
+// get statistic of project earning by month in the year
+exports.getStatisticProjectEarningByMonth = {
+  description: 'Get statistic of project earning by month in the year',
+  notes: 'Return earning each month',
+  tags: ['api', 'v1'],
+  handler: controller.getStatisticProjectEarningByMonth.bind(controller),
+  auth: false,
+  validate: {
+    params: {
+      year: validator.idParam
+    }
+  }
+};
