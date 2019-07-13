@@ -213,6 +213,21 @@ class DashboardService {
       throw error;
     }
   }
+
+  async getStatisticProjectEarningByMonth(year) {
+    try {
+      const project = await Models.Project.query()
+        .whereRaw(`DATE_PART('year', start)=${year}`)
+        .andWhere('status', 'inProgress')
+        .select('id', 'name', 'start', 'end', 'earning', 'earningPerMonth', 'status');
+      return {
+        results: project,
+        total: project.length
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = DashboardService;
