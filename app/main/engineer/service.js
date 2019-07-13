@@ -71,8 +71,12 @@ class EngineerService extends BaseService {
 
   async updateOne(id, payload) {
     try {
-      const { skills } = payload;
-      delete payload.skills;
+      let skills;
+      if (payload.skills) {
+        /* eslint prefer-destructuring: ["error", {VariableDeclarator: {object: true}}] */
+        skills = payload.skills;
+        delete payload.skills;
+      }
       if (payload.birthday) {
         payload.birthday = moment(payload.birthday);
       }
@@ -87,12 +91,14 @@ class EngineerService extends BaseService {
       if (!engineer) {
         throw Boom.notFound(`Engineer is not found`);
       }
-      await engineer.$relatedQuery('skills').unrelate();
-      await engineer.$relatedQuery('skills').relate(skills);
-      const skillList = await Models.Skill.query()
-        .whereIn('id', skills)
-        .select('id', 'name');
-      engineer.skills = skillList;
+      if (payload.skills) {
+        await engineer.$relatedQuery('skills').unrelate();
+        await engineer.$relatedQuery('skills').relate(skills);
+        const skillList = await Models.Skill.query()
+          .whereIn('id', skills)
+          .select('id', 'name');
+        engineer.skills = skillList;
+      }
       return engineer;
     } catch (error) {
       throw error;
