@@ -55,6 +55,38 @@ exports.createEngineer = code => {
 
 exports.createProject = (number, categoryId) => {
   const ranDate = faker.date.between('2018-01-01', '2019-12-31');
+  const lengthOfProject = _.sample([60, 90, 150, 270, 210, 330, 180, 240, 120]);
+  const end = moment(ranDate)
+    .clone()
+    .add(lengthOfProject, 'days');
+  moment().format();
+  let status;
+  if (Number(moment(end).year()) === 2018) {
+    status = 'done';
+  } else {
+    status = _.sample(['inProgress', 'pending', 'pending', 'inProgress']);
+  }
+  const earning = _.sample([
+    600000000,
+    200000000,
+    310000000,
+    42000000,
+    70000000,
+    52000000,
+    40000000,
+    40000000,
+    20000000,
+    49000000,
+    90000000,
+    29000000,
+    69000000,
+    20000000,
+    99000000,
+    89000000,
+    99000000,
+    290000000
+  ]);
+  const earningPerMonth = earning / (lengthOfProject / 30);
   return {
     name: `Project ${number}`,
     categoryId,
@@ -67,28 +99,10 @@ exports.createProject = (number, categoryId) => {
       ],
     description: `This is the description of project ${number}`,
     start: ranDate,
-    end: moment(ranDate).add(_.sample([30, 40, 60, 50, 90]), 'days'),
-    status: _.sample(['inProgress', 'pending', 'done', 'done', 'inProgress']),
-    earning: _.sample([
-      60000000,
-      20000000,
-      310000000,
-      42000000,
-      70000000,
-      52000000,
-      40000000,
-      40000000,
-      20000000,
-      49000000,
-      90000000,
-      29000000,
-      69000000,
-      20000000,
-      99000000,
-      89000000,
-      99000000,
-      299000000
-    ])
+    end,
+    status,
+    earning,
+    earningPerMonth
   };
 };
 
