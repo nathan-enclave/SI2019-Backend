@@ -14,6 +14,7 @@ class SkillService extends BaseService {
         .join('skills', 'engineer_skill.skillId', 'skills.id')
         .groupBy('skillId', 'skills.name')
         .count('engineerId')
+        .orderBy('count', 'desc')
         .select('skillId', 'skills.name');
       let engineer = Models.Engineer.query()
         .whereNull('deletedAt')
