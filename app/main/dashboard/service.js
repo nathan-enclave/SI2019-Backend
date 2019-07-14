@@ -174,12 +174,23 @@ class DashboardService {
   }
 
   // work status
-  async getWorkStatus(year) {
+  async getWorkStatusHired(year) {
     try {
       return Models.Engineer.query()
         .whereRaw(`DATE_PART('year', "dateIn")=${year}`)
         .whereNull('deletedAt')
-        .select('dateIn', 'dateOut');
+        .select('dateIn');
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getWorkStatusLeft(year) {
+    try {
+      return Models.Engineer.query()
+        .whereRaw(`DATE_PART('year', "dateOut")=${year}`)
+        .whereNull('deletedAt')
+        .select('dateOut');
     } catch (error) {
       throw error;
     }
@@ -187,14 +198,17 @@ class DashboardService {
 
   async workStatus(year) {
     try {
-      const status = await this.getWorkStatus(year);
-      if (status.length === 0) {
+      const statusHired = await this.getWorkStatusHired(year);
+      const statusLeft = await this.getWorkStatusLeft(year);
+      if (statusHired.length === 0) {
         throw Boom.notFound(`Not found`);
       } else {
-        const hired = _.map(status, 'dateIn');
-        const left = _.map(status, 'dateOut');
+        const hired = _.map(statusHired, 'dateIn');
+        const left = _.map(statusLeft, 'dateOut');
         for (let index = 0; index < hired.length; index += 1) {
           hired[index] = moment(hired[index]).month();
+        }
+        for (let index = 0; index < left.length; index += 1) {
           left[index] = moment(left[index]).month();
         }
         const workStatus = [];
