@@ -19,7 +19,7 @@ class EngineerValidator extends BaseValidator {
       dateIn: Joi.string(),
       salary: Joi.number().required(),
       email: super.strEmail().required(),
-      skype: super.strEmail().required(),
+      skype:  Joi.string().required(),
       status: Joi.number().required(),
       skills: Joi.array().items(Joi.number())
     };
@@ -37,7 +37,7 @@ class EngineerValidator extends BaseValidator {
       dateOut: Joi.string(),
       salary: Joi.number(),
       email: super.strEmail(),
-      skype: super.strEmail(),
+      skype: Joi.string(),
       status: Joi.number(),
       skills: Joi.array().items(Joi.number())
     };
