@@ -70,7 +70,7 @@ class EngineerService extends BaseService {
 
   async updateOne(id, payload) {
     try {
-      let skills;
+      let skills = null;
       if (payload.skills) {
         /* eslint prefer-destructuring: ["error", {VariableDeclarator: {object: true}}] */
         skills = payload.skills;
@@ -90,7 +90,7 @@ class EngineerService extends BaseService {
       if (!engineer) {
         throw Boom.notFound(`Engineer is not found`);
       }
-      if (payload.skills) {
+      if (skills) {
         await engineer.$relatedQuery('skills').unrelate();
         await engineer.$relatedQuery('skills').relate(skills);
         const skillList = await Models.Skill.query()
