@@ -9,7 +9,7 @@ class DashboardService {
     try {
       return model
         .query()
-        .whereNull('deletedAt')
+        .where('deletedAt', null)
       .andWhere('dateOut', null)
         .count(`id as ${name}`)
         .first();
@@ -118,7 +118,7 @@ class DashboardService {
   async getStatisticEngineerStatus() {
     try {
       const engineers = await Models.Engineer.query()
-        .whereNull('deletedAt')
+        .where('deletedAt', null)
       .andWhere('dateOut', null)
         .select('id', 'status');
       const availableCounr = _.filter(engineers, e => e.status === 1).length;
