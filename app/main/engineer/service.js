@@ -85,7 +85,7 @@ class EngineerService extends BaseService {
         payload.expYear = moment().diff(payload.dateIn, 'year', false);
       }
       if (payload.dateOut) {
-        payload.dateOut = moment(payload.dateIn);
+        payload.dateOut = moment(payload.dateOut);
       }
       const engineer = await Models.Engineer.query().patchAndFetchById(id, payload);
       if (!engineer) {
