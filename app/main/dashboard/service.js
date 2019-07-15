@@ -10,6 +10,7 @@ class DashboardService {
       return model
         .query()
         .whereNull('deletedAt')
+      .andWhere('dateOut', null)
         .count(`id as ${name}`)
         .first();
     } catch (error) {
