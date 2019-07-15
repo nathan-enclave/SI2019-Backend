@@ -119,6 +119,7 @@ class DashboardService {
     try {
       const engineers = await Models.Engineer.query()
         .whereNull('deletedAt')
+      .andWhere('dateOut', null)
         .select('id', 'status');
       const availableCounr = _.filter(engineers, e => e.status === 1).length;
       return {
