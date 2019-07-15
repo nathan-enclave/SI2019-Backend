@@ -10,7 +10,18 @@ class DashboardService {
       return model
         .query()
         .where('deletedAt', null)
-      .andWhere('dateOut', null)
+        .count(`id as ${name}`)
+        .first();
+    } catch (error) {
+      throw error;
+    }
+  }
+   async countEngineer(model, name) {
+    try {
+      return model
+        .query()
+        .where('deletedAt', null)
+        .andWhere('dateOut', null)
         .count(`id as ${name}`)
         .first();
     } catch (error) {
@@ -30,7 +41,7 @@ class DashboardService {
   }
 
   async getTotal() {
-    const engineer = await this.count(Models.Engineer, 'Engineer');
+    const engineer = await this.countEngineer(Models.Engineer, 'Engineer');
     const project = await this.count(Models.Project, 'Project');
     const team = await this.count(Models.Team, 'Team');
     const manager = await this.countManager(Models.Manager, 'Manager');
