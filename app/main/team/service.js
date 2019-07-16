@@ -12,6 +12,7 @@ class TeamService extends BaseService {
     let builder = this.model
       .queryBuilder(query)
       .joinRelation('projects')
+      .where('teams.deletedAt', null)
       .select(
         'teams.id',
         'teams.name as teamName',
