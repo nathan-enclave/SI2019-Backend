@@ -16,7 +16,10 @@ class TeamService extends BaseService {
         'teams.id',
         'teams.name as teamName',
         'projects.name as projectName',
-        'teams.deletedAt'
+        'teams.deletedAt',
+        Models.Team.relatedQuery('engineers')
+        .count()
+        .as('totalMember')
       );
 
     if (this.getSearchQuery && query.q) {
@@ -37,6 +40,11 @@ class TeamService extends BaseService {
       const team = Models.Team.query()
         .findById(id)
         .joinRelation('projects')
+        .eager('engineers(selectEngineer)',{
+          selectEngineer: builder => {
+            builder.select('engineers.id','engineers.firstName', 'engineers.lastName')
+          }
+        })
         .select(
           'teams.id',
           'teams.name as teamName',
@@ -46,6 +54,7 @@ class TeamService extends BaseService {
             .count()
             .as('totalMember')
         );
+      // const Member = Models.
 
       const [leader, result] = await Promise.all([engineerTeam, team]);
       result.leader = leader;
@@ -54,6 +63,7 @@ class TeamService extends BaseService {
       }
       return result;
     } catch (error) {
+      console.log(error)
       throw error;
     }
   }
