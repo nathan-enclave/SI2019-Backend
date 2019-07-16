@@ -12,14 +12,15 @@ class TeamService extends BaseService {
     let builder = this.model
       .queryBuilder(query)
       .joinRelation('projects')
+      .where('teams.deletedAt', null)
       .select(
         'teams.id',
         'teams.name as teamName',
         'projects.name as projectName',
         'teams.deletedAt',
         Models.Team.relatedQuery('engineers')
-        .count()
-        .as('totalMember')
+          .count()
+          .as('totalMember')
       );
 
     if (this.getSearchQuery && query.q) {
@@ -40,9 +41,9 @@ class TeamService extends BaseService {
       const team = Models.Team.query()
         .findById(id)
         .joinRelation('projects')
-        .eager('engineers(selectEngineer)',{
+        .eager('engineers(selectEngineer)', {
           selectEngineer: builder => {
-            builder.select('engineers.id','engineers.firstName', 'engineers.lastName')
+            builder.select('engineers.id', 'engineers.firstName', 'engineers.lastName');
           }
         })
         .select(
@@ -63,7 +64,7 @@ class TeamService extends BaseService {
       }
       return result;
     } catch (error) {
-      console.log(error)
+      console.log(error);
       throw error;
     }
   }
