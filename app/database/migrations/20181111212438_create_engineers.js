@@ -12,11 +12,7 @@ exports.up = knex =>
     table.integer('expYear');
     table.integer('dayOffRemain').defaultTo(12);
     table.integer('status');
-    table
-      .string('avatar')
-      .defaultTo(
-        'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'
-      );
+    table.string('avatar').defaultTo('http://s3.amazonaws.com/37assets/svn/765-default-avatar.png');
     table.integer('salary');
     table.date('dateIn');
     table.date('dateOut').defaultTo(null);

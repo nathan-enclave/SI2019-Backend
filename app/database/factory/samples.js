@@ -123,7 +123,11 @@ exports.createSkill = name => ({
 
 exports.createEngineerSkill = (engineerId, skillId) => ({
   engineerId,
-  skillId
+  skillId,
+  expYear: faker.random.number({
+    min: 0,
+    max: 8
+  })
 });
 
 exports.createCashFlow = (month, year) => {
