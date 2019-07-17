@@ -20,6 +20,34 @@ class AuthController {
       throw err;
     }
   }
+
+  check(request) {
+    try {
+      const { email } = request.params;
+      return this.service.check(email);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  sendcode(request) {
+    try {
+      const { email } = request.params;
+      return this.service.sendcode(email);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  reset(request) {
+    try {
+      const { id } = request.params;
+
+      return this.service.reset(id, request.payload);
+    } catch (err) {
+      throw err;
+    }
+  }
 }
 
 module.exports = AuthController;
