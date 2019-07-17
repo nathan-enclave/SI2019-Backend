@@ -6,6 +6,7 @@ exports.up = knex =>
     table.string('englishName');
     table.string('phoneNumber');
     table.string('address');
+    table.string('nationality').defaultTo('American');
     table.string('email', 191).unique();
     table.date('birthday').notNullable();
     table.string('skype', 191).unique();
