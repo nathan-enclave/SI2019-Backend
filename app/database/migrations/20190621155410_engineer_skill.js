@@ -11,6 +11,7 @@ exports.up = knex =>
       .foreign('skillId')
       .references('skills.id')
       .onDelete('CASCADE');
+    table.integer('expYear').defaultTo(0);
   });
 
 exports.down = knex => knex.schema.dropTableIfExists('engineer_skill');
