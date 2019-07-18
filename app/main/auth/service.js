@@ -5,7 +5,7 @@ const jwt = require('../../services/jwt');
 const PasswordUtils = require('../../services/password');
 const sendEmail = require('../../services/sendEmail');
 const Models = require('../../database/models');
-const CONSTANTS = require('../../constants');
+// const CONSTANTS = require('../../constants');
 
 class AuthService {
   async login(payload) {

@@ -10,7 +10,7 @@ class DashboardService {
       return model
         .query()
         .where('deletedAt', null)
-      .andWhere('dateOut', null)
+        .andWhere('dateOut', null)
         .count(`id as ${name}`)
         .first();
     } catch (error) {
@@ -119,7 +119,7 @@ class DashboardService {
     try {
       const engineers = await Models.Engineer.query()
         .where('deletedAt', null)
-      .andWhere('dateOut', null)
+        .andWhere('dateOut', null)
         .select('id', 'status');
       const availableCounr = _.filter(engineers, e => e.status === 1).length;
       return {
