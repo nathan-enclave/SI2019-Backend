@@ -18,7 +18,22 @@ class projectService extends BaseService {
             builder.select('teams.name');
           }
         })
-        .select('id', 'name', 'technology', 'description', 'start', 'end');
+        .mergeEager('category(selectCategory)', {
+          selectCategory: builder => {
+            builder.select('categories.name');
+          }
+        })
+        .select(
+          'id',
+          'name',
+          'technology',
+          'description',
+          'earning',
+          'earningPerMonth',
+          'start',
+          'end',
+          'status'
+        );
       if (!result) {
         throw Boom.notFound(`Not found`);
       }
@@ -70,6 +85,18 @@ class projectService extends BaseService {
         })
         .count(`id as ${statusofProject}`)
         .first();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // get many
+  async getMany() {
+    try {
+      const result = await Models.Project.query()
+        .whereNull('deletedAt')
+        .select('id', 'name', 'technology', 'earning');
+      return result;
     } catch (error) {
       throw error;
     }

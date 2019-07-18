@@ -11,6 +11,7 @@ exports.up = knex =>
       .onDelete('CASCADE');
     table.timestamp('createdAt').defaultTo(knex.fn.now());
     table.timestamp('updatedAt').defaultTo(knex.fn.now());
+    table.integer('verify').defaultTo(null);
   });
 
 exports.down = knex => knex.schema.dropTableIfExists('managers');

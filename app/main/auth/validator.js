@@ -1,4 +1,4 @@
-// const Joi = require('joi');
+const Joi = require('joi');
 const BaseValidator = require('../../base/BaseValidator');
 
 class AuthValidator extends BaseValidator {
@@ -6,6 +6,7 @@ class AuthValidator extends BaseValidator {
     super();
     this.login = this.login();
     this.register = this.register();
+    this.update = this.update();
   }
 
   login() {
@@ -19,6 +20,13 @@ class AuthValidator extends BaseValidator {
     return {
       username: super.strUsername().required(),
       password: super.strPassword().required()
+    };
+  }
+
+  update() {
+    return {
+      verify: Joi.number(),
+      password: Joi.string()
     };
   }
 }
