@@ -16,7 +16,7 @@ class EngineerService extends BaseService {
         .findById(id)
         .eager('skills(selectSkill)', {
           selectSkill: builder => {
-            builder.select('skills.id', 'skills.name');
+            builder.select('skills.id', 'skills.name', 'expYear');
           }
         })
         .mergeEager(
