@@ -3,7 +3,6 @@
 const server = require('../../app');
 const knex = require('../../app/database/connection');
 const utils = require('../utils');
-// const { USER_ROLE } = require('../../app/constants');
 
 describe('Testing user and auth API', () => {
   beforeAll(async () => {

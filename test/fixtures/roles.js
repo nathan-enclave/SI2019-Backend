@@ -5,11 +5,11 @@ const data = [
   },
   {
     name: 'human resources manager',
-    description: 'Admin'
+    description: 'human resource for human management'
   },
   {
     name: 'project manager',
-    description: 'The end user'
+    description: 'project manager for team and project management'
   }
 ];
 

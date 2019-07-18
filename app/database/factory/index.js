@@ -15,8 +15,21 @@ class Factory {
       engineerId: 1,
       roleId: 1
     });
-    for (let index = 0; index < num - 1; index += 1) {
-      data.push(samples.createManager(2, index + 10));
+
+    data.push({
+      username: 'admin2',
+      password: bcrypt.hashSync('123456', SALT_ROUNDS),
+      engineerId: 2,
+      roleId: 2
+    });
+    data.push({
+      username: 'admin3',
+      password: bcrypt.hashSync('123456', SALT_ROUNDS),
+      engineerId: 3,
+      roleId: 3
+    });
+    for (let index = 0; index < num - 3; index += 1) {
+      data.push(samples.createManager(3, index + 10));
     }
     return data;
   }
@@ -44,7 +57,51 @@ class Factory {
       skype: 'intern.m0060@enclave.vn',
       status: 1
     });
-    for (let index = 0; index < num - 1; index += 1) {
+
+    data.push({
+      firstName: 'John',
+      lastName: 'Doe',
+      englishName: 'John',
+      phoneNumber: '0952075469',
+      address: '459 Hoang Dieu',
+      email: 'John.Doe@gmail.com',
+      expYear: faker.random.number({
+        min: 0,
+        max: 10
+      }),
+      dayOffRemain: faker.random.number({
+        min: 5,
+        max: 12
+      }),
+      dateIn: '2009-06-17',
+      birthday: '1986-02-11',
+      salary: 0,
+      skype: 'eureka.m1160@enclave.vn',
+      status: 1
+    });
+    data.push({
+      firstName: 'Jane',
+      lastName: 'Doe',
+      englishName: 'Jane',
+      phoneNumber: '0934078869',
+      address: '460 Hoang Dieu',
+      email: 'Jane.Doe@gmail.com',
+      expYear: faker.random.number({
+        min: 0,
+        max: 10
+      }),
+      dayOffRemain: faker.random.number({
+        min: 5,
+        max: 12
+      }),
+      dateIn: '2009-06-17',
+      birthday: '1986-05-11',
+      salary: 0,
+      skype: 'eureka.m1061@enclave.vn',
+      status: 1
+    });
+
+    for (let index = 0; index < num - 3; index += 1) {
       data.push(samples.createEngineer(index + 12));
     }
     return data;

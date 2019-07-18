@@ -20,7 +20,8 @@ class AuthValidator extends BaseValidator {
   register() {
     return {
       username: super.strUsername().required(),
-      password: super.strPassword().required()
+      password: super.strPassword().required(),
+      engineerId: super.idNumber().required()
     };
   }
 
