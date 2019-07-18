@@ -31,19 +31,17 @@ class TeamService extends BaseService {
 
   async getOne(id) {
     try {
-      const engineerTeam = Models.EngineerTeam.query()
-        .join('engineers', 'engineer_team.engineerId', 'engineers.id')
-        .select('englishName', 'engineers.id')
-        .where('teamId', id)
-        .andWhere('role', 'leader')
-        .first();
-
       const team = Models.Team.query()
         .findById(id)
         .joinRelation('projects')
         .eager('engineers(selectEngineer)', {
           selectEngineer: builder => {
-            builder.select('engineers.id', 'engineers.firstName', 'engineers.lastName');
+            builder.select(
+              'engineers.id',
+              'engineers.firstName',
+              'engineers.lastName',
+              'engineer_team.role'
+            );
           }
         })
         .select(
@@ -55,16 +53,12 @@ class TeamService extends BaseService {
             .count()
             .as('totalMember')
         );
-      // const Member = Models.
 
-      const [leader, result] = await Promise.all([engineerTeam, team]);
-      result.leader = leader;
-      if (!result) {
+      if (!team) {
         throw Boom.notFound(`Model Team is not found`);
       }
-      return result;
+      return team;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
