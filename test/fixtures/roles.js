@@ -1,14 +1,14 @@
 const data = [
   {
-    name: 'superadmin',
-    description: 'Admin has all the power'
+    name: 'manager',
+    description: 'Manager of the company'
   },
   {
-    name: 'admin',
+    name: 'human resources manager',
     description: 'Admin'
   },
   {
-    name: 'user',
+    name: 'project manager',
     description: 'The end user'
   }
 ];
