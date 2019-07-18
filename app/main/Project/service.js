@@ -91,11 +91,11 @@ class projectService extends BaseService {
   }
 
   // get many
-  async getMany() {
+  async getMany(query) {
     try {
-      const result = await Models.Project.query()
+      const result = await Models.Project.queryBuilder(query)
         .whereNull('deletedAt')
-        .select('id', 'name', 'technology', 'earning');
+        .select('id', 'name', 'technology', 'earning', 'status');
       return result;
     } catch (error) {
       throw error;
