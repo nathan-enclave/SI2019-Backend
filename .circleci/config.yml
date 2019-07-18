@@ -9,12 +9,12 @@ jobs:
         - image: circleci/node:10
         - image: circleci/postgres:10-alpine
           environment:
-            POSTGRES_USER: postgres
+            POSTGRES_USER: circleci
             POSTGRES_DB: circleci
     environment:
       NODE_ENV: test
-      POSTGRES_USER: postgres
-      DATABASE_URL: postgres://postgres:123456@localhost:5432/circleci
+      POSTGRES_USER: circleci
+      DATABASE_URL: postgres://circleci:123456@localhost:5432/circleci
       JWT_SECRET: enclave
     steps:
       - run:
