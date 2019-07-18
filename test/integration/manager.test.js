@@ -15,7 +15,7 @@ describe('Testing user and auth API', () => {
     await knex.migrate.rollback();
   });
 
-  describe('POST /api/v1/auth/login', async () => {
+  describe('POST /api/v1/auth/login', () => {
     test('<200> should login user success', async () => {
       const payload = {
         username: 'admin',
@@ -33,7 +33,7 @@ describe('Testing user and auth API', () => {
     });
   });
 
-  describe('POST /api/v1/auth/register', async () => {
+  describe('POST /api/v1/auth/register', () => {
     test('<200> should register user success', async () => {
       const payload = {
         username: 'admin6',
