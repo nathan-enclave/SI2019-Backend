@@ -1,7 +1,8 @@
 const Boom = require('boom');
-// const _ = require('lodash');
+const _ = require('lodash');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
+const sendEmail = require('../../services/sendEmail');
 
 class TeamService extends BaseService {
   constructor() {
@@ -31,19 +32,17 @@ class TeamService extends BaseService {
 
   async getOne(id) {
     try {
-      const engineerTeam = Models.EngineerTeam.query()
-        .join('engineers', 'engineer_team.engineerId', 'engineers.id')
-        .select('englishName', 'engineers.id')
-        .where('teamId', id)
-        .andWhere('role', 'leader')
-        .first();
-
       const team = Models.Team.query()
         .findById(id)
         .joinRelation('projects')
         .eager('engineers(selectEngineer)', {
           selectEngineer: builder => {
-            builder.select('engineers.id', 'engineers.firstName', 'engineers.lastName');
+            builder.select(
+              'engineers.id',
+              'engineers.firstName',
+              'engineers.lastName',
+              'engineer_team.role'
+            );
           }
         })
         .select(
@@ -55,16 +54,12 @@ class TeamService extends BaseService {
             .count()
             .as('totalMember')
         );
-      // const Member = Models.
 
-      const [leader, result] = await Promise.all([engineerTeam, team]);
-      result.leader = leader;
-      if (!result) {
+      if (!team) {
         throw Boom.notFound(`Model Team is not found`);
       }
-      return result;
+      return team;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
@@ -77,15 +72,24 @@ class TeamService extends BaseService {
       const team = await Models.Team.query()
         .insert(payload)
         .returning('id');
+      const idEngineer = engineers.map(e => e.id);
 
       engineers.forEach(e => {
         e.engineerId = e.id;
         e.teamId = team.id;
+
         delete e.id;
       });
 
       await Models.EngineerTeam.query().insertGraph(engineers);
-
+      // send email to engineer
+      const title = 'Join team';
+      const conten = 'join to team';
+      const pickEmail = await Models.Engineer.query()
+        .findById(idEngineer)
+        .select('email');
+      const { email } = pickEmail;
+      sendEmail.sendEmail(email, title, conten);
       return team;
     } catch (error) {
       throw error;

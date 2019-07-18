@@ -20,11 +20,11 @@ class ProjectValidator extends BaseValidator {
 
   update() {
     return {
-      name: Joi.string().required(),
-      technology: Joi.string().required(),
-      description: Joi.string().required(),
-      start: Joi.date().required(),
-      end: Joi.date().required()
+      name: Joi.string(),
+      technology: Joi.string(),
+      description: Joi.string(),
+      start: Joi.date(),
+      end: Joi.date()
     };
   }
 }

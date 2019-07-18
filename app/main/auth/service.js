@@ -58,8 +58,9 @@ class AuthService {
   }
 
   // check email
-  async check(email) {
+  async check(payload) {
     try {
+      const { email } = payload;
       let result;
       const numCode = Math.floor(Math.random() * 100000) + 10000; // get random number
       const checkEmail = await Models.Engineer.query()
@@ -73,11 +74,13 @@ class AuthService {
         .where('engineerId', idEng)
         .select('id');
       const id = Number(_.map(getIdManager, 'id'));
-      if (!idEng) {
+      if (idEng === 0) {
         result = `${email} is not exits`;
       }
       if (!checkRole) {
         result = `${email} is not manager`;
+      } else {
+        result = `${email} is can changer password`;
       }
       return { result, email, id };
     } catch (error) {
@@ -87,8 +90,9 @@ class AuthService {
 
   // send verify code
 
-  async sendcode(email) {
+  async sendcode(payload) {
     try {
+      const { email } = payload;
       const title = `Verify code reset password`;
       let result;
       const checkEmail = await Models.Engineer.query()
