@@ -41,7 +41,7 @@ class BaseValidator {
     return {
       limit: Joi.number()
         .min(1)
-        .max(100)
+        // .max(100)
         .default(10),
       offset: Joi.number().default(0),
       orderBy: Joi.string(),
