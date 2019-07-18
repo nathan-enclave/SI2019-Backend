@@ -17,6 +17,14 @@ jobs:
       DATABASE_URL: postgres://postgres:123456@localhost:5432/circleci
       JWT_SECRET: enclave
     steps:
+      - run:
+          name: Install ltree extension for Postgres
+          command: |
+            sudo apt-get update
+            sudo apt-get install postgresql-client
+            dockerize -wait tcp://localhost:5432 -timeout 1m
+            psql -U circleci -h localhost -p 5432 -c 'create extension ltree'
+
       - checkout
 
       # Download and cache dependencies
