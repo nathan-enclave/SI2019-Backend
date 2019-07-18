@@ -29,7 +29,7 @@ class Project extends CustomModel {
         relation: CustomModel.HasManyRelation,
         modelClass: path.join(__dirname, './Category'),
         join: {
-          from: 'projects.categoriesId',
+          from: 'projects.categoryId',
           to: 'categories.id'
         }
       }
