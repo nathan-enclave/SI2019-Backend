@@ -79,6 +79,8 @@ class AuthService {
       }
       if (!checkRole) {
         result = `${email} is not manager`;
+      } else {
+        result = `${email} is can changer password`;
       }
       return { result, email, id };
     } catch (error) {

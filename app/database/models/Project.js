@@ -26,7 +26,7 @@ class Project extends CustomModel {
         }
       },
       category: {
-        relation: CustomModel.HasManyRelation,
+        relation: CustomModel.BelongsToOneRelation,
         modelClass: path.join(__dirname, './Category'),
         join: {
           from: 'projects.categoryId',
