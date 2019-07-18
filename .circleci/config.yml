@@ -9,14 +9,15 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:10
       - image: circleci/postgres:10
-          environment:
-            POSTGRES_USER: circleci
-            POSTGRES_DB: circleci
+        environment:
+          POSTGRES_USER: circleci
+          POSTGRES_DB: circleci
       environment:
         NODE_ENV: test
         POSTGRES_USER: circleci
         POSTGRES_DB: circleci
         JWT_SECRET: enclave
+
     working_directory: ~/repo
 
     steps:
