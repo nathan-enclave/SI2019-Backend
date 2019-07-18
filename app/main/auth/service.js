@@ -5,7 +5,7 @@ const jwt = require('../../services/jwt');
 const PasswordUtils = require('../../services/password');
 const sendEmail = require('../../services/sendEmail');
 const Models = require('../../database/models');
-const CONSTANTS = require('../../constants');
+// const CONSTANTS = require('../../constants');
 
 class AuthService {
   async login(payload) {
@@ -37,19 +37,20 @@ class AuthService {
 
   async register(payload) {
     try {
-      const { username, password } = payload;
+      const { username, password, engineerId } = payload;
       const user = await Models.Manager.query().findOne({ username });
       if (user) {
         return Boom.conflict('User is exist');
       }
-
+      const roleId = _.sample([2, 3]);
       const hashPassword = await PasswordUtils.hash(password);
       const result = await Models.Manager.query().insert({
         username,
         password: hashPassword,
-        roleId: CONSTANTS.USER_ROLE.ADMIN
+        roleId,
+        engineerId
       });
-      result.scope = 'admin';
+      result.scope = roleId === 2 ? 'HR' : 'PM';
       const data = _.pick(result, ['username', 'id', 'scope']);
       return _.assign({ token: jwt.issue(data) }, data);
     } catch (error) {

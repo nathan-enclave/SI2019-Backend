@@ -1,5 +1,5 @@
 const Boom = require('boom');
-const _ = require('lodash');
+// const _ = require('lodash');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
 const sendEmail = require('../../services/sendEmail');
