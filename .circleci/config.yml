@@ -7,14 +7,14 @@ jobs:
   build:
     docker:
         - image: circleci/node:10
-        - image: circleci/postgres:10
+        - image: circleci/postgres:10-alpine
           environment:
             POSTGRES_USER: circleci
-            POSTGRES_DB: circleci
+            POSTGRES_DB: circleci_test
     environment:
       NODE_ENV: test
       POSTGRES_USER: circleci
-      POSTGRES_DB: circleci
+      POSTGRES_DB: circleci_test
       JWT_SECRET: enclave
     steps:
       - run:
@@ -24,6 +24,7 @@ jobs:
             sudo apt-get install postgresql-client
             dockerize -wait tcp://localhost:5432 -timeout 1m
             psql -U circleci -h localhost -p 5432 -c 'create extension ltree'
+            psql CREATE DATABASE circleci_test
 
       - checkout
 
