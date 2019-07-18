@@ -1,7 +1,8 @@
 const Boom = require('boom');
-// const _ = require('lodash');
+const _ = require('lodash');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
+const sendEmail = require('../../services/sendEmail');
 
 class TeamService extends BaseService {
   constructor() {
@@ -71,15 +72,24 @@ class TeamService extends BaseService {
       const team = await Models.Team.query()
         .insert(payload)
         .returning('id');
+      const idEngineer = engineers.map(e => e.id);
 
       engineers.forEach(e => {
         e.engineerId = e.id;
         e.teamId = team.id;
+
         delete e.id;
       });
 
       await Models.EngineerTeam.query().insertGraph(engineers);
-
+      // send email to engineer
+      const title = 'Join team';
+      const conten = 'join to team';
+      const pickEmail = await Models.Engineer.query()
+        .findById(idEngineer)
+        .select('email');
+      const { email } = pickEmail;
+      sendEmail.sendEmail(email, title, conten);
       return team;
     } catch (error) {
       throw error;
