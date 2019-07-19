@@ -16,7 +16,8 @@ class DashboardService {
       throw error;
     }
   }
-   async countEngineer(model, name) {
+
+  async countEngineer(model, name) {
     try {
       return model
         .query()
@@ -130,7 +131,7 @@ class DashboardService {
     try {
       const engineers = await Models.Engineer.query()
         .where('deletedAt', null)
-      .andWhere('dateOut', null)
+        .andWhere('dateOut', null)
         .select('id', 'status');
       const availableCounr = _.filter(engineers, e => e.status === 1).length;
       return {
