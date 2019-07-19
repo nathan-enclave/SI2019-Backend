@@ -100,8 +100,6 @@ class EngineerService extends BaseService {
       }
       return engineer;
     } catch (error) {
-      console.log(error);
-
       throw error;
     }
   }
