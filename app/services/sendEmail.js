@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
-// khai báo sử dụng module nodemailer
+const Boom = require('boom');
+
 class Email {
   async sendEmail(email, title, content) {
     try {
@@ -20,9 +21,8 @@ class Email {
         text: content
       });
       console.log('Message sent: %s', info.messageId);
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     } catch (error) {
-      console.log(error);
+      throw Boom.forbidden(error);
     }
   }
 }

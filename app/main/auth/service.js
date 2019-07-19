@@ -66,19 +66,23 @@ class AuthService {
       const checkEmail = await Models.Engineer.query()
         .where('email', email)
         .select('id');
+      if (!checkEmail.length) {
+        throw Boom.notFound('Engieer is not found');
+      }
       const idEng = Number(_.map(checkEmail, 'id'));
       const checkRole = await Models.Manager.query()
         .update({ verify: numCode })
         .where('engineerId', idEng);
+      if (!checkRole.length) {
+        throw Boom.forbidden('User has no permistion');
+      }
+
       const getIdManager = await Models.Manager.query()
         .where('engineerId', idEng)
         .select('id');
       const id = Number(_.map(getIdManager, 'id'));
-      if (idEng === 0) {
-        result = `${email} is not exits`;
-      }
-      if (!checkRole) {
-        result = `${email} is not manager`;
+      if (!getIdManager) {
+        throw Boom.forbidden('Not Found');
       } else {
         result = `${email} is can changer password`;
       }
