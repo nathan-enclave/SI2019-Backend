@@ -13,18 +13,26 @@ class ProjectValidator extends BaseValidator {
       name: Joi.string().required(),
       technology: Joi.string().required(),
       description: Joi.string().required(),
+      earning: Joi.number(),
+      earningPerMonth: Joi.number(),
       start: Joi.date().required(),
-      end: Joi.date().required()
+      end: Joi.date().required(),
+      status: Joi.string().default('pending'),
+      categoryId: Joi.number()
     };
   }
 
   update() {
     return {
-      name: Joi.string().required(),
-      technology: Joi.string().required(),
-      description: Joi.string().required(),
-      start: Joi.date().required(),
-      end: Joi.date().required()
+      name: Joi.string(),
+      technology: Joi.string(),
+      description: Joi.string(),
+      earning: Joi.number(),
+      earningPerMonth: Joi.number(),
+      start: Joi.date(),
+      end: Joi.date(),
+      status: Joi.string(),
+      categoryId: Joi.number()
     };
   }
 }

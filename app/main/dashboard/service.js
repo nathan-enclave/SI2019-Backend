@@ -10,6 +10,7 @@ class DashboardService {
       return model
         .query()
         .where('deletedAt', null)
+<<<<<<< HEAD
         .count(`id as ${name}`)
         .first();
     } catch (error) {
@@ -22,6 +23,8 @@ class DashboardService {
       return model
         .query()
         .where('deletedAt', null)
+=======
+>>>>>>> 5b29df3e65bbec7815f991bdf22704a9e217df77
         .andWhere('dateOut', null)
         .count(`id as ${name}`)
         .first();
