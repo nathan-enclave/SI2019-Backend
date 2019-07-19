@@ -65,7 +65,10 @@ class EngineerService extends BaseService {
     payload.dateIn = moment(payload.dateIn);
     payload.expYear = moment().diff(payload.dateIn, 'year', false);
     const engineer = await Models.Engineer.query().insert(payload);
-    await engineer.$relatedQuery('skills').relate(skills);
+    await engineer
+      .$relatedQuery('skills')
+      .relate(skills)
+      .returning('*');
     return engineer;
   }
 
@@ -94,13 +97,11 @@ class EngineerService extends BaseService {
       if (skills) {
         await engineer.$relatedQuery('skills').unrelate();
         await engineer.$relatedQuery('skills').relate(skills);
-        const skillList = await Models.Skill.query()
-          .whereIn('id', skills)
-          .select('id', 'name');
-        engineer.skills = skillList;
       }
       return engineer;
     } catch (error) {
+      console.log(error);
+
       throw error;
     }
   }
