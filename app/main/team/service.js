@@ -1,5 +1,5 @@
 const Boom = require('boom');
-const _ = require('lodash');
+// const _ = require('lodash');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
 const sendEmail = require('../../services/sendEmail');
@@ -77,7 +77,6 @@ class TeamService extends BaseService {
       engineers.forEach(e => {
         e.engineerId = e.id;
         e.teamId = team.id;
-
         delete e.id;
       });
 
@@ -87,10 +86,16 @@ class TeamService extends BaseService {
       const conten = 'join to team';
       const pickEmail = await Models.Engineer.query()
         .findById(idEngineer)
-        .select('email');
+        .select('email', 'englishName');
       const { email } = pickEmail;
-      sendEmail.sendEmail(email, title, conten);
-      return team;
+      let statusEmail;
+      try {
+        sendEmail.sendEmail(email, title, conten);
+        statusEmail = 'Has send email to ';
+      } catch (error) {
+        throw error;
+      }
+      return { team, statusEmail };
     } catch (error) {
       throw error;
     }
