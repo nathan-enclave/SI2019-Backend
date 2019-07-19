@@ -130,14 +130,25 @@ class AuthService {
       let result;
       const { verify, password } = payload;
       const hashPassword = await PasswordUtils.hash(password);
-      const update = await Models.Manager.query()
-        .where({ id, verify })
-        .update({ password: `${hashPassword}`, verify: null })
-        .returning('id', 'username');
-      if (update.length === 0) {
-        result = 'fail';
-      } else {
-        result = 'complete';
+      try {
+        const checkVerify = await Models.Manager.query()
+          .where('id', id)
+          .select('verify');
+        const pickVerify = Number(checkVerify.map(e => e.verify));
+        if (verify === pickVerify) {
+          const update = await Models.Manager.query()
+            .findById(id)
+            .update({ password: `${hashPassword}`, verify: null })
+            .returning('id', 'username');
+          result = 'Complete';
+          if (!update) {
+            return Boom.conflict('fail');
+          }
+        } else {
+          return Boom.conflict('verify incorect');
+        }
+      } catch (error) {
+        throw error;
       }
       return result;
     } catch (error) {
