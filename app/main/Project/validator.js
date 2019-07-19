@@ -17,7 +17,7 @@ class ProjectValidator extends BaseValidator {
       earningPerMonth: Joi.number(),
       start: Joi.date().required(),
       end: Joi.date().required(),
-      status: Joi.string(),
+      status: Joi.string().default('pending'),
       categoryId: Joi.number()
     };
   }
