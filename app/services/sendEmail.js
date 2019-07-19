@@ -19,10 +19,8 @@ class Email {
         subject: title,
         text: content
       });
-      // console.log('Message sent: %s', info.messageId);
-      // console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     } catch (error) {
-      // console.log(error);
+      throw error;
     }
   }
 }

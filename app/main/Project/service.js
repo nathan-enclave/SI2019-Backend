@@ -15,12 +15,12 @@ class projectService extends BaseService {
         .findById(id)
         .eager('team(selectTeam)', {
           selectTeam: builder => {
-            builder.select('teams.name');
+            builder.select('teams.name', 'teams.id');
           }
         })
         .mergeEager('category(selectCategory)', {
           selectCategory: builder => {
-            builder.select('categories.name');
+            builder.select('categories.name', 'categories.id');
           }
         })
         .select(
@@ -39,6 +39,8 @@ class projectService extends BaseService {
       }
       return result;
     } catch (error) {
+      console.log(error);
+
       throw error;
     }
   }
