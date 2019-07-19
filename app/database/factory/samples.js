@@ -48,7 +48,7 @@ exports.createEngineer = code => {
       max: 12
     }),
     status: 1,
-    skype: `eureka.m0${code.toString()}`,
+    skype: `eureka.m0${code.toString()}@enclave.vn`,
     dateIn
   };
 };

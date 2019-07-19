@@ -20,7 +20,7 @@ function withAuth(options, role) {
     id: 1,
     scope: role
   };
-  const authToken = jwt.sign(user, 'codebase');
+  const authToken = jwt.sign(user, 'Enclave');
   return _.assign(options, {
     headers: { Authorization: `Bearer ${authToken}` }
   });

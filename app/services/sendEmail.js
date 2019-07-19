@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
-// khai báo sử dụng module nodemailer
+const Boom = require('boom');
+
 class Email {
   async sendEmail(email, title, content) {
     try {
@@ -13,16 +14,15 @@ class Email {
           pass: 'chicong99'
         }
       });
-      const info = await transporter.sendMail({
+      await transporter.sendMail({
         from: 'Software engineer manager system',
         to: email,
         subject: title,
         text: content
       });
-      console.log('Message sent: %s', info.messageId);
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+      return `Email have send to ${email}`;
     } catch (error) {
-      console.log(error);
+      throw Boom.forbidden(error);
     }
   }
 }
