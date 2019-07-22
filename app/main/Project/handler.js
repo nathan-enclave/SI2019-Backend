@@ -15,8 +15,8 @@ exports.getMany = {
   }
 };
 exports.getManyBy = {
-  description: 'Forget pastword',
-  notes: 'Return user and token',
+  description: 'Group project',
+  notes: 'Group project by status',
   tags: ['api', 'v1'],
   handler: controller.getManyBy.bind(controller),
   auth: false,
