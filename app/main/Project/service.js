@@ -96,6 +96,24 @@ class projectService extends BaseService {
       const result = await Models.Project.queryBuilder(query)
         .whereNull('deletedAt')
         .select('id', 'name', 'technology', 'earning', 'status');
+      if (result.length === 0) {
+        throw Boom.notFound('Not found');
+      }
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getManyBy(status) {
+    try {
+      const result = await Models.Project.query()
+        .where('status', status)
+        .whereNull('deletedAt')
+        .select('id', 'name', 'technology', 'earning', 'status');
+      if (result.length === 0) {
+        throw Boom.notFound('Not found');
+      }
       return result;
     } catch (error) {
       throw error;
