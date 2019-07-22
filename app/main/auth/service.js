@@ -5,7 +5,7 @@ const jwt = require('../../services/jwt');
 const PasswordUtils = require('../../services/password');
 const sendEmail = require('../../services/sendEmail');
 const Models = require('../../database/models');
-const CONSTANTS = require('../../constants');
+// const CONSTANTS = require('../../constants');
 
 class AuthService {
   async login(payload) {
@@ -37,19 +37,20 @@ class AuthService {
 
   async register(payload) {
     try {
-      const { username, password } = payload;
+      const { username, password, engineerId } = payload;
       const user = await Models.Manager.query().findOne({ username });
       if (user) {
         return Boom.conflict('User is exist');
       }
-
+      const roleId = _.sample([2, 3]);
       const hashPassword = await PasswordUtils.hash(password);
       const result = await Models.Manager.query().insert({
         username,
         password: hashPassword,
-        roleId: CONSTANTS.USER_ROLE.ADMIN
+        roleId,
+        engineerId
       });
-      result.scope = 'admin';
+      result.scope = roleId === 2 ? 'HR' : 'PM';
       const data = _.pick(result, ['username', 'id', 'scope']);
       return _.assign({ token: jwt.issue(data) }, data);
     } catch (error) {
@@ -66,14 +67,14 @@ class AuthService {
       const checkEmail = await Models.Engineer.query()
         .where('email', email)
         .select('id');
-      if (!checkEmail.length) {
+      if (checkEmail.length === 0) {
         throw Boom.notFound('Engieer is not found');
       }
       const idEng = Number(_.map(checkEmail, 'id'));
       const checkRole = await Models.Manager.query()
         .update({ verify: numCode })
         .where('engineerId', idEng);
-      if (!checkRole.length) {
+      if (checkRole.length === 0) {
         throw Boom.forbidden('User has no permistion');
       }
 
@@ -107,12 +108,10 @@ class AuthService {
         .where('engineerId', id)
         .select('verify');
       if (!id) {
-        result = `${email} Not exits`;
-        return result;
+        throw Boom.forbidden(`${email} Not exits`);
       }
       if (checkRole.length === 0) {
-        result = `${email} Not manager`;
-        return result;
+        throw Boom.forbidden(`${email} Not is manager`);
       }
       const verifycode = Number(_.map(checkRole, 'verify'));
       const conten = `user verify code to reset password ${verifycode}`;
@@ -120,11 +119,11 @@ class AuthService {
         sendEmail.sendEmail(email, title, conten);
         result = `sended`;
       } catch (error) {
-        throw error;
+        throw Boom.forbidden(error);
       }
       return result;
     } catch (error) {
-      throw error;
+      throw Boom.forbidden(error);
     }
   }
 

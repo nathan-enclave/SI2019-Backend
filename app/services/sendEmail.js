@@ -14,13 +14,13 @@ class Email {
           pass: 'chicong99'
         }
       });
-      const info = await transporter.sendMail({
+      await transporter.sendMail({
         from: 'Software engineer manager system',
         to: email,
         subject: title,
         text: content
       });
-      console.log('Message sent: %s', info.messageId);
+      return `Email have send to ${email}`;
     } catch (error) {
       throw Boom.forbidden(error);
     }
