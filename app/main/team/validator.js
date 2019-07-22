@@ -10,7 +10,7 @@ class TeamValidator extends BaseValidator {
 
   create() {
     return {
-      name: Joi.string().required(),
+      teamName: Joi.string().required(),
       projectId: Joi.number().required(),
       engineers: Joi.array().items(
         Joi.object({
@@ -23,7 +23,7 @@ class TeamValidator extends BaseValidator {
 
   update() {
     return {
-      name: Joi.string(),
+      teamName: Joi.string(),
       projectId: Joi.number(),
       engineers: Joi.array().items(
         Joi.object({
