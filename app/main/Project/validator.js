@@ -10,7 +10,7 @@ class ProjectValidator extends BaseValidator {
 
   create() {
     return {
-      name: Joi.string().required(),
+      teamName: Joi.string().required(),
       technology: Joi.string().required(),
       description: Joi.string().required(),
       earning: Joi.number(),
@@ -24,7 +24,7 @@ class ProjectValidator extends BaseValidator {
 
   update() {
     return {
-      name: Joi.string(),
+      TeamName: Joi.string(),
       technology: Joi.string(),
       description: Joi.string(),
       earning: Joi.number(),
