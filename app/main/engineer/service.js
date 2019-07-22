@@ -25,7 +25,11 @@ class EngineerService extends BaseService {
             selectTeam: builder => {
               builder
                 .joinRelation('projects')
-                .select('teams.name as teamName', 'projects.name as projectName'); // select project
+                .select(
+                  'teams.name as teamName',
+                  'engineer_team.role',
+                  'projects.name as projectName'
+                ); // select project
             }
           }
         )
