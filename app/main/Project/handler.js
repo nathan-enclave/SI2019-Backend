@@ -14,6 +14,18 @@ exports.getMany = {
     query: validator.queryParams
   }
 };
+exports.getManyBy = {
+  description: 'Forget pastword',
+  notes: 'Return user and token',
+  tags: ['api', 'v1'],
+  handler: controller.getManyBy.bind(controller),
+  auth: false,
+  validate: {
+    params: {
+      status: validator.idParam
+    }
+  }
+};
 
 exports.getOne = {
   description: 'Get a project',

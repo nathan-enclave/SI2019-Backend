@@ -8,6 +8,11 @@ const Routes = [
   },
   {
     method: 'GET',
+    path: '/api/v1/projects/groupBy/{status}',
+    config: Handler.getManyBy
+  },
+  {
+    method: 'GET',
     path: '/api/v1/projects/{id}',
     config: Handler.getOne
   },
