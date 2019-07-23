@@ -14,6 +14,14 @@ class ProjectController extends BaseController {
       throw err;
     }
   }
+
+  async sumEarning(request) {
+    try {
+      return await this.service.sumEarning(request.params);
+    } catch (err) {
+      throw err;
+    }
+  }
 }
 
 module.exports = ProjectController;
