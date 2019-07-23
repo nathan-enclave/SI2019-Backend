@@ -23,7 +23,6 @@ class AuthController {
 
   check(request) {
     try {
-      // const { email } = request.params;
       return this.service.check(request.payload);
     } catch (err) {
       throw err;
@@ -32,7 +31,6 @@ class AuthController {
 
   sendcode(request) {
     try {
-      // const { email } = request.params;
       return this.service.sendcode(request.payload);
     } catch (err) {
       throw err;
@@ -42,7 +40,6 @@ class AuthController {
   reset(request) {
     try {
       const { id } = request.params;
-
       return this.service.reset(id, request.payload);
     } catch (err) {
       throw err;
