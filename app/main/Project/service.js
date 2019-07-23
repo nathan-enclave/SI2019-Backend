@@ -119,6 +119,17 @@ class projectService extends BaseService {
       throw error;
     }
   }
+
+  async sumEarning() {
+    try {
+      const result = await Models.Project.query()
+        .whereNull('deletedAt')
+        .sum('earning');
+      return result;
+    } catch (error) {
+      throw Boom.conflict(error);
+    }
+  }
 }
 
 module.exports = projectService;
