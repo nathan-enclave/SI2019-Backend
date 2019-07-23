@@ -77,3 +77,10 @@ exports.deleteOne = {
     }
   }
 };
+exports.sumEarning = {
+  description: 'Get sum eaning of all project',
+  notes: 'Return sum earning',
+  tags: ['api', 'v1'],
+  handler: controller.sumEarning.bind(controller),
+  auth: false
+};

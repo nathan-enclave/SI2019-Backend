@@ -17,7 +17,7 @@ class TeamService extends BaseService {
       .where('teams.deletedAt', null)
       .select(
         'teams.id',
-        'teams.name as teamName',
+        'teams.name',
         'projects.name as projectName',
         'teams.deletedAt',
         Models.Team.relatedQuery('engineers')
@@ -48,7 +48,7 @@ class TeamService extends BaseService {
         })
         .select(
           'teams.id',
-          'teams.name as teamName',
+          'teams.name',
           'projects.name as projectName',
           'teams.createdAt',
           Models.Team.relatedQuery('engineers')
