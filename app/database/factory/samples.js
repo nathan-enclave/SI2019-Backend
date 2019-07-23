@@ -26,7 +26,7 @@ exports.createEngineer = code => {
     firstName,
     lastName: faker.name.lastName(),
     englishName: firstName,
-    phoneNumber: faker.phone.phoneNumberFormat(),
+    phoneNumber: faker.phone.phoneNumber('0##########'),
     birthday: faker.date.past(30, '1999-01-01'),
     address: faker.address.streetAddress(),
     email: faker.internet.email(),
