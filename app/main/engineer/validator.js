@@ -23,14 +23,12 @@ class EngineerValidator extends BaseValidator {
       email: super.strEmail().required(),
       skype: Joi.string().required(),
       status: Joi.number().required(),
-      skills: Joi.array()
-        .items(
-          Joi.object({
-            id: Joi.number(),
-            expYear: Joi.number()
-          })
-        )
-        .required()
+      skills: Joi.array().items(
+        Joi.object({
+          id: Joi.number().required(),
+          expYear: Joi.number().required()
+        })
+      )
     };
   }
 
