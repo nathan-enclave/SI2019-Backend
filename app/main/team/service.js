@@ -1,7 +1,9 @@
+/* eslint-disable no-await-in-loop */
 const Boom = require('boom');
-// const _ = require('lodash');
+const _ = require('lodash');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
+const sendEmail = require('../../services/sendEmail');
 
 class TeamService extends BaseService {
   constructor() {
@@ -12,7 +14,16 @@ class TeamService extends BaseService {
     let builder = this.model
       .queryBuilder(query)
       .joinRelation('projects')
-      .select('teams.id', 'teams.name', 'projects.name as projectName', 'teams.deletedAt');
+      .where('teams.deletedAt', null)
+      .select(
+        'teams.id',
+        'teams.name',
+        'projects.name as projectName',
+        'teams.deletedAt',
+        Models.Team.relatedQuery('engineers')
+          .count()
+          .as('totalMember')
+      );
 
     if (this.getSearchQuery && query.q) {
       builder = this.getSearchQuery(builder, query.q);
@@ -22,16 +33,19 @@ class TeamService extends BaseService {
 
   async getOne(id) {
     try {
-      const engineerTeam = Models.EngineerTeam.query()
-        .join('engineers', 'engineer_team.engineerId', 'engineers.id')
-        .select('englishName', 'engineers.id')
-        .where('teamId', id)
-        .andWhere('role', 'leader')
-        .first();
-
       const team = Models.Team.query()
         .findById(id)
         .joinRelation('projects')
+        .eager('engineers(selectEngineer)', {
+          selectEngineer: builder => {
+            builder.select(
+              'engineers.id',
+              'engineers.firstName',
+              'engineers.lastName',
+              'engineer_team.role'
+            );
+          }
+        })
         .select(
           'teams.id',
           'teams.name',
@@ -42,12 +56,21 @@ class TeamService extends BaseService {
             .as('totalMember')
         );
 
-      const [leader, result] = await Promise.all([engineerTeam, team]);
-      result.leader = leader;
-      if (!result) {
+      if (!team) {
         throw Boom.notFound(`Model Team is not found`);
       }
-      return result;
+      return team;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  pickEmail(id) {
+    try {
+      return Models.Engineer.query()
+        .where('id', id)
+        .select('engineers.email')
+        .first();
     } catch (error) {
       throw error;
     }
@@ -55,22 +78,33 @@ class TeamService extends BaseService {
 
   async createOne(payload) {
     try {
+      const { name } = payload;
       const { engineers } = payload;
-
       delete payload.engineers;
       const team = await Models.Team.query()
         .insert(payload)
         .returning('id');
-
       engineers.forEach(e => {
         e.engineerId = e.id;
         e.teamId = team.id;
         delete e.id;
       });
-
       await Models.EngineerTeam.query().insertGraph(engineers);
-
-      return team;
+      const title = 'Join new team';
+      const idEngineer = _.map(engineers, 'engineerId');
+      const roleEngineer = _.map(engineers, 'role');
+      let statusEmail;
+      for (let i = 0; i < idEngineer.length; i += 1) {
+        const { email } = await this.pickEmail(idEngineer[i]);
+        const content = ` We has join you to team ${name} with role ${roleEngineer[i]}. You can check it on website Enclave`;
+        try {
+          sendEmail.sendEmail(email, title, content);
+          statusEmail = 'Has send email to all member of team';
+        } catch (error) {
+          throw Boom.forbidden('Not successful');
+        }
+      }
+      return { team, statusEmail };
     } catch (error) {
       throw error;
     }

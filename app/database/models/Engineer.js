@@ -36,7 +36,8 @@ class Engineer extends CustomModel {
           from: 'engineers.id',
           through: {
             from: 'engineer_skill.engineerId',
-            to: 'engineer_skill.skillId'
+            to: 'engineer_skill.skillId',
+            extra: ['expYear']
           },
           to: 'skills.id'
         }

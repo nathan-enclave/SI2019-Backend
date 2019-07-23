@@ -24,6 +24,14 @@ class Project extends CustomModel {
           from: 'teams.projectId',
           to: 'projects.id'
         }
+      },
+      category: {
+        relation: CustomModel.BelongsToOneRelation,
+        modelClass: path.join(__dirname, './Category'),
+        join: {
+          from: 'projects.categoryId',
+          to: 'categories.id'
+        }
       }
     };
   }

@@ -15,10 +15,25 @@ class projectService extends BaseService {
         .findById(id)
         .eager('team(selectTeam)', {
           selectTeam: builder => {
-            builder.select('teams.name');
+            builder.select('teams.name', 'teams.id');
           }
         })
-        .select('id', 'name', 'technology', 'description', 'start', 'end');
+        .mergeEager('category(selectCategory)', {
+          selectCategory: builder => {
+            builder.select('categories.name', 'categories.id');
+          }
+        })
+        .select(
+          'id',
+          'name',
+          'technology',
+          'description',
+          'earning',
+          'earningPerMonth',
+          'start',
+          'end',
+          'status'
+        );
       if (!result) {
         throw Boom.notFound(`Not found`);
       }
@@ -61,6 +76,49 @@ class projectService extends BaseService {
     }
   }
   // end deleteOne Project
+
+  async count(statusofProject) {
+    try {
+      return Models.Project.query()
+        .where({
+          status: statusofProject
+        })
+        .count(`id as ${statusofProject}`)
+        .first();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // get many
+  async getMany(query) {
+    try {
+      const result = await Models.Project.queryBuilder(query)
+        .whereNull('deletedAt')
+        .select('id', 'name', 'technology', 'earning', 'status');
+      if (result.length === 0) {
+        throw Boom.notFound('Not found');
+      }
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getManyBy(status) {
+    try {
+      const result = await Models.Project.query()
+        .where('status', status)
+        .whereNull('deletedAt')
+        .select('id', 'name', 'technology', 'earning', 'status');
+      if (result.length === 0) {
+        throw Boom.notFound('Not found');
+      }
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = projectService;
