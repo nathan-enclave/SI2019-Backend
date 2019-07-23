@@ -12,12 +12,7 @@ class TeamService extends BaseService {
     let builder = this.model
       .queryBuilder(query)
       .joinRelation('projects')
-      .select(
-        'teams.id',
-        'teams.name as teamName',
-        'projects.name as projectName',
-        'teams.deletedAt'
-      );
+      .select('teams.id', 'teams.name', 'projects.name as projectName', 'teams.deletedAt');
 
     if (this.getSearchQuery && query.q) {
       builder = this.getSearchQuery(builder, query.q);
@@ -39,7 +34,7 @@ class TeamService extends BaseService {
         .joinRelation('projects')
         .select(
           'teams.id',
-          'teams.name as teamName',
+          'teams.name',
           'projects.name as projectName',
           'teams.createdAt',
           Models.Team.relatedQuery('engineers')
