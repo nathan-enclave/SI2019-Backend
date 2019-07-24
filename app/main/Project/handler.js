@@ -21,9 +21,7 @@ exports.getManyBy = {
   handler: controller.getManyBy.bind(controller),
   auth: false,
   validate: {
-    params: {
-      status: validator.idParam
-    }
+    query: validator.getStatus
   }
 };
 

@@ -6,6 +6,7 @@ class ProjectValidator extends BaseValidator {
     super();
     this.create = this.create();
     this.update = this.update();
+    this.getStatus = this.getStatus();
   }
 
   create() {
@@ -33,6 +34,19 @@ class ProjectValidator extends BaseValidator {
       end: Joi.date(),
       status: Joi.string(),
       categoryId: Joi.number()
+    };
+  }
+
+  getStatus() {
+    return {
+      limit: Joi.number()
+        .min(1)
+        .default(10),
+      offset: Joi.number().default(0),
+      orderBy: Joi.string(),
+      filter: Joi.object(),
+      fields: Joi.array(),
+      status: Joi.string()
     };
   }
 }
