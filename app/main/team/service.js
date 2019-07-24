@@ -35,7 +35,6 @@ class TeamService extends BaseService {
     try {
       const team = Models.Team.query()
         .findById(id)
-        .joinRelation('projects')
         .eager('engineers(selectEngineer)', {
           selectEngineer: builder => {
             builder.select(
@@ -44,14 +43,19 @@ class TeamService extends BaseService {
               'engineers.lastName',
               'engineers.avatar',
               'engineers.email',
+              'engineers.expYear',
               'engineer_team.role'
             );
+          }
+        })
+        .mergeEager('projects(selectProject)', {
+          selectProject: builder => {
+            builder.select('projects.id', 'projects.name');
           }
         })
         .select(
           'teams.id',
           'teams.name',
-          'projects.name as projectName',
           'teams.createdAt',
           Models.Team.relatedQuery('engineers')
             .count()
