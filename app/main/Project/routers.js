@@ -8,7 +8,7 @@ const Routes = [
   },
   {
     method: 'GET',
-    path: '/api/v1/projects/groupBy/{status}',
+    path: '/api/v1/projects/groupBy',
     config: Handler.getManyBy
   },
   {
