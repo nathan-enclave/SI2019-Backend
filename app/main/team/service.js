@@ -124,16 +124,17 @@ class TeamService extends BaseService {
       if (!team) {
         throw Boom.notFound(`Team is not found`);
       }
-      engineers.forEach(e => {
-        e.engineerId = e.id;
-        e.teamId = id;
-        delete e.id;
-      });
-      await Models.EngineerTeam.query()
-        .where('teamId', id)
-        .delete();
-
-      await Models.EngineerTeam.query().insertGraph(engineers);
+      if (engineers) {
+        engineers.forEach(e => {
+          e.engineerId = e.id;
+          e.teamId = id;
+          delete e.id;
+        });
+        await Models.EngineerTeam.query()
+          .where('teamId', id)
+          .delete();
+        await Models.EngineerTeam.query().insertGraph(engineers);
+      }
       return team;
     } catch (error) {
       throw error;
