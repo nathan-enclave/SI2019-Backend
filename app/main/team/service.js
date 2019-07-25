@@ -44,6 +44,7 @@ class TeamService extends BaseService {
               'engineers.avatar',
               'engineers.email',
               'engineers.expYear',
+              'engineers.salary',
               'engineer_team.role'
             );
           }
