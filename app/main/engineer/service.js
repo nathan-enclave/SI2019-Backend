@@ -4,6 +4,12 @@ const moment = require('moment');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
 // const PasswordUtils = require('../../services/password');
+
+const firebase = require('../../services/firebase');
+
+const database = firebase.firestore();
+database.settings({ timestampsInSnapshots: true });
+
 class EngineerService extends BaseService {
   constructor() {
     super(Models.Engineer);
@@ -102,6 +108,20 @@ class EngineerService extends BaseService {
         await engineer.$relatedQuery('skills').unrelate();
         await engineer.$relatedQuery('skills').relate(skills);
       }
+
+      const action = {
+        userId: 1,
+        name: 'Admin',
+        status: 'success',
+        action: `Update profile engineer ===>${engineer.englishName}`,
+        time: moment().format()
+      };
+
+      database
+        .collection('activities')
+        .doc()
+        .set(action);
+
       return engineer;
     } catch (error) {
       throw error;

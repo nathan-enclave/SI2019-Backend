@@ -39,7 +39,9 @@ class BaseController {
 
   async updateOne(request) {
     try {
-      const { params, payload } = request;
+      const { params, payload, auth } = request;
+      console.log(auth);
+
       const { id } = params;
       return await this.service.updateOne(id, payload);
     } catch (err) {
