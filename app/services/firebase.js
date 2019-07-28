@@ -6,4 +6,18 @@ firebase.initializeApp({
   credential: firebase.credential.cert(serviceAccount)
 });
 
-module.exports = firebase;
+class Firebase {
+  constructor() {
+    this.database = firebase.firestore();
+    this.database.settings({ timestampsInSnapshots: true });
+    this.collection = 'activities';
+  }
+
+  save(data) {
+    this.database
+      .collection(this.collection)
+      .doc()
+      .set(data);
+  }
+}
+module.exports = new Firebase();

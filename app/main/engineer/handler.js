@@ -22,7 +22,10 @@ exports.createOne = {
   notes: 'Return created User',
   tags: ['api', 'v1'],
   handler: controller.createOne.bind(controller),
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  },
   validate: {
     payload: validator.create
   }
@@ -40,10 +43,13 @@ exports.getMany = {
 
 exports.updateOne = {
   description: 'Update Engineer',
-  notes: 'Return updated User by id',
+  notes: 'Return updated Engineer by id',
   tags: ['api', 'v1'],
   handler: controller.updateOne.bind(controller),
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  },
   validate: {
     params: {
       id: validator.idParam
@@ -56,7 +62,10 @@ exports.deleteOne = {
   notes: 'Return deleted User by id',
   tags: ['api', 'v1'],
   handler: controller.deleteOne.bind(controller),
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  },
   validate: {
     params: {
       id: validator.idParam

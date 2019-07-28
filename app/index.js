@@ -51,11 +51,19 @@ const swaggerOptions = {
     title: ' Enclave Engineering Management RESTful API Documentation',
     description: 'This is API documentation.'
   },
-  deReference: false
+  deReference: false,
+  securityDefinitions: {
+    Bearer: {
+      type: 'apiKey',
+      name: 'Authorization',
+      in: 'header'
+    }
+  },
+  security: [{ Bearer: [] }]
 };
 
 process.on('uncaughtException', err => {
-  console.log(err, 'Uncaught exception');
+  console.log(err, '===>Uncaught exception');
   process.exit(1);
 });
 

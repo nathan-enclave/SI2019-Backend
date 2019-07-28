@@ -28,7 +28,13 @@ class AuthService {
         return Boom.forbidden('Incorrect password');
       }
 
-      const data = _.pick(user, ['username', 'id', 'scope', 'engineerId']);
+      const adminInformation = await Models.Engineer.query()
+        .findById(user.engineerId)
+        .select('firstName', 'lastName', 'englishName');
+      const data = _.assign(
+        _.pick(user, ['username', 'id', 'scope', 'engineerId']),
+        adminInformation
+      );
       return _.assign({ token: jwt.issue(data) }, data);
     } catch (error) {
       throw error;
