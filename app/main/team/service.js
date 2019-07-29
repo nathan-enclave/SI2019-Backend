@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 const Boom = require('boom');
 const _ = require('lodash');
-const moment = require('moment');
+// const moment = require('moment');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
 const sendEmail = require('../../services/sendEmail');
