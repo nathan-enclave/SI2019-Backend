@@ -1,9 +1,11 @@
 /* eslint-disable no-await-in-loop */
 const Boom = require('boom');
 const _ = require('lodash');
+const moment = require('moment');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
 const sendEmail = require('../../services/sendEmail');
+const Firebase = require('../../services/firebase');
 
 class TeamService extends BaseService {
   constructor() {
@@ -35,27 +37,34 @@ class TeamService extends BaseService {
     try {
       const team = Models.Team.query()
         .findById(id)
-        .joinRelation('projects')
         .eager('engineers(selectEngineer)', {
           selectEngineer: builder => {
             builder.select(
               'engineers.id',
               'engineers.firstName',
               'engineers.lastName',
-              'engineer_team.role'
+              'engineers.avatar',
+              'engineers.email',
+              'engineers.expYear',
+              'engineer_team.role',
+              'engineers.birthday',
+              'engineers.salary'
             );
+          }
+        })
+        .mergeEager('projects(selectProject)', {
+          selectProject: builder => {
+            builder.select('projects.id', 'projects.name');
           }
         })
         .select(
           'teams.id',
           'teams.name',
-          'projects.name as projectName',
           'teams.createdAt',
           Models.Team.relatedQuery('engineers')
             .count()
             .as('totalMember')
         );
-
       if (!team) {
         throw Boom.notFound(`Model Team is not found`);
       }
@@ -76,7 +85,7 @@ class TeamService extends BaseService {
     }
   }
 
-  async createOne(payload) {
+  async createOne(payload, authData) {
     try {
       const { name } = payload;
       const { engineers } = payload;
@@ -104,13 +113,23 @@ class TeamService extends BaseService {
           throw Boom.forbidden('Not successful');
         }
       }
+      const fireStoreData = {
+        userId: authData.id,
+        name: authData.englishName,
+        fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
+        role: authData.scope,
+        status: 'info',
+        action: `created ${team.name}'s profile`,
+        time: moment().format()
+      };
+      Firebase.save(fireStoreData);
       return { team, statusEmail };
     } catch (error) {
       throw error;
     }
   }
 
-  async updateOne(id, payload) {
+  async updateOne(id, payload, authData) {
     try {
       const { engineers } = payload;
       delete payload.engineers;
@@ -118,33 +137,54 @@ class TeamService extends BaseService {
       if (!team) {
         throw Boom.notFound(`Team is not found`);
       }
-      engineers.forEach(e => {
-        e.engineerId = e.id;
-        e.teamId = id;
-        delete e.id;
-      });
-      await Models.EngineerTeam.query()
-        .where('teamId', id)
-        .delete();
-
-      await Models.EngineerTeam.query().insertGraph(engineers);
+      if (engineers) {
+        engineers.forEach(e => {
+          e.engineerId = e.id;
+          e.teamId = id;
+          delete e.id;
+        });
+        await Models.EngineerTeam.query()
+          .where('teamId', id)
+          .delete();
+        await Models.EngineerTeam.query().insertGraph(engineers);
+      }
+      const fireStoreData = {
+        userId: authData.id,
+        name: authData.englishName,
+        fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
+        role: authData.scope,
+        status: 'success',
+        action: `updated ${team.name}'s profile`,
+        time: moment().format()
+      };
+      Firebase.save(fireStoreData);
       return team;
     } catch (error) {
       throw error;
     }
   }
 
-  async deleteOne(id) {
+  async deleteOne(id, authData) {
     try {
       const result = await Models.Team.query()
         .findById(id)
         .update({
           deletedAt: new Date()
         })
-        .returning('id', 'deletedAt');
+        .returning('id', 'deletedAt', 'name');
       if (!result) {
         throw Boom.notFound(`Not found`);
       }
+      const fireStoreData = {
+        userId: authData.id,
+        name: authData.englishName,
+        fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
+        role: authData.scope,
+        status: 'warning',
+        action: `deleted ${result.name}'s profile`,
+        time: moment().format()
+      };
+      Firebase.save(fireStoreData);
       return result;
     } catch (error) {
       throw error;

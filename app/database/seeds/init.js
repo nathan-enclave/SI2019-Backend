@@ -14,16 +14,16 @@ exports.seed = knex =>
     .then(async () =>
       Models.Role.query().insertGraph([
         {
-          name: 'manager',
-          description: 'Manager of the company'
+          name: 'Director',
+          description: 'Diretor of the department'
         },
         {
           name: 'HR',
-          description: 'human resource for human management'
+          description: 'Human resource manager for human management'
         },
         {
           name: 'PM',
-          description: 'project manager for team and project management'
+          description: 'Project manager for team and project management'
         }
       ])
     )

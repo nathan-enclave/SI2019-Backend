@@ -8,8 +8,9 @@ class ProjectController extends BaseController {
 
   async getManyBy(request) {
     try {
-      const { status } = request.params;
-      return await this.service.getManyBy(status);
+      // const { status } = request.params;
+      // const { query } = request.query;
+      return await this.service.getManyBy(request.query);
     } catch (err) {
       throw err;
     }

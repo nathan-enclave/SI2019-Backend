@@ -39,6 +39,8 @@ class projectService extends BaseService {
       }
       return result;
     } catch (error) {
+      console.log(error);
+
       throw error;
     }
   }
@@ -95,6 +97,11 @@ class projectService extends BaseService {
     try {
       const result = await Models.Project.queryBuilder(query)
         .whereNull('deletedAt')
+        .eager('category(selectCategory)', {
+          selectCategory: builder => {
+            builder.select('categories.name');
+          }
+        })
         .select('id', 'name', 'technology', 'earning', 'status');
       if (result.length === 0) {
         throw Boom.notFound('Not found');
@@ -105,11 +112,17 @@ class projectService extends BaseService {
     }
   }
 
-  async getManyBy(status) {
+  async getManyBy(query) {
     try {
-      const result = await Models.Project.query()
+      const { status } = query;
+      const result = await Models.Project.queryBuilder(query)
         .where('status', status)
         .whereNull('deletedAt')
+        .eager('category(selectCategory)', {
+          selectCategory: builder => {
+            builder.select('categories.name');
+          }
+        })
         .select('id', 'name', 'technology', 'earning', 'status');
       if (result.length === 0) {
         throw Boom.notFound('Not found');

@@ -47,6 +47,10 @@ exports.createEngineer = code => {
       min: 5,
       max: 12
     }),
+    overTime: faker.random.number({
+      min: 0,
+      max: 9
+    }),
     status: 1,
     skype: `eureka.m0${code.toString()}@enclave.vn`,
     dateIn
