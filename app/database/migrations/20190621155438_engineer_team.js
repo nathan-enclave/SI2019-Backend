@@ -12,8 +12,7 @@ exports.up = knex =>
       .references('teams.id')
       .onDelete('CASCADE');
     table.string('role');
-    table.date('dateJoin');
-    table.date('dateLeft');
+    table.date('dateJoin').defaultTo(knex.fn.now());
   });
 
 exports.down = knex => knex.schema.dropTableIfExists('engineer_team ');

@@ -65,9 +65,9 @@ exports.createProject = (number, categoryId) => {
     .add(lengthOfProject, 'days');
   moment().format();
   let status;
-  if (Number(moment(end) <= moment().format())) {
+  if (moment(end).isBefore(moment().format(), 'day')) {
     status = 'done';
-  } else if (randomStartDate <= moment().format()) {
+  } else if (moment(randomStartDate).isBefore(moment().format(), 'day')) {
     status = 'inProgress';
   } else {
     status = 'pending';
@@ -117,10 +117,11 @@ exports.createTeam = projectId => ({
   projectId
 });
 
-exports.createEngineerTeam = (engineerId, teamId, role = 'member') => ({
+exports.createEngineerTeam = (engineerId, teamId, role = 'member', dateJoin) => ({
   engineerId,
   teamId,
-  role
+  role,
+  dateJoin
 });
 
 exports.createSkill = name => ({
