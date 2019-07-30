@@ -71,7 +71,32 @@ class projectService extends BaseService {
       throw error;
     }
   }
-  // start createOne project
+
+  // end createOne project
+
+  // start updateOne project
+  async updateOne(id, payload, authData) {
+    try {
+      const project = await this.model.query().patchAndFetchById(id, payload);
+      if (!project) {
+        throw Boom.notFound(`${this.modelName} not found`);
+      }
+      const fireStoreData = {
+        userId: authData.id,
+        name: authData.englishName,
+        fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
+        role: authData.scope,
+        status: 'success',
+        action: `updated project: ${project.name}`,
+        time: moment().format()
+      };
+      Firebase.save(fireStoreData);
+      return project;
+    } catch (error) {
+      throw error;
+    }
+  }
+  // end updateOne project
 
   // start deleteOne Project
   async deleteOne(id, authData) {
@@ -92,7 +117,7 @@ class projectService extends BaseService {
         fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
         role: authData.scope,
         status: 'warning',
-        action: `created project: ${project.name}`,
+        action: `deleted project: ${project.name}`,
         time: moment().format()
       };
       Firebase.save(fireStoreData);
