@@ -57,7 +57,7 @@ exports.createEngineer = code => {
   };
 };
 
-exports.createProject = (number, categoryId) => {
+exports.createProject = (name, description, categoryId) => {
   const randomStartDate = faker.date.between('2018-01-01', '2019-12-31');
   const lengthOfProject = _.sample([60, 90, 150, 270, 210, 330, 180, 240, 120]);
   const end = moment(randomStartDate)
@@ -94,7 +94,7 @@ exports.createProject = (number, categoryId) => {
   ]);
   const earningPerMonth = earning / (lengthOfProject / 30);
   return {
-    name: `Project ${number}`,
+    name,
     categoryId,
     technology:
       data.lang[
@@ -103,7 +103,7 @@ exports.createProject = (number, categoryId) => {
           max: data.lang.length - 1
         })
       ],
-    description: `This is the description of project ${number}`,
+    description,
     start: randomStartDate,
     end,
     status,

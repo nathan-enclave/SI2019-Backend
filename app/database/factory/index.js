@@ -120,20 +120,22 @@ class Factory {
     return data;
   }
 
-  static async project(num) {
+  static async project() {
     const categoryCount = (await Models.Category.query().count())[0].count;
     const data = [];
-    for (let index = 0; index < num; index += 1) {
+    json.projects.forEach(e => {
       data.push(
         samples.createProject(
-          index + 1,
+          e.name,
+          e.description,
           faker.random.number({
             min: 1,
             max: categoryCount
           })
         )
       );
-    }
+    });
+
     return data;
   }
 

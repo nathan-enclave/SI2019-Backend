@@ -29,7 +29,6 @@
     "https://randomuser.me/api/portraits/men/39.jpg"
   ],
   "categories": [
-
      {
         "name": "Finance",
         "description": "For financial purpose"
@@ -58,6 +57,948 @@
         "name": "Application Suites",
         "description": "Support office work"
       }
-  ]
+  ],
+  "projects": [
+    {
+        "name": "Fishbowl Manufacturing",
+        "description": " Fishbowl is a business automation and inventory management platform for small to midsize companies. It integrates with QuickBooks accounting and offers inventory control, material requirements planning (MRP) and job shop floor control/manufacturing... "
+    },
+    {
+        "name": "NetSuite",
+        "description": " NetSuite Manufacturing Edition offers an integrated inventory, warehouse management, accounting and financial management, order management, customer relationship management (CRM), and e-commerce platform. Offered as a cloud-based solution... "
+    },
+    {
+        "name": "E2 Shop System",
+        "description": " E2 by Shoptech Corporation is a manufacturing solution that offers scheduling, purchasing, shipping, customer management and accounting. It\u2019s designed specifically for job shops, contract and a variety of make-to-order manufacturers.\r\nE2... "
+    },
+    {
+        "name": "JobBOSS",
+        "description": " JobBOSS Shop Management Solutions, an ECi Software Solutions company, is an enterprise resource planning (ERP) solution built for small and midsize manufacturers in North America. It allows key office and production staff to manage... "
+    },
+    {
+        "name": "Global Shop Solutions",
+        "description": " Global Shop Solutions offers ERP software to serve clients across manufacturing industries of all sizes. The multi-modular application is comprised of independent modules for customer relationship management, inventory management,... "
+    },
+    {
+        "name": "Deskera ERP",
+        "description": " Deskera ERP is a cloud-based enterprise business management suite that automates sales, billing, fulfillment, distribution (including pick, pack and ship process), sales commission calculations, purchasing, payment processing, product... "
+    },
+    {
+        "name": "ECi M1",
+        "description": " ECi M1 is a subscription-based enterprise resource planning (ERP) system, available on-premise or via the cloud, that automates financials, inventory, production, sales/quoting and production planning. The solution is suitable for... "
+    },
+    {
+        "name": "Priority",
+        "description": " Priority is an on-premise and cloud-based enterprise resource planning (ERP) solution suitable for midsize to large businesses in many industry segments including manufacturing, apparel, electronics, food and beverage, industrial machinery... "
+    },
+    {
+        "name": "uniPoint Quality Management",
+        "description": " uniPoint Quality Management Software is a modular on-premise quality management solution capable of integrating with other ERP systems. Built on Net Technology, a SQL database, and Crystal Reporting, this system is designed to grow... "
+    },
+    {
+        "name": "Realtrac",
+        "description": " Realtrac is an on-premise job management solution designed for job shop manufacturers and modular machine shops. It helps small and midsize manufacturers to schedule workflows, manage shop operations, track inventories, manage purchases... "
+    },
+    {
+        "name": "OptiProERP",
+        "description": " OptiProERP is a cloud and on-premise Enterprise Resource Planning (ERP) solution for small and midsize discrete manufacturers and distributors. Key features include supply chain management (SCM), purchasing, work orders, scheduling... "
+    },
+    {
+        "name": "LillyWorks",
+        "description": " LillyWorks from LW Performance is a cloud-based manufacturing enterprise resource planning (ERP) solution that provides companies functionalities to make to real-time changes, predict outcomes and ensure on-time deliveries.\r\nThe key... "
+    },
+    {
+        "name": "KeyedIn Manufacturing",
+        "description": " KeyedIn Manufacturing is a cloud-based enterprise resource planning (ERP) solution specifically designed for custom, make-to-order and mixed-mode manufacturers. The solution offers manufacturers a solution that can be customized to... "
+    },
+    {
+        "name": "Henning Visual EstiTrack ERP",
+        "description": " Visual EstiTrack ERP is an on-premise shop management system for the small to midsize manufacturer and job shop. System features include complete manufacturing execution management, material requirements planning, product lifecycle... "
+    },
+    {
+        "name": "IQMS ERP Software ",
+        "description": " IQMS\u2019 flagship product, EnterpriseIQ ERP, is developed specifically for SMB and large discrete, and batch process manufacturers in the aerospace, medical device, automotive, food and beverage, consumer products, plastics, packaging... "
+    },
+    {
+        "name": "QT9 Quality Management ",
+        "description": " QT9 Quality Management Software is a web-based QMS software used by companies to comply with ISO and FDA quality standards. The software is available for deployment either on-premise or in the cloud. The tool eliminates the need for... "
+    },
+    {
+        "name": "Vicinity Manufacturing",
+        "description": " Vicinity Manufacturing is a cloud-based or on-premise solution designed for process manufacturers with a specific focus on food and beverage, chemical and breweries. Features include MRP, centralized recipe management, batch ticketing,... "
+    },
+    {
+        "name": "COSS ERP",
+        "description": " COSS ERP is a cloud-based integrated manufacturing and enterprise resource planning solution that caters to businesses of all sizes across various industries such as aerospace and defense, automotive, machine building, metal fabrication,... "
+    },
+    {
+        "name": "Sage 100cloud",
+        "description": " Sage 100cloud is an ERP platform for growing and medium-sized distributors and manufacturers. Financials, supply chain, reporting, analysis, and collaboration are all part of the\u00a0mobile-ready solution.\u00a0\r\nFinancial processes within... "
+    },
+    {
+        "name": "Genius ERP",
+        "description": " Genius ERP is an enterprise resource planning solution for small to medium-size custom manufacturers. The product caters to machine and equipment manufacturers, steel tank and process equipment manufacturers, transportation equipment... "
+    },
+    {
+        "name": "Infor VISUAL ERP",
+        "description": " Infor VISUAL is an Enterprise Resource Planning (ERP) System with end-to-end functionality built for manufacturing organizations looking for a complete solution that supports the entire operational lifecycle, from planning to sourcing,... "
+    },
+    {
+        "name": "E2 Manufacturing System",
+        "description": " Shoptech\u2019s E2 MFG System is a fully integrated Enterprise Resource Planning (ERP) solution designed for discrete manufacturers of all sizes utilizing make-to-order, make-to-stock, engineer-to-order, assemble-to-order and mixed-mode... "
+    },
+    {
+        "name": "Intellect eQMS",
+        "description": " Intellect eQMS is a configurable cloud-based enterprise quality management solution that helps organizations across various industries to manage the quality and compliance of critical business procedures. Features include document... "
+    },
+    {
+        "name": "BatchMaster ERP",
+        "description": " BatchMaster Software offers process manufacturing software solutions for the food, chemical, nutraceutical and pharmaceutical industries. Users can run the manufacturing application with QuickBooks, Sage 100&300, Microsoft Dynamics... "
+    },
+    {
+        "name": "SYSPRO",
+        "description": " SYSPRO is an enterprise resource planning (ERP) solution designed for manufacturers and distributors. SYSPRO can be deployed in the cloud, on premise or through a hybrid model, and it can be accessed from any device. SYSPRO is licensed... "
+    },
+    {
+        "name": "Datacor Chempax",
+        "description": " Chempax by Datacor is an integrated enterprise resource planning (ERP) and customer relationship management (CRM) application designed specifically for chemical process manufacturers and distributors. The solution can be scaled to... "
+    },
+    {
+        "name": "Sage Business Cloud Enterprise Management",
+        "description": " Sage Business Cloud Enterprise Management, formerly known as Sage X3, is an ERP software suite that includes integrated functionality for financial management, sales, customer service, distribution, inventory, and manufacturing, and... "
+    },
+    {
+        "name": "Columbus Manufacturing",
+        "description": " Columbus Manufacturing is a cloud-based enterprise resource management solution which caters to businesses of all sizes in the manufacturing industry. Key features include change management, project management, supply chain management... "
+    },
+    {
+        "name": "Odoo",
+        "description": " Odoo is a fully integrated and customizable open-source suite of business applications including sales, CRM, project management, manufacturing, inventory, accounting and other business needs in one software solution. Odoo was designed... "
+    },
+    {
+        "name": "Epicor Manufacturing",
+        "description": " Epicor ERP is an integrated enterprise resource planning that is delivered either on-premise, hosted, or as a cloud-based Software as a Service (SaaS) offering. It caters to small, midsize and large enterprises in aerospace, automotive,... "
+    },
+    {
+        "name": "MasterControl Quality Management System (QMS)",
+        "description": " MasterControl QMS is an integrated quality management system that can be installed on-premise or accessed through the web. It is suited for businesses of any size and a multitude of industries including agriculture, lumber, industrial... "
+    },
+    {
+        "name": "GainSeeker",
+        "description": " GainSeeker is a statistical process control solution that helps businesses across industries such as aerospace, automotive, packaging, electronics and more to collect and analyze their manufacturing data and make business decisions... "
+    },
+    {
+        "name": "IQS",
+        "description": " IQS offers an enterprise quality management and compliance software solution for midsize to large global manufacturers. It is suitable for manufacturers that operate in industries such as automotive, aerospace and defense, oil and... "
+    },
+    {
+        "name": "Expandable ERP ",
+        "description": " Expandable by Expandable Software, Inc. is an enterprise resource planning (ERP) solution designed for manufacturers of all sizes. It offers material requirement planning, production planning, accounting, business intelligence and... "
+    },
+    {
+        "name": "Royal 4 Enterprise",
+        "description": " Royal 4 Enterprise is an integrated enterprise resource planning (ERP) solution with built-in modules for distribution, manufacturing, planning, inventory management, reporting and company financials. It serves midsize to large enterprises... "
+    },
+    {
+        "name": "Factory MES",
+        "description": " Factory MES from Aptean is a cloud-based manufacturing execution system (MES). The solution includes features such as shop floor data capture, packaged metrics like overall equipment effectiveness (OEE), constraint management, analytics... "
+    },
+    {
+        "name": "Process Force",
+        "description": " Process Force is process manufacturing software that is made for specific industries such as consumer products, life sciences, chemicals, building products, down stream oil and gas, and mill products. The system integrates with SAP... "
+    },
+    {
+        "name": "Made2Manage ERP",
+        "description": " Aptean Made2Manage ERP is designed for manufacturers in job shops and dynamic \u201cto-order\u201d and mixed-mode environments. It's suitable for SMB manufacturers in industries like industrial equipment, electronics and fabricated metal,... "
+    },
+    {
+        "name": "Prodsmart",
+        "description": " Prodsmart is a cloud-based real-time production tracking and management\u00a0solution designed for businesses in the manufacturing and fabrication industries. Features include shop floor real-time data collection, production analysis,... "
+    },
+    {
+        "name": "Synergy SPC",
+        "description": " Synergy SPC solution by Zontec is a product suite that enables manufacturers to identify variations in the production process and correct them in real-time. The product suite includes products to fit small, mid and large size companies.... "
+    },
+    {
+        "name": "WorkWise ERP",
+        "description": " WorkWise ERP is an enterprise resource planning (ERP) solution that helps midsize businesses in the manufacturing industry with their management processes and operations. It can be deployed on-premise or in the cloud.\r\nWorkWise ERP... "
+    },
+    {
+        "name": "FactoryLogix",
+        "description": " FactoryLogix is an on-premise manufacturing solution suitable for businesses of all sizes. Key features include manufacturing execution, quality management, product lifecycle management, supply chain management, supplier management,... "
+    },
+    {
+        "name": "EVO~ERP",
+        "description": " EVO~ERP is an enterprise resource management (ERP) solution that helps small and mid-size businesses to manage inventory, accounting, warehouses and manufacturing. The solution supports multiple languages, currencies, exchange rates... "
+    },
+    {
+        "name": "SafetyChain",
+        "description": " SafetyChain is a quality management system (QMS) that helps food and beverage companies capture, manage and analyze real-time operations data. The suite of FSQA solutions includes food quality management software, food safety software... "
+    },
+    {
+        "name": "Fulcrum",
+        "description": " Fulcrum is a cloud-based platform serving small/mid-sized manufacturers and job shops looking for a software platform that truly understands them and their unique, complicated processes. Humans weren\u2019t meant to transcribe data from... "
+    },
+    {
+        "name": "Greenlight Guru",
+        "description": " GreenlightGuru is a cloud-based quality management solution designed specifically for the medical device industry. It provides premarket and post-market solutions which are Greenlight Go and Greenlight Grow. Key features include design... "
+    },
+    {
+        "name": "DevonWay",
+        "description": " DevonWay is a cloud-based operations management solution that helps businesses across various industries collect, track and analyze data in a framework, helping them manage the quality, safety, and performance of their business operations.... "
+    },
+    {
+        "name": "Qualio",
+        "description": " Qualio is a cloud-based quality management solution for manufacturing businesses in a variety of industries. Key features include document creation and review, collaboration, employee training and audit trails.\r\nQualio enables users... "
+    },
+    {
+        "name": "JustFoodERP",
+        "description": " JustFoodERP offers enterprise resource planning (ERP) solution to food manufacturers and distributors. The solution is designed to address the challenges of organizations in the food and beverage industry, with a suite of functions... "
+    },
+    {
+        "name": "Geneva Business Management Systems (GBMS)",
+        "description": " Geneva Business Management Systems (GBMS) is a cloud-based ERP application with the aspects of a desktop application giving small to midsize businesses the tools they need in order to manage the business environment.\r\nGeneva Systems... "
+    },
+    {
+        "name": "Epicor Mattec MES",
+        "description": " Mattec MES by Epicor is a manufacturing execution system that is suited to plastic molders, repetitive manufacturers and those with an assembly process involving multiple machines. It is designed to help floor operators to monitor... "
+    },
+    {
+        "name": "Cetec ERP",
+        "description": " Cetec ERP is a cloud-based manufacturing enterprise resource planning solution that caters to midsize and large businesses and helps them to manage various components of the manufacturing process i.e inception of a job, procurement... "
+    },
+    {
+        "name": "Aquilon ERP",
+        "description": " Aquilon Software offers a combined supply chain, manufacturing, distribution, and financial management system that is deployable either on the cloud or on-premise. All modules integrate with each other, allowing users to gain full... "
+    },
+    {
+        "name": "IFS Applications",
+        "description": " IFS Applications is a cloud-based enterprise resource planning (ERP) solution that helps businesses to integrate data and processes across multiple departments and locations. It offers various modules to users for asset management,... "
+    },
+    {
+        "name": "ProfitKey ERP",
+        "description": " ProfitKey has developed Rapid Response Manufacturing (RRM) tool to provide an integrated ERP and MES solution for small to mid-size manufacturers. Rapid Response Manufacturing incorporates an accounting solution with advanced MES functionality,... "
+    },
+    {
+        "name": "Ross ERP",
+        "description": " Ross ERP by Aptean is a hybrid enterprise resource planning (ERP) solution that caters to process manufacturing organizations in the food and beverage, chemicals, pharmaceutical and biotech industries.\u00a0It helps organizations to integrate... "
+    },
+    {
+        "name": "ERP MARK 7",
+        "description": " ERP MARK 7 by Axqolt is an enterprise resource planning software suite that offers small to mid-size manufacturing companies with inventory control, material requirements planning (MRP) with finite capacity scheduling, and manufacturing... "
+    },
+    {
+        "name": "S2K Manufacturing Management Software",
+        "description": " S2K Enterprise Management solution by VAI is a cloud-based, integrated ERP system designed to manage midsize and enterprise businesses in the wholesale distribution, manufacturing and speciality retail industries, across many vertical... "
+    },
+    {
+        "name": "QT9 ERP",
+        "description": " QT9 ERP helps users automate small to midsized manufacturing operations. The system utilizes dashboard grids to pull available data into one place. Customizable grids allow users to sort, group, get averages, sum and export data in... "
+    },
+    {
+        "name": "Statii",
+        "description": " Statii software is a cloud-based system for small manufacturing companies. The solution is designed to facilitate communication between team members more effectively and manage activities involved in any manufacturing process. The... "
+    },
+    {
+        "name": "TrakSYS",
+        "description": " TrakSYS is a modular, Manufacturing Operations Management (MOM) Solution Platform, that enables you to optimize the\u00a0way you run your manufacturing operations.\u00a0TrakSYS uses an array of industry-standard protocols to integrate with... "
+    },
+    {
+        "name": "BlueCherry",
+        "description": " BlueCherry is an enterprise resource planning (ERP) suite featuring modules for omnichannel planning, product lifecycle management (PLM), shop floor control, logistics, e-commerce, finance and electronic data interchange. It is suitable... "
+    },
+    {
+        "name": "MRPeasy",
+        "description": " MRPeasy is a manufacturing software for small manufacturers. The software is a suite comprising production planning, CRM, procurement, supply chain management, and inventory control modules. The application features a drag-and-drop... "
+    },
+    {
+        "name": "QAD ERP Enterprise Applications",
+        "description": " QAD ERP Enterprise Applications is a suite of manufacturing solutions including MRP, MES, accounting, QMS, PLM, SCM, Estimating, and many more. The solution supports multiple deployment options and is also accessible on iOS and Android... "
+    },
+    {
+        "name": "HighJump Warehouse Advantage",
+        "description": " HighJump Warehouse Advantage is a hybrid warehouse management system (WMS) that caters to businesses across various industry verticals such as retail, food and beverage, CPG, manufacturing and third-party logistics and helps them to... "
+    },
+    {
+        "name": "bcFood",
+        "description": " bcFood by Beck Consulting is an enterprise resource planning system designed specifically to meet the needs of both small and large food manufacturers, processors, and distributors.\r\nbcFood is built on Microsoft Dynamics NAV and support... "
+    },
+    {
+        "name": "ShopVue",
+        "description": " ShopVue by Casco is an on-premise shop floor control solution designed for job-centric discrete manufacturing businesses. It offers labor tracking production planning, machine monitoring, component control and time and attendance tracking... "
+    },
+    {
+        "name": "BlackBelt",
+        "description": " BlackBelt is a manufacturing suite that caters to businesses of all sizes across industries such as aerospace and defense, medical devices, electronics manufacturing and more. Key features include compliance and risk management, maintenance... "
+    },
+    {
+        "name": "Oracle JD Edwards - Manufacturing",
+        "description": " Oracle JD Edwards EnterpriseOne is a cloud-based Enterprise Resource Planning (ERP) and supply chain management solution that provides ERP applications and tools for finance, consumer goods, human resources, distribution and manufacturing... "
+    },
+    {
+        "name": "SAP Business All-in-One",
+        "description": " SAP Business All-in-One is an integrated enterprise resource planning solution for midsize and large companies, serving clients across the North America. The solution offers construction accounting, customer management, and service... "
+    },
+    {
+        "name": "abas ERP",
+        "description": " Abas ERP is a solution geared towards small to midsize manufacturers and distributors. Abas has three main application offerings on the market today: Abas ERP, Abas Distribution and Abas eB, a line of e-business solutions that can... "
+    },
+    {
+        "name": "SAP - Manufacturing",
+        "description": " SAP S/4HANA is an integrated enterprise resource planning (ERP) software suite designed to serve businesses of size and kinds. SAP ERP is used to address the needs of many industry verticals including manufacturing, retail, service... "
+    },
+    {
+        "name": "Solumina MES",
+        "description": " Solumina by iBASEt, is a provider of manufacturing execution software solutions for complex, highly regulated manufacturing industries. The system works best with large manufacturing plants on the enterprise level. Solumina software... "
+    },
+    {
+        "name": "PolyPM",
+        "description": " PolyPM by Polygon Software is an integrated enterprise resource planning (ERP) and product lifecycle management (PLM) solution developed specifically for apparel manufacturers. The solution includes capabilities unique to the small... "
+    },
+    {
+        "name": "SQCpack",
+        "description": " SQCpack by PQ Systems is a statistical process control\u00a0(SPC)\u00a0system that is suitable for most industries and any manufacturing mode. SQCpack is available in on-premise or cloud-based deployment. It is best suited for plants with... "
+    },
+    {
+        "name": "Acumatica",
+        "description": " Acumatica is a cloud-based enterprise resource planning (ERP) solution that offers a platform designed for midsize customers with a complete, real-time view across the business.\r\nThe Acumatica suite of integrated business management... "
+    },
+    {
+        "name": "WorkClout",
+        "description": " WorkClout is a cloud-based manufacturing information system built for the printing and packaging industry. Key features include order management, job scheduling, production, shipment handling and business analytics. "
+    },
+    {
+        "name": "RizePoint",
+        "description": " RizePoint is cloud-based quality management software that empowers companies to improve and maintain quality and consistency across different products and services, whether that is managing internal quality assurance needs, or externally... "
+    },
+    {
+        "name": "ICIM ERP and Accelerated ERP",
+        "description": " ICIM ERP by Metasystems offers small and midsize discrete manufacturers a comprehensive ERP that brings together order management, engineering, manufacturing, CRM, financials and warranty management. It supports the business needs... "
+    },
+    {
+        "name": "ProcessPro",
+        "description": " ProcessPro is a complete Enterprise Resource Planning (ERP) solution for small to mid-sized batch process manufacturers to manage their business operations through manufacturing, sales, inventory, quality and financial integration.... "
+    },
+    {
+        "name": "SCP 4.0",
+        "description": " Jada vendor management inventory and demand planning system is suitable for businesses looking to manage inventory holding costs and track service levels. SCP is offered as a best of breed application that is ideal for both midsize... "
+    },
+    {
+        "name": "A2000",
+        "description": " A2000 is a hybrid enterprise resource planning (ERP) solution that caters to apparel, footwear, accessories and home furnishing industries and helps them to integrate data and processes across multiple departments and manage their... "
+    },
+    {
+        "name": "Total ETO",
+        "description": " Total ETO is an ERP solution exclusively for small to medium engineer to order (ETO/custom design) manufacturers that covers everything from sales to shipping.Total ETO features a nested dynamic BOM by project job that can be integrated... "
+    },
+    {
+        "name": "OmegaCube ERP",
+        "description": " OmegaCube ERP is a cloud-based and on-premise enterprise resource planning solution built for manufacturing and distribution. The system serves small to mid-sized companies and was designed for workflow automation. Key features include... "
+    },
+    {
+        "name": "Connected Accounting & ERP",
+        "description": " Connected is a hybrid integrated accounting and enterprise resource planning (ERP) that caters to small and midsize businesses across various industry verticals and helps them to integrate their data and processes across departments... "
+    },
+    {
+        "name": "HYDRA",
+        "description": " HYDRA by MPDV is an on-premise and cloud-based Manufacturing Execution System (MES) suitable for small, midsize and large businesses. It caters to various industries including automobile, metal, food and beverages, chemicals, cosmetics,... "
+    },
+    {
+        "name": "JOBSCOPE Enterprise Edition",
+        "description": " Jobscope is a cloud-based manufacturing solution that helps aerospace, electronics, industrial machinery, metals, automotive and high technology companies in enterprise resource planning (ERP) functions. Key modules of the solution... "
+    },
+    {
+        "name": "OpenJanela",
+        "description": " OpenJanela is a Commercial Open Source ERP for window and door manufacturers and sales organizations.\r\nStart by managing clients through OpenJanela's CRM module, then jump directly into Quotations to visually design custom and standard... "
+    },
+    {
+        "name": "OnRamp Solutions ERP",
+        "description": " OnRamp Solutions offers an all-inclusive, unlimited user ERP application for small and medium but growing discrete manufacturing businesses.The application includes modules for EDI, production planning, inventory, job costing, production,... "
+    },
+    {
+        "name": "CloudFactoryWorx",
+        "description": " CloudFactoryWorx by Future Foundation is a digital manufacturing software solution that serves small to midsize businesses in markets including automotive, biotechnology, food and beverage, pharmaceuticals, transportation equipment,... "
+    },
+    {
+        "name": "K9ERP",
+        "description": " K9ERP is a cloud-based business management system that offers financials, inventory, distribution, accounting, document management, service contracts, CRM, POS and more.\r\nK9ERP provides businesses with a complete suite of financial... "
+    },
+    {
+        "name": "Decision Builder ",
+        "description": " Decision Builder ERP is an enterprise resource planning (ERP) solution that serves companies in the manufacturing, distribution and service fields throughout the North American continent.\u00a0\r\nDecision Builder is an integrated system... "
+    },
+    {
+        "name": "Upchain",
+        "description": " Upchain is a cloud PLM solution with a fully functioning PDM system within it. Upchain PLM solution is designed to help small and medium-sized companies collaborate on design, engineering production, and maintenance processes across... "
+    },
+    {
+        "name": "AXIS ERP",
+        "description": " Axis ERP is built specifically for metals, wire and cable manufacturers as well as processors and service centers. Users can configure the solution to fit the business\u2019s requirements.\r\nAxis ERP can be used by make-to-order, make-to-stock... "
+    },
+    {
+        "name": "Azarbod Shop Control",
+        "description": " Azarbod offers a cloud-based inventory and shop management solution for midsize manufacturers, distributors and constructors. Key features include inventory and order management, job scheduling, staff and timesheet management, vendor... "
+    },
+    {
+        "name": "PSI ERP",
+        "description": " PSI LeanEra is an enterprise resource management (ERP) designed for industrial manufacturing, chemical manufacturing and distribution, biotech and medical device manufacturing and automotive industry. Primary features include product... "
+    },
+    {
+        "name": "Q2S",
+        "description": " Q2S (Quote to Ship) is a manufacturing and enterprise resource planning (ERP) software solution featuring production scheduling tools, capacity planning, a comprehensive purchasing system, production reports, product labels, tracking,... "
+    },
+    {
+        "name": "Tensoft Fabless Semiconductor Management (FSM)",
+        "description": " Tensoft Fabless Semiconductor Management (FSM) is a cloud-based product for technology companies with outsourced manufacturing operations.\u00a0 It supports the unique manufacturing, supply chain and financial needs of semiconductor and... "
+    },
+    {
+        "name": "Shoplogix",
+        "description": " While over 90% of manufacturers have a digital transformation strategy, most are stuck on what to do, where to go, and very few have completed or realized their full vision. Shoplogix helps manufacturers realize i4.0 by taking a pragmatic... "
+    },
+    {
+        "name": "MIE Trak PRO",
+        "description": " MIE Trak Pro is an enterprise resource planning (ERP) offering that is best suited for manufacturing businesses. It includes modules designed to accommodate most production cycles and optimize the capabilities of repetitive, custom,... "
+    },
+    {
+        "name": "QuickBooks Enterprise",
+        "description": " QuickBooks Enterprise is an accounting solution suitable for small to midsize businesses across several industry verticals including construction, distribution, manufacturing, and retail. The solution offers functionality to manage... "
+    },
+    {
+        "name": "businessMATE",
+        "description": " businessMATE is a hybrid manufacturing management solution that caters to businesses across various industry verticals and helps them to automate their business processes and routines. It can be deployed on-premise or hosted in the... "
+    },
+    {
+        "name": "Infor CloudSuite Industrial (SyteLine) ERP",
+        "description": " Infor CloudSuite Industrial (SyteLine) is an enterprise resource planning software created specifically for engineer-to-order, make-to-order, make-to-stock, and mixed mode manufacturers. Customers in both discrete and process manufacturing... "
+    },
+    {
+        "name": "Masterplan ERP",
+        "description": " Masterplan ERP is a provider of cloud business and process integration software including ERP, MRP, SCM, Sales and Manufacturing software solutions. They provide software and professional services that increase the productivity of... "
+    },
+    {
+        "name": "Skulocity",
+        "description": " Skulocity is a cloud-based ERP system for manufacturing and distribution businesses. It offers functionality for warehouse management, inventory planning, manufacturing management, payroll, shipping management, and financial analytics.\r\nSkulocity\u2019s... "
+    },
+    {
+        "name": "Microsoft Dynamics 365",
+        "description": " Microsoft Dynamics 365 provides integrated solutions that allow businesses to track leads, automate field service, drive sales and improve operations using mobile, enterprise-ready business apps from the cloud.\r\nMicrosoft Dynamics... "
+    },
+    {
+        "name": "Qualtrics Research Core ",
+        "description": " Qualtrics Research Core is a cloud-based research platform which assists small to large sized businesses with survey designing and customer engagement tracking. Its key features include multi-channel survey distribution, project management,... "
+    },
+    {
+        "name": "SAP Business ByDesign",
+        "description": " SAP Business ByDesign is a software as a service (SaaS) enterprise resource planning (ERP) system. The software is designed to serve all the key needs of a business and offers applications for customer relationship management (CRM),... "
+    },
+    {
+        "name": "Deltek Costpoint",
+        "description": " Deltek Costpoint is an enterprise resource planning (ERP) and management solution designed to meet the requirements of midsize and large enterprise businesses. The solution primarily assists government contractors, professional service... "
+    },
+    {
+        "name": "IQMS MES Software ",
+        "description": " IQMS\u2019 flagship product, EnterpriseIQ ERP, is developed specifically for SMB and large discrete, and batch process manufacturers in the aerospace, medical device, automotive, food and beverage, consumer products, plastics, packaging... "
+    },
+    {
+        "name": "shopVOX",
+        "description": " shopVOX is a cloud-based platform for small to large businesses, which helps automate and streamline all processes related to manufacturing of custom products. The centralized platform comes with job boards, which let users create,... "
+    },
+    {
+        "name": "Inventor",
+        "description": " Inventor provides designers and engineers with a professional grade solution for 3D mechanical designing, documentation, visualization and simulation. Engineers are provided with 2D and 3D data integration options on a single designing... "
+    },
+    {
+        "name": "ERPAG",
+        "description": " ERPAG is a cloud-based enterprise resource planning (ERP) solution. It is suitable for small and midsize businesses in various industries, including automobile, retail, education, information technology and more. Primary features include... "
+    },
+    {
+        "name": "xTuple",
+        "description": " xTuple is an open-source enterprise resource planning (ERP) and customer relationship management (CRM) solution for businesses of all sizes. It offers accounting, sales management, supplier management, inventory management and distribution... "
+    },
+    {
+        "name": "TestRail",
+        "description": " TestRail Test Case Management is a cloud-based platform that allows users to manage, track and organize software tests.\r\nTestRail Test Case Management\u2019s key features comprise modern test management, test results tracking, reporting,... "
+    },
+    {
+        "name": "Acctivate Manufacturing Management",
+        "description": " Acctivate is an enterprise resource planning and inventory management system created for small to midsize organizations. Key feature include purchasing, warehousing, sales, marketing, shipping and customer service. The solution provides... "
+    },
+    {
+        "name": "SAP Business One",
+        "description": " SAP Business One is a modular and integrated enterprise resource planning (ERP) solution suitable for small and midsize size accounting, manufacturing, retail and distribution industries. Suitable for a wide array of verticals and... "
+    },
+    {
+        "name": "Microsoft Dynamics NAV",
+        "description": " Microsoft Dynamics NAV is an enterprise resource planning (ERP) software suite for midsize organizations. The system offers specialized functionality for manufacturing, distribution, government, retail, and other industries. The system... "
+    },
+    {
+        "name": "Epicor Manufacturing",
+        "description": " Epicor ERP is a solution with functionality for accounting, inventory control, pre-production materials planning and manufacturing execution (MES). The system is delivered either on-premise, hosted or as a cloud-based software as a... "
+    },
+    {
+        "name": "Epicor Mattec MES",
+        "description": " Mattec MES by Epicor is a manufacturing execution system that is suited to plastic molders, repetitive manufacturers and those with an assembly process involving multiple machines. It is designed to help floor operators to monitor... "
+    },
+    {
+        "name": "Microsoft Dynamics AX",
+        "description": " Microsoft Dynamics AX is a hybrid enterprise resource planning (ERP) solution that helps midsize and large enterprises to integrate their data and resources across various departments and locations. The solution can either be deployed... "
+    },
+    {
+        "name": "Teamcenter",
+        "description": " Teamcenter is a cloud-based product lifecycle management platform. It allows users to edit product data and processes such as 3D designs, embedded software, documentation and bill of materials.\r\nTeamcenter\u2019s features include adaptable... "
+    },
+    {
+        "name": "Epicor ERP",
+        "description": " Epicor ERP is a cloud-based solution that helps small to large businesses manage and streamline operations at all levels across the organization. Designed for manufacturing, retail, automotive, lumber and materials firms, the centralized... "
+    },
+    {
+        "name": "AIMS360 Fashion ERP",
+        "description": " AIMS360 is a cloud-based enterprise resource planning (ERP) solution for the fashion industry, offering a fully integrated business management suite for manufacturers, wholesalers, distributors and importers. It offers features for... "
+    },
+    {
+        "name": "SAP Business All-in-One",
+        "description": " SAP Business All-in-One is an integrated enterprise resource planning solution for midsize and large companies, serving clients across the North America. The solution offers construction accounting, customer management, and service... "
+    },
+    {
+        "name": "TrueERP",
+        "description": " True ERP is an operations management suite available in both cloud-based and on-premise formats which caters to SMB enterprises like wholesalers, construction firms and retailers, along with others.\r\nTrue ERP contains several different... "
+    },
+    {
+        "name": "ProShop",
+        "description": " ProShop is a machine shop and manufacturing process management solution designed for small and midsize manufacturers. It offers enterprise resource planning (ERP), manufacturing execution system (MES) and quality management system... "
+    },
+    {
+        "name": "Macola",
+        "description": " Macola is the ERP and business software that manufacturers and wholesale distributors trust to automate, grow and streamline their business workflows.\r\nMacola meets the unique needs of growing SMBs \u2500 automating and managing core... "
+    },
+    {
+        "name": "PBS Manufacturing",
+        "description": " PBS Manufacturing is designed for small to midsize make-to-stock, make-to-order, engineer-to-order or mixed mode manufacturers.\r\nThe system includes features such as inventory management, managing and tracking orders and costs, shop... "
+    },
+    {
+        "name": "Tricorn: Production",
+        "description": " Tricorn: Production is an on-premise production control and job processing solution designed to help small to large businesses manage and streamline all manufacturing processes, from generating initial estimates to final invoicing.... "
+    },
+    {
+        "name": "Oracle E-Business Suite",
+        "description": " Oracle E-Business Suite is a cloud-based suite containing integrated, global business applications that enable organizations to make decisions and manage costs of manufacturing operations. The suite also includes on-premise manufacturing... "
+    },
+    {
+        "name": "OfficeBooks",
+        "description": " OfficeBooks is an affordable and powerful manufacturing management solution that has been optimized for small manufacturing operations. Created in 2010, OfficeBooks is used by over 2000 businesses worldwide. Although it is an inventory... "
+    },
+    {
+        "name": "Arena PLM",
+        "description": " Arena Solution\u2019s Product Lifecycle Management (PLM) software is a cloud-based system designed for original equipment manufacturers (OEMs). It enables users to manage design, production and delivery of the products.\r\nArena PLM stores... "
+    },
+    {
+        "name": "Infor CPQ",
+        "description": " Infor CPQ is a hybrid configure price quote (CPQ) solution that helps manufacturers and distributors in verticals such as aerospace, fashion, furniture, agricultural equipment, doors and windows and more to generate custom quotes for... "
+    },
+    {
+        "name": "1factory",
+        "description": " 1factory is a quality management solution suitable for manufacturing companies of all sizes. Cloud-based and on-premise deployments are available. The solution offers quality control plans, first article inspections, incoming inspections,... "
+    },
+    {
+        "name": "Intelex QMS",
+        "description": " Intelex QMS provides a cloud-based interface for environmental, health and safety, quality and business performance management. This solution helps customers report essential business information, ensure compliance requirements, manage... "
+    },
+    {
+        "name": "AccountMate for SQL",
+        "description": " AccountMate is a hybrid accounting solution that caters to small and midsize businesses and offers them tools and functionalities, which help them to manage their financial procedures and routines. The solution provides multiple modules... "
+    },
+    {
+        "name": "Onspring",
+        "description": " Onspring is a Process Automation Platform that allows users to manage data, workflow, and reporting. Onspring can be used for a single business and has the ability to connect multiple functions across an enterprise. The system is built... "
+    },
+    {
+        "name": "Configure One CPQ",
+        "description": " Configure One CPQ is a cloud-based product configurator designed specifically for products that are configurable, customizable or have multiple options. The product caters to manufacturing businesses of all sizes. It offers configure,... "
+    },
+    {
+        "name": "ETQ Reliance",
+        "description": " ETQ Reliance is a cloud-based quality management (QMS), environmental, health and safety (EHS) \u00a0and compliance management solution. It caters to multiple industries, including medical devices, food and beverage, heavy industrial and... "
+    },
+    {
+        "name": "TACTIC Advanced Planning and Scheduling software",
+        "description": " TACTIC Advanced Planning and Scheduling is an on-premise solution designed for discrete and batch industry manufacturers. Primary features include order management, routing, inventory management, bills-of-materials and what-if ideas.\r\nThe... "
+    },
+    {
+        "name": "Agile PLM",
+        "description": " Oracle Agile PLM is a product lifecycle management solution that helps businesses manage product value chains. The platform enables cross-functional teams to collectively work on co-related assignments through an integrated framework... "
+    },
+    {
+        "name": "ISOEXPRESS",
+        "description": " ISOEXPRESS is a cloud-based compliance management solution that manages external audits in accordance with the requirement of ISO 9001. The solution can be used by small and midsize organizations. Key features include document management,... "
+    },
+    {
+        "name": "CIS Configurator",
+        "description": " CIS Configurator is a cloud-based tool for large and midsize manufacturing businesses. It helps automate configuring, pricing and quote generation. It can operate as a standalone solution using its own SQL database or integrate with... "
+    },
+    {
+        "name": "TrackVia",
+        "description": " TrackVia is a workflow software development platform that allows users to create custom applications with a variety of uses. It is suitable for large organizations in most industries, particularly construction, manufacturing, healthcare,... "
+    },
+    {
+        "name": "JobPack Graphical Scheduler",
+        "description": " JobPack offers a production planning and scheduling tool for shop floor control and materials management. JobPack is scalable and fits all sizes and disciplines of production manufacturing.\r\nJobPack manages every aspect of the production... "
+    },
+    {
+        "name": "V5 Andon",
+        "description": " V5 Andon is a cloud-based manufacturing communications, tracking and reporting solution that caters to heavy machinery, automotive, aerospace, defense, agricultural, recreational vehicles and electronics. The solution helps businesses... "
+    },
+    {
+        "name": "V5 MES",
+        "description": " V5 MES by PINpoint Information Systems is a cloud-based manufacturing execution system (MES) that caters to heavy machinery, automotive, aerospace, defense, agricultural, recreational vehicles and electronics. The solution helps businesses... "
+    },
+    {
+        "name": "ToolTrack ",
+        "description": " ToolTrack MES Platform is a cloud-based manufacturing execution system (MES).\r\nIt offers WIP tracking, asset management, quality management, statistical process control, document control and other manufacturing execution and production... "
+    },
+    {
+        "name": "Lead Commerce",
+        "description": " Lead Commerce is an integrated order management suite that offers applications like inventory management, merchandise planning, and customer relationship management. The solution helps small and midsize businesses streamline and automate... "
+    },
+    {
+        "name": "PractiTest",
+        "description": " PractiTest is a cloud-based test management solution that helps businesses maintain quality assurance and reduce product defects. Key features include activity tracking, custom dashboard, projections, traceability and applications... "
+    },
+    {
+        "name": "ZenQMS",
+        "description": " ZenQMS is a cloud-based quality management system that provides tools for document collaboration and control. It helps businesses manage aspects of document lifecycle, allowing them to transit their workflows from manual, paper, and... "
+    },
+    {
+        "name": "Infor M3",
+        "description": " Establish a foundation for digital transformation with Infor M3 - a powerful cloud ERP software solution that uses the latest technologies to provide an exceptional user experience and powerful analytics in a multi-company, multi-country,... "
+    },
+    {
+        "name": "Ramco ERP on Cloud",
+        "description": " Ramco ERP on Cloud is an enterprise resource planning (ERP) solution. Businesses can access real-time data related to their manufacturing, financials, supply chain, customers, personnel and more, including built-in business intelligence.... "
+    },
+    {
+        "name": "Infor LN",
+        "description": " From large, global, multi-site manufacturing enterprises to smaller, single-site organizations, Infor LN has capabilities designed to meet discrete manufacturers' needs. Infor LN is available on premise or in the cloud as CloudSuite... "
+    },
+    {
+        "name": "eCompliance Safety Software",
+        "description": " eCompliance Safety Software (ESS) is a cloud-based environmental health and safety (EHS) solution that helps EHS professionals in businesses to mitigate risks and ensure the safety of the workforce. The solution acts as a centralized... "
+    },
+    {
+        "name": "Advanced Supply Chain",
+        "description": " Advanced Supply Chain Software is a hybrid supply chain solution that helps businesses across various industries to manage vendor agreements and inventories and measures performance across a company\u2019s supply chain. The solution includes... "
+    },
+    {
+        "name": "SAP Anywhere",
+        "description": " SAP Anywhere is a cloud-based operation management solution that provides businesses functionalities for customer relationship management, order fulfillment, multi-channel commerce, inventory management and more.\r\nWith SAP Anywhere... "
+    },
+    {
+        "name": "The Plex Manufacturing Cloud",
+        "description": " Plex Manufacturing Cloud is a cloud-based enterprise resource planning (ERP) manufacturing solution that caters to discrete and process manufacturing organizations and helps them manage their day-to-day business operations and routines.... "
+    },
+    {
+        "name": "Hudman Central ERP",
+        "description": " Hudman Central ERP is a cloud-based enterprise resource planning (ERP) solution designed for small and midsize companies. It offers material requirement planning, supply chain management, customer relationship management (CRM) and... "
+    },
+    {
+        "name": "ProfitFab ERP",
+        "description": " ProfitFab from Micro Concepts & Solutions is a manufacturing resource planning system designed to help businesses manage their orders, create quotes, assess jobs and inventory and draw detailed reports within a comprehensive, server-based... "
+    },
+    {
+        "name": "Quartz QMS",
+        "description": " Quartz QMS is a cloud-based quality management solution (QMS) that caters to small and midsize businesses in the manufacturing industry. Key features include audit management, knowledge management, maintenance management, ISO standards... "
+    },
+    {
+        "name": "Katana",
+        "description": " Katana is a cloud-based production and inventory management solution for small and midsize manufacturers. It offers features such as a dashboard, inventory control, portfolio management and sales order fulfillment.\r\nKatana\u2019s dashboard... "
+    },
+    {
+        "name": "FashionFlow Apparel ERP",
+        "description": " FashionFlow Apparel is an on-premise enterprise planning software for the apparel and footwear industry. The solution is built on the Microsoft SQL Server and offers accounting modules. This module eliminates the need for double entry... "
+    },
+    {
+        "name": "Fitrix Electronics Manufacturing ERP",
+        "description": " Fitrix Electronics Manufacturing ERP solution offers an integrated application for accounting, distribution and manufacturing management functions. It is fit for small and midsize companies in discrete, make, and assemble-to-order... "
+    },
+    {
+        "name": "DEACOM ERP Software",
+        "description": " Deacom, Inc. provides ERP software built specifically for manufacturing and distribution companies. Customers include food, beverage, pharmaceutical, nutraceutical, cosmetic, paint, sealants, adhesives, cannabis and chemicals companies.\r\nDEACOM... "
+    },
+    {
+        "name": "OASIS",
+        "description": " OASIS is a customizable ERP system for small to midsize companies. This system is customized to the company\u2019s precise specifications and is used primarily in the retail, manufacturing, and professional services verticals.\r\nOASIS\u2019... "
+    },
+    {
+        "name": "EIC Software",
+        "description": " EIC Software is designed exclusively for the food and beverage industry, offering an integrated suite of applications to meet the dynamic needs of food distribution and processing industry.The software is Windows-based and can run... "
+    },
+    {
+        "name": "XL Productivity Appliance",
+        "description": " XL Productivity Appliance is a cloud-based and on-premise overall equipment effectiveness (OEE) software that helps manufacturing businesses of all sizes track production and calculate asset utilization. Its key features include downtime... "
+    },
+    {
+        "name": "ADS Solutions - Accolent ERP",
+        "description": " Accolent ERP by ADS Solutions is a hybrid enterprise resource planning (ERP) solution that caters to businesses in the SMB market and helps them to integrate data and processes across departments and locations.\r\nAccolent ERP's key... "
+    },
+    {
+        "name": "AIM Vision",
+        "description": " AIM Vision Automotive ERP is designed to meet the needs of repetitive manufacturers of automotive supplies. AIM Computer Solutions developed this system to manage different stages of manufacturing cycle-from MMOG to barcode labels,... "
+    },
+    {
+        "name": "ERP123",
+        "description": " ERP123 offers small and midsize manufacturers and distributors an ERP solution that automates and integrates business operations. This software allows the user to the organize their MRP, inventory management, picking and shipping,... "
+    },
+    {
+        "name": "MISys Manufacturing",
+        "description": " MISys Manufacturing is a cloud-based and on-premise manufacturing solution designed for small and midsized companies. It caters to electronics, food and beverage, aerospace, defense, chemicals, health and beauty, medical devices, pharmaceuticals... "
+    },
+    {
+        "name": "Oracle SCM Cloud",
+        "description": " Oracle SCM Cloud is a cloud-based supply chain management solution that offers distribution, manufacturing, inventory management and fleet management within a suite.\r\nThe product features product development, which allows users to... "
+    },
+    {
+        "name": "Adjutant",
+        "description": " MetalEZ is an integrated hybrid enterprise resource planning (ERP) and business process management (BPM) solution from ABIS. Key features include approval tracking and processing, an automated alert system, a contract management system,... "
+    },
+    {
+        "name": "Quantum",
+        "description": " Quantum MES is an engineering/planning, asset management and quality control solution for U.S. aerospace & defense, medical device and other make-to-order\u00a0manufacturers. Quantum can receive orders from third-party ERP systems,\u00a0manage... "
+    },
+    {
+        "name": "Infor Process Manufacturing Essentials",
+        "description": " Infor Process Manufacturing Essentials Software is an integrated system designed to specially address the management and automation needs of process manufacturers.\r\nInfor Process Essentials is a full software suite that includes functionality... "
+    },
+    {
+        "name": "Harrington Quality Management System (HQMS)",
+        "description": " Harrington Quality Management System (HQMS) is a cloud-based solution that provides business process improvement and quality management solutions. It is suited for midsize and large organizations.\r\nHarrington Quality Management System\u2019s... "
+    },
+    {
+        "name": "DBA",
+        "description": " DBA is an on-premise manufacturing requirements planning (MRP) solution for small manufacturing organizations. It allows users to create additional bills of material by utilizing the rapid item creation feature that enables the creation... "
+    },
+    {
+        "name": "Verse",
+        "description": " Verse Solutions offers an integrated EHS and GMP compliance management system that provides visibility into business audits and compliance. Verse\u2019s configurable workflow can be customized to meet each unique business' needs, without... "
+    },
+    {
+        "name": "Exact Globe Next",
+        "description": " Exact Globe Next is an integrated hybrid financial and enterprise resource planning (ERP) solution that helps small and midsize businesses to manage their financial operations and routines and integrate data and processes across locations... "
+    },
+    {
+        "name": "Pronto Xi",
+        "description": " Pronto Xi is an integrated enterprise resource planning (ERP) suite that provides core applications, such as financial accounting and business intelligence, alongside sales and marketing modules, supply chain management and distribution... "
+    },
+    {
+        "name": "MAX Manufacturing",
+        "description": " Exact MAX is an enterprise resource planning (ERP) system for small and midsize businesses in a variety of industries, including but not limited to electronics, food processing, medical devices and equipment and capital equipment.\r\nMAX... "
+    },
+    {
+        "name": "Agility",
+        "description": " Agility by DMSI is a hybrid enterprise resource planning (ERP) solution that helps businesses in the construction industry to integrate their data and processes across departments and locations. The solution can either be deployed... "
+    },
+    {
+        "name": "Enterprise 21 ERP",
+        "description": " Enterprise 21 ERP from TGI is a cloud-based enterprise resource planning (ERP) solution that provides small and midsize businesses across various industry verticals tools and functionalities to manage day-to-day operations and routines... "
+    },
+    {
+        "name": "isoTracker QMS",
+        "description": " IsoTracker is a cloud-based quality management solution designed for small to midsize manufacturers and healthcare organizations.\r\nisoTracker offers integrated modules for document control, complaints management, audit management and... "
+    },
+    {
+        "name": "ARMATURE Fabric",
+        "description": " ARMATURE Fabric is a quality management solution (QMS) that caters to businesses of all sizes in the manufacturing, accreditation, aerospace, automotive, medical devices and pharmaceutical industries. Features include document control,... "
+    },
+    {
+        "name": "CSB-System",
+        "description": " CSB-System offers a dedicated ERP software for the businesses in the food industry. The system\u2019s functionalities include process planning, computer integrated manufacturing, automated data capture with CSB-Rack, a Manufacturing Execution... "
+    },
+    {
+        "name": "LaserQuote",
+        "description": " LaserQuote is a cloud-based solution to support the business processes of contract cutting companies, sheet metal workshops and metal fabricators. The solution is built on an enterprise-level platform that utilizes technologies like... "
+    },
+    {
+        "name": "NolaPro",
+        "description": " NolaPro by Noguska LLC is a customizable accounting solution, featuring order tracking, inventory, POS and more. It provides a tailor-made accounting solution for companies that need to manage customers, vendors, employees and more.\r\nNolaPro... "
+    },
+    {
+        "name": "QMClouds",
+        "description": " QMClouds is a cloud-based quality management solution (QMS) that caters to small and midsize businesses and provides them with tools to help document processes, procedures and responsibilities. The solution supports is accessible via... "
+    },
+    {
+        "name": "BusinessMan CRM/ERP",
+        "description": " BusinessMan is a cloud-based and on-premise business management solution with enterprise resource planning (ERP) and customer relationship management (CRM) as primary modules. Key features include accounting, purchasing, quote management,... "
+    },
+    {
+        "name": "InfinityQS",
+        "description": " InfinityQS offers quality management and manufacturing intelligence software that centralizes product and process data from multiple sources to deliver insight about the shop floor. InfinityQS is powered by a statistical process control... "
+    },
+    {
+        "name": "Seebo",
+        "description": " Seebo is a cloud-based internet of things (IoT) development platform that helps businesses in the manufacturing industry design and deliver connected products and systems. The solution combines tools for IoT modeling, simulation, execution,... "
+    },
+    {
+        "name": "Shopfloor-Online",
+        "description": " Shopfloor-Online is an on-premise and cloud-based manufacturing execution system (MES) that helps to manage manufacturing operations and monitor performance. It is suitable for manufacturers in industries such as aerospace, automotive,... "
+    },
+    {
+        "name": "AcctVantage ERP",
+        "description": " AcctVantage ERP is an agile ERP solution that includes functions for accounting, warehouse management, CRM, supply chain management and business intelligence. The solution is developed for inventory-based manufacturers, wholesalers,... "
+    },
+    {
+        "name": "Forcam Force",
+        "description": " Forcam Force is a shop floor management system designed for managing OEE performance measurement and benchmarking of industrial facilities.\r\nForcam Force suite of integrated applications includes supply chain management, quality management,... "
+    },
+    {
+        "name": "AMT",
+        "description": " AMT is a hybrid enterprise resource planning (ERP) solution that caters to small and midsize apparel and retail firms in industries such as clothing, accessories, footwear and electronics and helps them to manage their day-to-day business... "
+    },
+    {
+        "name": "Kenandy Cloud ERP",
+        "description": " Kenandy cloud-based ERP is an enterprise resource planning solution built on Salesforce platform and created to help companies manage designing, manufacturing and product distribution workflows. It enables businesses to manage core... "
+    },
+    {
+        "name": "Mar-Kov CMS",
+        "description": " Mar-Kov CMS (Chemical Management System) is a cloud-based process manufacturing solution for process, batch, and formulation based manufacturers. The solution can also be installed on-premise to automate daily routine processes of... "
+    },
+    {
+        "name": "Shipedge",
+        "description": " Shipedge is a cloud-based warehouse management solution for small, midsize and large enterprises. It caters to e-commerce warehouses, fulfillment service providers, third-party logistics companies (3PL/4PL), omni/multi-channel retailers,... "
+    },
+    {
+        "name": "Vital Plant",
+        "description": " Vital Plant is an on-premise manufacturing execution systems (MES) product suite that helps businesses across various industries to connect and control multiple manufacturing systems and workflows on the factory floor. It provides... "
+    },
+    {
+        "name": "PackManager",
+        "description": " PackManager is a cloud-based supply chain management solution that caters to contract packagers and manufacturers and helps them to manage various routines of packaging and fulfillment operations, from quoting and costing to MRP, labor... "
+    },
+    {
+        "name": "PropulsionMRP",
+        "description": " PropulsionMRP is a mobile manufacturing resource planning and execution system. The solution provides users visibility into their manufacturing processes and offers tracking and reporting functionality.\r\nPropulsionMRP covers multiple... "
+    },
+    {
+        "name": "E-Z-MRP",
+        "description": " E-Z-MRP is a manufacturing software solution for make-to-stock, make-to-order and batch process manufacturers. The system is used by a variety of manufacturers including automotive, aerospace, metals, electronics, industrial machinery,... "
+    },
+    {
+        "name": "PRIMS",
+        "description": " PRIMS or \u201cProduct Recipe Ingredient Management System\u201d is recipe management software for programmable logic controller-based ingredient batching systems. It offers recipe management, batch management, inventory control, lot tracking... "
+    },
+    {
+        "name": "Resource Manager DB",
+        "description": " Resource Manager DB is a scheduling and planning solution developed for manufacturing companies. It is available for on-premise deployment and is suitable for small and midsize businesses (SMBs) seeking a material requirements planning... "
+    },
+    {
+        "name": "BEAS",
+        "description": " BEAS by Boyum Solutions is a manufacturing solution that caters to businesses in discrete and process manufacturing industries. Features include support for legal standards and GMP guidelines, FIFO and FEFO processes, cost calculation... "
+    },
+    {
+        "name": "Bizowie ERP",
+        "description": " Bizowie is a cloud-based enterprise resource planning system (ERP) designed for small and midsize businesses in a wide variety of industries, including manufacturing, retail, engineering and e-commerce.\r\nBizowie is custom-tailored... "
+    },
+    {
+        "name": "Exenta",
+        "description": " Exenta is a cloud-based apparel management solution that helps apparel, footwear, accessories, home furnishing and other consumer goods brands, manufacturers and retailers to manage their various business operations. Key features include... "
+    },
+    {
+        "name": "FACTIVITY",
+        "description": " FACTIVITY is an on-premise machine execution solution (MES) that extracts data and generate real-time Overall Equipment Effectiveness (OEE) metrics to understand factory asset performance.\r\nFACTIVITY\u2019s Time and Attendance Workbench... "
+    },
+    {
+        "name": "Factumsoft",
+        "description": " Factumsoft is a software platform suitable for large and midsize companies in industries such as manufacturing, distribution, field service, construction, contracting and resource management. On-premise and cloud-based deployments... "
+    },
+    {
+        "name": "Flourish",
+        "description": " Flourish is a cloud-based manufacturing solution for cannabis businesses of all sizes. Key features include tracking, compliance management, cultivation, inventory management and lab integration.\r\nFlourish enables users to track the... "
+    },
+    {
+        "name": "InstantGMP MES",
+        "description": " InstantGMP MES is a cloud-based manufacturing solution that offers document management, inventory management, batch production records and barcode scanning features.\r\nInstantGMP MES helps users to create virtual bins and align them... "
+    },
+    {
+        "name": "iQagent",
+        "description": " \"iQagent is a cloud-based manufacturing business intelligence application designed for large industrial manufacturers that have automated processes.\r\nThe system allows users to monitor manufacturing processes on their plant floor.... "
+    },
+    {
+        "name": "iRely Process Manufacturing",
+        "description": " iRely Process Manufacturing\u00a0is designed to offer food process manufacturers tools to optimize their manufacturing operations.\u00a0\r\niRely Process Manufacturing\u00a0provides process visibility, so whether businesses have a single plant or... "
+    },
+    {
+        "name": "ManuDyn Cloud 9",
+        "description": " ManuDyn Cloud 9 is a cloud-based manufacturing requirements planning (MRP) solution suitable for small and midsize job shop manufacturing organizations.\r\nThe Manufacturing Control Center provides users with real-time information regarding... "
+    },
+    {
+        "name": "MAXLife ERP",
+        "description": " MAXLife ERP is specifically designed for Life Sciences companies that develop products regulated by the FDA. It allows businesses to track product quality and respond to manufacturing variances. With MAXLife ERP, Life Sciences companies... "
+    },
+    {
+        "name": "Maxx ERP",
+        "description": " Maxx ERP is an enterprise resource planning solution that is suitable for manufacturing and distribution industries. The solution offers features designed to cater\u00a0a variety of industry verticals including distribution, manufacturing,... "
+    },
+    {
+        "name": "NDS ERP Applications",
+        "description": " NDS Systems provides enterprise resource planning (ERP) solutions for small to mid-sized organizations in the discrete manufacturing, wholesale distribution and fulfillment industries. It is built on Oracle platform which helps in... "
+    },
+    {
+        "name": "Paper-Less MV2",
+        "description": " Paper-Less MV2 Production is a digital manufacturing execution system (MES) designed to help manufacturers bridge the gap between the production floor and enterprise resource planning (ERP) system. It is made up of four separate modules,... "
+    },
+    {
+        "name": "Product Planner",
+        "description": " Product Planner is a cloud-based manufacturing solution that helps businesses organize and collaborate on their products' data. Features include idea management, factory selection, product lifecycle management, new product introduction... "
+    },
+    {
+        "name": "Proqur",
+        "description": " Proqur is a procurement management solution designed for small and midsize manufacturing and engineering sectors. It can be used to manage orders and keep track of information at one centralized location. The solution is suitable for... "
+    },
+    {
+        "name": "QDMS",
+        "description": " QDMS is an integrated quality management solution which helps companies comply with quality management systems such as ISO (9001, 14001, 22000, 27000), SQF, BRC, BRC iop and more. QDMS helps automate quality management operations in... "
+    },
+    {
+        "name": "Roadmap ERP",
+        "description": " Roadmap ERP offers an array of applications suited for manufacturers of a variety of different products and manufacturing modes. Available for deployment either on-premise or cloud-based, it\u2019s recommended to midsize companies both... "
+    },
+    {
+        "name": "Rootstock",
+        "description": " Rootstock Software is a cloud-based ERP solution designed for manufacturers and distributors of all sizes and across industry verticals. The solution controls different aspects of the business - from sales and purchase order management,... "
+    },
+    {
+        "name": "ShopEdge ERP",
+        "description": " ShopEdge is a cloud-based enterprise resource planning solution designed to assist automotive suppliers in order management, production scheduling, inventory control and shipping.\r\nShopEdge helps users to import order information available... "
+    },
+    {
+        "name": "SIMATIC IT",
+        "description": " SIMATIC IT by Siemens is a modular manufacturing execution platform for managing manufacturing operations.\r\nSIMATIC IT's manufacturing execution system (MES) accesses all process information across the company in real time. Users can... "
+    },
+    {
+        "name": "SmallMfg",
+        "description": " TechnoERP is an integrated inventory, production and accounting software solution designed for small manufacturing businesses.\r\nA variety of modules are included within TechnoERP, such as inventory, bill of materials, labor routing... "
+    },
+    {
+        "name": "Synchronous ERP",
+        "description": " Synchronous ERP is a cloud-based enterprise resource planning (ERP) solution for manufacturing and distribution businesses. Key features include financial accounting, warehouse management, inventory management, product tracing, customer... "
+    },
+    {
+        "name": "TraQtion",
+        "description": " TraQtion is a cloud-based quality and compliance management solution for manufacturing companies. The solution enables users to monitor and manage compliance for suppliers, products and sites.\r\nTraQtion\u2019s supplier management enables... "
+    },
+    {
+        "name": "Webtech PLM",
+        "description": " WebTech PLM is a hybrid product lifecycle management (PLM) solution that caters to businesses of all sizes across various industries. It offers users features for managing projects, tasks, workflows and a built-in reporting engine.... "
+    },
+    {
+        "name": "yieldWerx",
+        "description": " YieldWerx is cloud-based yield management software for semiconductor manufacturers. It uses data analysis to provide insights on the manufacture of semiconductors companies, including, in-house production firms as well as facilities... "
+    },
+    {
+        "name": "Calabrio Quality Management",
+        "description": " Calabrio Quality Management is a cloud-based\u00a0solution that helps users manage and control quality of manufacturing processes to improve customer experience. Key features include live interaction monitoring, call recording, Payment... "
+    },
+    {
+        "name": "pc/MRP",
+        "description": " pc/MRP is a cost-effective MRP System that includes the following fully integrated modules, Receiving, Sales Orders, Invoicing, Stockroom, Work Or Address Book, Inventory, Bills of Materials, Purchasing, Accounting, CRM, Serial Lot... "
+    }
+]
 
 }
