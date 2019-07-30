@@ -46,6 +46,8 @@ class EngineerValidator extends BaseValidator {
       birthday: Joi.string(),
       dateIn: Joi.string(),
       dateOut: Joi.string(),
+      dayOffRemain: Joi.number(),
+      overTime: Joi.number(),
       salary: Joi.number(),
       email: super.strEmail(),
       skype: Joi.string(),

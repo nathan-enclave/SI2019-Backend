@@ -1,6 +1,19 @@
+const _ = require('lodash');
+
 class BaseController {
   constructor(service) {
     this.service = service;
+  }
+
+  getAuthdata(credentials) {
+    return _.pick(credentials, [
+      'id',
+      'scope',
+      'engineerId',
+      'englishName',
+      'firstName',
+      'lastName'
+    ]);
   }
 
   async getMany(request) {
@@ -30,8 +43,9 @@ class BaseController {
 
   async createOne(request) {
     try {
-      const { payload } = request;
-      return await this.service.createOne(payload);
+      const { payload, auth } = request;
+      const authData = this.getAuthdata(auth.credentials);
+      return await this.service.createOne(payload, authData);
     } catch (err) {
       throw err;
     }
@@ -39,9 +53,10 @@ class BaseController {
 
   async updateOne(request) {
     try {
-      const { params, payload } = request;
+      const { params, payload, auth } = request;
+      const authData = this.getAuthdata(auth.credentials);
       const { id } = params;
-      return await this.service.updateOne(id, payload);
+      return await this.service.updateOne(id, payload, authData);
     } catch (err) {
       throw err;
     }
@@ -50,7 +65,9 @@ class BaseController {
   async deleteOne(request) {
     try {
       const { id } = request.params;
-      return await this.service.deleteOne(id);
+      const { auth } = request;
+      const authData = this.getAuthdata(auth.credentials);
+      return await this.service.deleteOne(id, authData);
     } catch (err) {
       throw err;
     }

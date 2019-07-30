@@ -4,6 +4,9 @@ const moment = require('moment');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
 // const PasswordUtils = require('../../services/password');
+
+const Firebase = require('../../services/firebase');
+
 class EngineerService extends BaseService {
   constructor() {
     super(Models.Engineer);
@@ -48,6 +51,8 @@ class EngineerService extends BaseService {
           'skype',
           'avatar',
           'expYear',
+          'overTime',
+          'dayOffRemain',
           'status'
         );
       const n = result.teams.length;
@@ -62,7 +67,7 @@ class EngineerService extends BaseService {
   }
 
   // end GetOne
-  async createOne(payload) {
+  async createOne(payload, authData) {
     const { skills } = payload;
     delete payload.skills;
     payload.birthday = moment(payload.birthday);
@@ -73,10 +78,21 @@ class EngineerService extends BaseService {
       .$relatedQuery('skills')
       .relate(skills)
       .returning('*');
+
+    const fireStoreData = {
+      userId: authData.id,
+      name: authData.englishName,
+      fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
+      role: authData.scope,
+      status: 'info',
+      action: `created ${engineer.englishName}'s profile`,
+      time: moment().format()
+    };
+    Firebase.save(fireStoreData);
     return engineer;
   }
 
-  async updateOne(id, payload) {
+  async updateOne(id, payload, authData) {
     try {
       let skills = null;
       if (payload.skills) {
@@ -102,6 +118,18 @@ class EngineerService extends BaseService {
         await engineer.$relatedQuery('skills').unrelate();
         await engineer.$relatedQuery('skills').relate(skills);
       }
+
+      const fireStoreData = {
+        userId: authData.id,
+        name: authData.englishName,
+        fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
+        role: authData.scope,
+        status: 'success',
+        action: `updated ${engineer.englishName}'s profile`,
+        time: moment().format()
+      };
+      Firebase.save(fireStoreData);
+
       return engineer;
     } catch (error) {
       throw error;
@@ -109,17 +137,28 @@ class EngineerService extends BaseService {
   }
 
   // start delete (update deleteAt)
-  async deleteOne(id) {
+  async deleteOne(id, authData) {
     try {
       const result = await Models.Engineer.query()
         .findById(id)
         .update({
           deletedAt: new Date()
         })
-        .returning('id', 'deletedAt');
+        .returning('id', 'englishName', 'deletedAt');
       if (!result) {
         throw Boom.notFound(`Not found`);
       }
+
+      const fireStoreData = {
+        userId: authData.id,
+        name: authData.englishName,
+        fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
+        role: authData.scope,
+        status: 'warning',
+        action: `deleted ${result.englishName}'s profile`,
+        time: moment().format()
+      };
+      Firebase.save(fireStoreData);
       return result;
     } catch (error) {
       throw error;
