@@ -27,5 +27,37 @@
     "https://randomuser.me/api/portraits/men/29.jpg",
     "https://randomuser.me/api/portraits/men/35.jpg",
     "https://randomuser.me/api/portraits/men/39.jpg"
+  ],
+  "categories": [
+
+     {
+        "name": "Finance",
+        "description": "For financial purpose"
+      },
+      {
+        "name": "Healthcare",
+        "description": "Support Medical product"
+      },
+      {
+        "name": "Education",
+        "description": "Educational properties"
+      },
+      {
+        "name": "Tourism",
+        "description": "Tourism product"
+      },
+      {
+        "name": "Human management",
+        "description": "For human resource"
+      },
+      {
+        "name": "Business",
+        "description": "Business project"
+      },
+      {
+        "name": "Application Suites",
+        "description": "Support office work"
+      }
   ]
+
 }

@@ -64,6 +64,11 @@ exports.seed = knex =>
     .then(async () => {
       const totalEngineers = (await Models.Engineer.query().count())[0].count;
       const totalTeams = (await Models.Team.query().count())[0].count;
+      // const totalTeamWithProject = await Models.Team.query().select('id');
+      // .joinRelation('projects')
+      // .select('projects.start as projectStartDay', 'projects.end as projectStartDay');
+      // console.log(totalTeams);
+
       const data = [];
       for (let index = 0; index < totalTeams; index += 1) {
         for (let i = 0; i < 5; i += 1) {
