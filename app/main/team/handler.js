@@ -33,7 +33,10 @@ exports.createOne = {
   notes: 'Return created team',
   tags: ['api', 'v1'],
   handler: controller.createOne.bind(controller),
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  },
   validate: {
     payload: validator.create
   }
@@ -44,7 +47,10 @@ exports.updateOne = {
   notes: 'Return updated Team by id',
   tags: ['api', 'v1'],
   handler: controller.updateOne.bind(controller),
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  },
   validate: {
     params: {
       id: validator.idParam
@@ -58,7 +64,10 @@ exports.deleteOne = {
   notes: 'Return deleted Team by id',
   tags: ['api', 'v1'],
   handler: controller.deleteOne.bind(controller),
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  },
   validate: {
     params: {
       id: validator.idParam
