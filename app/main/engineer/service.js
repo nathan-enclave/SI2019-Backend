@@ -51,6 +51,8 @@ class EngineerService extends BaseService {
           'skype',
           'avatar',
           'expYear',
+          'overTime',
+          'dayOffRemain',
           'status'
         );
       const n = result.teams.length;

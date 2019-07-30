@@ -37,12 +37,12 @@ class Factory {
   static engineer(num) {
     const data = [];
     data.push({
-      firstName: 'Minh Hoang',
-      lastName: 'Ho',
-      englishName: 'Henry',
-      phoneNumber: '0847079429',
+      firstName: 'David',
+      lastName: 'Brown',
+      englishName: 'David',
+      phoneNumber: '0127456789',
       address: '453 Hoang Dieu',
-      email: 'minhhoangho99@gmail.com',
+      email: 'David.en123@gmail.com',
       expYear: faker.random.number({
         min: 0,
         max: 10
@@ -51,20 +51,20 @@ class Factory {
         min: 5,
         max: 12
       }),
-      dateIn: '2019-06-17',
-      birthday: '1999-03-01',
+      dateIn: '2011-06-17',
+      birthday: '1992-12-21',
       salary: 0,
-      skype: 'intern.m0060@enclave.vn',
+      skype: 'eureka.m1060@enclave.vn',
       status: 1
     });
 
     data.push({
-      firstName: 'John',
+      firstName: 'Jane',
       lastName: 'Doe',
-      englishName: 'John',
+      englishName: 'Jane',
       phoneNumber: '0952075469',
       address: '459 Hoang Dieu',
-      email: 'John.Doe@gmail.com',
+      email: 'Jane.Doe@gmail.com',
       expYear: faker.random.number({
         min: 0,
         max: 10
@@ -80,12 +80,12 @@ class Factory {
       status: 1
     });
     data.push({
-      firstName: 'Jane',
-      lastName: 'Doe',
-      englishName: 'Jane',
+      firstName: 'Mark',
+      lastName: 'Zuckerberg',
+      englishName: 'Mark',
       phoneNumber: '0934078869',
       address: '460 Hoang Dieu',
-      email: 'Jane.Doe@gmail.com',
+      email: 'Mark.Zuckerberg@gmail.com',
       expYear: faker.random.number({
         min: 0,
         max: 10
@@ -104,6 +104,7 @@ class Factory {
     for (let index = 0; index < num - 3; index += 1) {
       data.push(samples.createEngineer(index + 12));
     }
+
     return data;
   }
 
