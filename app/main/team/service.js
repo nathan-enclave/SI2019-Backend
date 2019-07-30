@@ -1,6 +1,7 @@
 /* eslint-disable no-await-in-loop */
 const Boom = require('boom');
 const _ = require('lodash');
+// const moment = require('moment');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
 const sendEmail = require('../../services/sendEmail');
@@ -44,8 +45,9 @@ class TeamService extends BaseService {
               'engineers.avatar',
               'engineers.email',
               'engineers.expYear',
-              'engineers.salary',
-              'engineer_team.role'
+              'engineer_team.role',
+              'engineers.birthday',
+              'engineers.salary'
             );
           }
         })
@@ -62,7 +64,6 @@ class TeamService extends BaseService {
             .count()
             .as('totalMember')
         );
-
       if (!team) {
         throw Boom.notFound(`Model Team is not found`);
       }
