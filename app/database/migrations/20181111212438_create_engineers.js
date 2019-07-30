@@ -12,6 +12,7 @@ exports.up = knex =>
     table.string('skype', 191).unique();
     table.integer('expYear');
     table.integer('dayOffRemain').defaultTo(12);
+    table.float('overTime').defaultTo(0);
     table.integer('status');
     table.string('avatar').defaultTo('http://s3.amazonaws.com/37assets/svn/765-default-avatar.png');
     table.integer('salary');

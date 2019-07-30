@@ -1,10 +1,11 @@
 /* eslint-disable no-await-in-loop */
 const Boom = require('boom');
 const _ = require('lodash');
-// const moment = require('moment');
+const moment = require('moment');
 const Models = require('../../database/models/index');
 const BaseService = require('../../base/BaseService');
 const sendEmail = require('../../services/sendEmail');
+const Firebase = require('../../services/firebase');
 
 class TeamService extends BaseService {
   constructor() {
@@ -84,7 +85,7 @@ class TeamService extends BaseService {
     }
   }
 
-  async createOne(payload) {
+  async createOne(payload, authData) {
     try {
       const { name } = payload;
       const { engineers } = payload;
@@ -112,13 +113,23 @@ class TeamService extends BaseService {
           throw Boom.forbidden('Not successful');
         }
       }
+      const fireStoreData = {
+        userId: authData.id,
+        name: authData.englishName,
+        fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
+        role: authData.scope,
+        status: 'info',
+        action: `created ${team.name}'s profile`,
+        time: moment().format()
+      };
+      Firebase.save(fireStoreData);
       return { team, statusEmail };
     } catch (error) {
       throw error;
     }
   }
 
-  async updateOne(id, payload) {
+  async updateOne(id, payload, authData) {
     try {
       const { engineers } = payload;
       delete payload.engineers;
@@ -137,23 +148,43 @@ class TeamService extends BaseService {
           .delete();
         await Models.EngineerTeam.query().insertGraph(engineers);
       }
+      const fireStoreData = {
+        userId: authData.id,
+        name: authData.englishName,
+        fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
+        role: authData.scope,
+        status: 'success',
+        action: `updated ${team.name}'s profile`,
+        time: moment().format()
+      };
+      Firebase.save(fireStoreData);
       return team;
     } catch (error) {
       throw error;
     }
   }
 
-  async deleteOne(id) {
+  async deleteOne(id, authData) {
     try {
       const result = await Models.Team.query()
         .findById(id)
         .update({
           deletedAt: new Date()
         })
-        .returning('id', 'deletedAt');
+        .returning('id', 'deletedAt', 'name');
       if (!result) {
         throw Boom.notFound(`Not found`);
       }
+      const fireStoreData = {
+        userId: authData.id,
+        name: authData.englishName,
+        fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
+        role: authData.scope,
+        status: 'warning',
+        action: `deleted ${result.name}'s profile`,
+        time: moment().format()
+      };
+      Firebase.save(fireStoreData);
       return result;
     } catch (error) {
       throw error;
