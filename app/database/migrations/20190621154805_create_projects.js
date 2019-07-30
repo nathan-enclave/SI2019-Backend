@@ -8,7 +8,7 @@ exports.up = knex =>
     table.text('description');
     table.date('start');
     table.date('end');
-    table.integer('earning').defaultTo(40000000);
+    table.bigInteger('earning').defaultTo(40000000);
     table.float('earningPerMonth').defaultTo(5000000);
     table.string('status');
     table.timestamp('createdAt').defaultTo(knex.fn.now());

@@ -43,7 +43,10 @@ exports.createOne = {
   notes: 'Return created project',
   tags: ['api', 'v1'],
   handler: controller.createOne.bind(controller),
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  },
   validate: {
     payload: validator.create
   }
@@ -54,7 +57,10 @@ exports.updateOne = {
   notes: 'Return updated project by id',
   tags: ['api', 'v1'],
   handler: controller.updateOne.bind(controller),
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  },
   validate: {
     params: {
       id: validator.idParam
@@ -68,7 +74,10 @@ exports.deleteOne = {
   notes: 'Return deleted project by id',
   tags: ['api', 'v1'],
   handler: controller.deleteOne.bind(controller),
-  auth: false,
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  },
   validate: {
     params: {
       id: validator.idParam
