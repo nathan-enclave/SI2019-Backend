@@ -14,6 +14,7 @@ class EngineerValidator extends BaseValidator {
       lastName: Joi.string().required(),
       englishName: Joi.string().required(),
       phoneNumber: super.strPhoneNumber().required(),
+      expYear: Joi.number().required(),
       avatar: Joi.string(),
       birthday: Joi.string().required(),
       address: Joi.string().required(),
@@ -23,7 +24,12 @@ class EngineerValidator extends BaseValidator {
       email: super.strEmail().required(),
       skype: Joi.string().required(),
       status: Joi.number().required(),
-      skills: Joi.array().items(Joi.number())
+      skills: Joi.array().items(
+        Joi.object({
+          id: Joi.number().required(),
+          expYear: Joi.number().required()
+        })
+      )
     };
   }
 
@@ -33,6 +39,7 @@ class EngineerValidator extends BaseValidator {
       lastName: Joi.string(),
       englishName: Joi.string(),
       phoneNumber: super.strPhoneNumber(),
+      expYear: Joi.number(),
       avatar: Joi.string(),
       address: Joi.string(),
       nationality: Joi.string(),
@@ -43,7 +50,12 @@ class EngineerValidator extends BaseValidator {
       email: super.strEmail(),
       skype: Joi.string(),
       status: Joi.number(),
-      skills: Joi.array().items(Joi.number())
+      skills: Joi.array().items(
+        Joi.object({
+          id: Joi.number(),
+          expYear: Joi.number()
+        })
+      )
     };
   }
 }

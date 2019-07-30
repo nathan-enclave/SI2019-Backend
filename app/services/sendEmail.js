@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
-// khai báo sử dụng module nodemailer
+const Boom = require('boom');
+
 class Email {
   async sendEmail(email, title, content) {
     try {
@@ -17,10 +18,12 @@ class Email {
         from: 'Software engineer manager system',
         to: email,
         subject: title,
-        text: content
+        //   text: content,
+        html: content
       });
+      return `Email have send to ${email}`;
     } catch (error) {
-      throw error;
+      throw Boom.forbidden(error);
     }
   }
 }

@@ -14,6 +14,16 @@ exports.getMany = {
     query: validator.queryParams
   }
 };
+exports.getManyBy = {
+  description: 'Group project',
+  notes: 'Group project by status',
+  tags: ['api', 'v1'],
+  handler: controller.getManyBy.bind(controller),
+  auth: false,
+  validate: {
+    query: validator.getStatus
+  }
+};
 
 exports.getOne = {
   description: 'Get a project',
@@ -64,4 +74,11 @@ exports.deleteOne = {
       id: validator.idParam
     }
   }
+};
+exports.sumEarning = {
+  description: 'Get sum eaning of all project',
+  notes: 'Return sum earning',
+  tags: ['api', 'v1'],
+  handler: controller.sumEarning.bind(controller),
+  auth: false
 };

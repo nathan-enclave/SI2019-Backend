@@ -97,10 +97,50 @@ class projectService extends BaseService {
     try {
       const result = await Models.Project.queryBuilder(query)
         .whereNull('deletedAt')
+        .eager('category(selectCategory)', {
+          selectCategory: builder => {
+            builder.select('categories.name');
+          }
+        })
         .select('id', 'name', 'technology', 'earning', 'status');
+      if (result.length === 0) {
+        throw Boom.notFound('Not found');
+      }
       return result;
     } catch (error) {
       throw error;
+    }
+  }
+
+  async getManyBy(query) {
+    try {
+      const { status } = query;
+      const result = await Models.Project.queryBuilder(query)
+        .where('status', status)
+        .whereNull('deletedAt')
+        .eager('category(selectCategory)', {
+          selectCategory: builder => {
+            builder.select('categories.name');
+          }
+        })
+        .select('id', 'name', 'technology', 'earning', 'status');
+      if (result.length === 0) {
+        throw Boom.notFound('Not found');
+      }
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async sumEarning() {
+    try {
+      const result = await Models.Project.query()
+        .whereNull('deletedAt')
+        .sum('earning');
+      return result;
+    } catch (error) {
+      throw Boom.conflict(error);
     }
   }
 }
