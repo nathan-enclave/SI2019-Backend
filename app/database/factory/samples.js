@@ -57,18 +57,20 @@ exports.createEngineer = code => {
   };
 };
 
-exports.createProject = (number, categoryId) => {
-  const ranDate = faker.date.between('2018-01-01', '2019-12-31');
+exports.createProject = (name, description, categoryId) => {
+  const randomStartDate = faker.date.between('2018-01-01', '2019-12-31');
   const lengthOfProject = _.sample([60, 90, 150, 270, 210, 330, 180, 240, 120]);
-  const end = moment(ranDate)
+  const end = moment(randomStartDate)
     .clone()
     .add(lengthOfProject, 'days');
   moment().format();
   let status;
-  if (Number(moment(end).year()) === 2018) {
+  if (moment(end).isBefore(moment().format(), 'day')) {
     status = 'done';
+  } else if (moment(randomStartDate).isBefore(moment().format(), 'day')) {
+    status = 'inProgress';
   } else {
-    status = _.sample(['inProgress', 'pending', 'pending', 'inProgress']);
+    status = 'pending';
   }
   const earning = _.sample([
     600000000,
@@ -76,23 +78,23 @@ exports.createProject = (number, categoryId) => {
     310000000,
     42000000,
     70000000,
-    52000000,
-    40000000,
-    40000000,
-    20000000,
+    152000000,
+    190000000,
+    140000000,
+    210000000,
     49000000,
     90000000,
     29000000,
     69000000,
-    20000000,
-    99000000,
-    89000000,
-    99000000,
+    210000000,
+    96000000,
+    69000000,
+    100000000,
     290000000
   ]);
   const earningPerMonth = earning / (lengthOfProject / 30);
   return {
-    name: `Project ${number}`,
+    name,
     categoryId,
     technology:
       data.lang[
@@ -101,8 +103,8 @@ exports.createProject = (number, categoryId) => {
           max: data.lang.length - 1
         })
       ],
-    description: `This is the description of project ${number}`,
-    start: ranDate,
+    description,
+    start: randomStartDate,
     end,
     status,
     earning,
@@ -115,10 +117,11 @@ exports.createTeam = projectId => ({
   projectId
 });
 
-exports.createEngineerTeam = (engineerId, teamId, role = 'member') => ({
+exports.createEngineerTeam = (engineerId, teamId, role = 'member', dateJoin) => ({
   engineerId,
   teamId,
-  role
+  role,
+  dateJoin
 });
 
 exports.createSkill = name => ({
