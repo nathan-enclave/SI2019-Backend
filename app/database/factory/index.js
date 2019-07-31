@@ -38,11 +38,11 @@ class Factory {
     const data = [];
     data.push({
       firstName: 'David',
-      lastName: 'Brown',
+      lastName: 'Fincher',
       englishName: 'David',
-      phoneNumber: '0127456789',
+      phoneNumber: '0121456789',
       address: '453 Hoang Dieu',
-      email: 'David.en123@gmail.com',
+      email: 'David.Fincher.en@gmail.com',
       expYear: faker.random.number({
         min: 0,
         max: 10
@@ -53,18 +53,19 @@ class Factory {
       }),
       dateIn: '2011-06-17',
       birthday: '1992-12-21',
+      gender: 'Female',
       salary: 0,
       skype: 'eureka.m1060@enclave.vn',
       status: 1
     });
 
     data.push({
-      firstName: 'Jane',
-      lastName: 'Doe',
-      englishName: 'Jane',
+      firstName: 'Suzanne ',
+      lastName: 'Lucas',
+      englishName: 'Suzanne ',
       phoneNumber: '0952075469',
       address: '459 Hoang Dieu',
-      email: 'Jane.Doe@gmail.com',
+      email: 'Suzanne.Lucas@gmail.com',
       expYear: faker.random.number({
         min: 0,
         max: 10
@@ -75,17 +76,18 @@ class Factory {
       }),
       dateIn: '2009-06-17',
       birthday: '1986-02-11',
+      gender: 'Male',
       salary: 0,
       skype: 'eureka.m1160@enclave.vn',
       status: 1
     });
     data.push({
-      firstName: 'Mark',
-      lastName: 'Zuckerberg',
-      englishName: 'Mark',
+      firstName: 'Brett',
+      lastName: 'Harned',
+      englishName: 'Brett',
       phoneNumber: '0934078869',
       address: '460 Hoang Dieu',
-      email: 'Mark.Zuckerberg@gmail.com',
+      email: 'Brett.Harned69@gmail.com',
       expYear: faker.random.number({
         min: 0,
         max: 10
@@ -96,6 +98,7 @@ class Factory {
       }),
       dateIn: '2009-06-17',
       birthday: '1986-05-11',
+      gender: 'Female',
       salary: 0,
       skype: 'eureka.m1061@enclave.vn',
       status: 1
@@ -120,20 +123,22 @@ class Factory {
     return data;
   }
 
-  static async project(num) {
+  static async project() {
     const categoryCount = (await Models.Category.query().count())[0].count;
     const data = [];
-    for (let index = 0; index < num; index += 1) {
+    json.projects.forEach(e => {
       data.push(
         samples.createProject(
-          index + 1,
+          e.name,
+          e.description,
           faker.random.number({
             min: 1,
             max: categoryCount
           })
         )
       );
-    }
+    });
+
     return data;
   }
 
@@ -160,32 +165,7 @@ class Factory {
   }
 
   static categories() {
-    const data = [
-      {
-        name: 'Finance',
-        description: 'For financial purpose'
-      },
-      {
-        name: 'Healthcare',
-        description: 'Support Medical product'
-      },
-      {
-        name: 'Education',
-        description: 'Educational properties'
-      },
-      {
-        name: 'Tourism',
-        description: 'Tourism product'
-      },
-      {
-        name: 'Human management',
-        description: 'For human resource'
-      },
-      {
-        name: 'Business',
-        description: 'Business project'
-      }
-    ];
+    const data = json.categories;
     return data;
   }
 }
