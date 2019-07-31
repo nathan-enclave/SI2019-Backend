@@ -151,7 +151,7 @@ class projectService extends BaseService {
             builder.select('categories.name');
           }
         })
-        .select('id', 'name', 'technology', 'earning', 'status');
+        .select('id', 'name', 'technology', 'earning', 'status', 'start', 'end');
       if (result.length === 0) {
         throw Boom.notFound('Not found');
       }

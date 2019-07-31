@@ -1,6 +1,7 @@
 // const bcrypt = require('bcrypt');
 const faker = require('faker');
 const _ = require('lodash');
+const moment = require('moment');
 const Models = require('../models');
 // const { SALT_ROUNDS } = require('../../constants');
 const Factory = require('../factory');
@@ -58,36 +59,58 @@ exports.seed = knex =>
       await Models.EngineerSkill.query().insertGraph(data);
     })
     .then(() => Models.Category.query().insertGraph(Factory.categories()))
-    .then(async () => Models.Project.query().insertGraph(await Factory.project(100)))
+    .then(async () => Models.Project.query().insertGraph(await Factory.project()))
     .then(async () => Models.Team.query().insertGraph(await Factory.team()))
     // Adding members to team
     .then(async () => {
       const totalEngineers = (await Models.Engineer.query().count())[0].count;
-      const totalTeams = (await Models.Team.query().count())[0].count;
+      const totalTeamWithProject = await Models.Team.query()
+        .joinRelation('projects')
+        .select('projects.start as projectStartDay', 'projects.end as projectEndDay');
       const data = [];
-      for (let index = 0; index < totalTeams; index += 1) {
+      for (let index = 0; index < totalTeamWithProject.length; index += 1) {
         for (let i = 0; i < 5; i += 1) {
-          if (i === 0) {
-            data.push(
-              samples.createEngineerTeam(
-                faker.random.number({
-                  min: 1,
-                  max: totalEngineers
-                }),
-                index + 1,
-                'leader'
-              )
-            );
-          } else {
-            data.push(
-              samples.createEngineerTeam(
-                faker.random.number({
-                  min: 1,
-                  max: totalEngineers
-                }),
-                index + 1
-              )
-            );
+          switch (i) {
+            case 0:
+              data.push(
+                samples.createEngineerTeam(
+                  faker.random.number({
+                    min: 1,
+                    max: totalEngineers
+                  }),
+                  index + 1,
+                  'leader',
+                  moment(totalTeamWithProject[i]).add(2, 'days')
+                )
+              );
+              break;
+            case 1:
+              data.push(
+                samples.createEngineerTeam(
+                  faker.random.number({
+                    min: 1,
+                    max: totalEngineers
+                  }),
+                  index + 1,
+                  'quality assurance',
+                  moment(totalTeamWithProject[i]).add(2, 'days')
+                )
+              );
+              break;
+
+            default:
+              data.push(
+                samples.createEngineerTeam(
+                  faker.random.number({
+                    min: 1,
+                    max: totalEngineers
+                  }),
+                  index + 1,
+                  'developer',
+                  moment(totalTeamWithProject[i]).add(2, 'days')
+                )
+              );
+              break;
           }
         }
       }
