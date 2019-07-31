@@ -47,6 +47,7 @@ class TeamService extends BaseService {
               'engineers.email',
               'engineers.expYear',
               'engineer_team.role',
+              'engineer_team.dateJoin',
               'engineers.birthday',
               'engineers.salary'
             );

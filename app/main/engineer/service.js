@@ -30,8 +30,11 @@ class EngineerService extends BaseService {
                 .joinRelation('projects')
                 .select(
                   'teams.name as teamName',
-                  'engineer_team.role',
-                  'projects.name as projectName'
+                  'engineer_team.role as role',
+                  'engineer_team.dateJoin as dateJoin',
+                  'projects.name as projectName',
+                  'projects.start as projectStartDay',
+                  'projects.end as projectEndDay'
                 ); // select project
             }
           }

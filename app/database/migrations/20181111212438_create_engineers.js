@@ -9,6 +9,7 @@ exports.up = knex =>
     table.string('nationality').defaultTo('American');
     table.string('email', 191).unique();
     table.date('birthday').notNullable();
+    table.string('gender');
     table.string('skype', 191).unique();
     table.integer('expYear');
     table.integer('dayOffRemain').defaultTo(12);
