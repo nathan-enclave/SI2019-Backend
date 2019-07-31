@@ -53,6 +53,7 @@ class Factory {
       }),
       dateIn: '2011-06-17',
       birthday: '1992-12-21',
+      gender: 'Female',
       salary: 0,
       skype: 'eureka.m1060@enclave.vn',
       status: 1
@@ -75,6 +76,7 @@ class Factory {
       }),
       dateIn: '2009-06-17',
       birthday: '1986-02-11',
+      gender: 'Male',
       salary: 0,
       skype: 'eureka.m1160@enclave.vn',
       status: 1
@@ -96,6 +98,7 @@ class Factory {
       }),
       dateIn: '2009-06-17',
       birthday: '1986-05-11',
+      gender: 'Female',
       salary: 0,
       skype: 'eureka.m1061@enclave.vn',
       status: 1
