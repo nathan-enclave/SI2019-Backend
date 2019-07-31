@@ -95,3 +95,33 @@ exports.getStatisticProjectEarningByMonth = {
     }
   }
 };
+exports.getStatisticEngineerSw = {
+  description: 'Get statistic of engineer level',
+  notes: 'Return dashboard',
+  tags: ['api', 'v1'],
+  handler: controller.getStatisticEngineerSw.bind(controller),
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  }
+};
+exports.getStatisticEngineerSalary = {
+  description: 'Get statistic of engineer level',
+  notes: 'Return dashboard',
+  tags: ['api', 'v1'],
+  handler: controller.getStatisticEngineerSalary.bind(controller),
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  }
+};
+exports.getStatisticEngineerGender = {
+  description: 'Get statistic of engineer gender',
+  notes: 'Return dashboard',
+  tags: ['api', 'v1'],
+  handler: controller.getStatisticEngineerGender.bind(controller),
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  }
+};
