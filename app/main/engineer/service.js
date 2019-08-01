@@ -29,9 +29,11 @@ class EngineerService extends BaseService {
               builder
                 .joinRelation('projects')
                 .select(
+                  'teams.id as teamId',
                   'teams.name as teamName',
                   'engineer_team.role as role',
                   'engineer_team.dateJoin as dateJoin',
+                  'projects.id as projectId',
                   'projects.name as projectName',
                   'projects.start as projectStartDay',
                   'projects.end as projectEndDay'
@@ -47,6 +49,7 @@ class EngineerService extends BaseService {
           'phoneNumber',
           'address',
           'birthday',
+          'gender',
           'avatar',
           'salary',
           'dateIn',
