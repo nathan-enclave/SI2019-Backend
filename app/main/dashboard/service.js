@@ -306,10 +306,10 @@ class DashboardService {
         }
       }
       return {
-        '8->10': countSalary1,
-        '10->15': countSalary2,
-        '15->20': countSalary3,
-        '>20': countSalary4
+        lever1: countSalary1,
+        lever2: countSalary2,
+        lever3: countSalary3,
+        lever4: countSalary4
       };
     } catch (error) {
       throw Boom.notFound('Not found');
@@ -338,6 +338,29 @@ class DashboardService {
         Female: countFemale,
         Other: array.length - (countMale + countFemale)
       };
+    } catch (error) {
+      throw Boom.notFound('Not found');
+    }
+  }
+
+  // get statistic project in year
+
+  async getStatistiProjectByYear(year) {
+    try {
+      const project = await Models.Project.query()
+        .whereRaw(`DATE_PART('year', "start")=${year}`)
+        .whereNull('deletedAt')
+        .select('name', 'status', 'start', 'end');
+      const start = _.map(project, 'start');
+      for (let i = 0; i < start.length; i += 1) {
+        start[i] = moment(start[i]).month();
+      }
+      const result = [];
+      for (let i = 0; i < 12; i += 1) {
+        const numProject = start.filter(x => x === i).length;
+        result.push({ month: i + 1, numProject });
+      }
+      return result;
     } catch (error) {
       throw Boom.notFound('Not found');
     }
