@@ -75,6 +75,11 @@ const Routes = [
     method: 'GET',
     path: '/api/v1/dashboard/statistic/projects/location',
     config: Handler.getStatistiProjectLocation
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/dashboard/statistic/deadline',
+    config: Handler.getStatistiDeadLine
   }
 ];
 module.exports = Routes;

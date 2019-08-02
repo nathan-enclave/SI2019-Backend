@@ -481,8 +481,7 @@ class DashboardService {
       let lever1 = 0; // 0>50
       let lever2 = 0; // 50>70
       let lever3 = 0; // 70>90
-      let lever4 = 0; // 90>110
-      let lever5 = 0; // >110
+      let lever4 = 0; // 90
       for (let i = 0; i < salary.length; i += 1) {
         if (salary[i] < 50000000) {
           lever1 += 1;
@@ -493,18 +492,42 @@ class DashboardService {
         if (salary[i] >= 70000000 && salary[i] < 90000000) {
           lever3 += 1;
         }
-        if (salary[i] >= 90000000 && salary[i] < 110000000) {
-          lever4 += 1;
-        }
       }
-      lever5 = salary.length - (lever1 + lever2 + lever3 + lever4);
+      lever4 = salary.length - (lever1 + lever2 + lever3);
       return {
         lever1,
         lever2,
         lever3,
-        lever4,
-        lever5
+        lever4
       };
+    } catch (error) {
+      throw Boom.notFound('Not Found');
+    }
+  }
+
+  //  Dead line
+
+  async getStatistiDeadLine() {
+    try {
+      const date = moment().subtract(2, 'days');
+      // console.log(d);
+      const getProject = await Models.Project.query()
+        .where('end', '>=', date)
+        .whereNull('deletedAt')
+        .eager('team(selectTeam)', {
+          selectTeam: builder => builder.select('teams.id as teamId', 'teams.name as teamName')
+        })
+        .orderBy('end', 'asc')
+        .select('id', 'name', 'end', 'status');
+      getProject.forEach(e => {
+        e.project = {
+          id: e.id,
+          name: e.name
+        };
+        delete e.id;
+        delete e.name;
+      });
+      return getProject;
     } catch (error) {
       throw Boom.notFound('Not Found');
     }
