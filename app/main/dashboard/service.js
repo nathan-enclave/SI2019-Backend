@@ -422,7 +422,6 @@ class DashboardService {
       });
       return categoryProject;
     } catch (error) {
-      console.log(error);
       throw Boom.notFound('Not Found');
     }
   }
