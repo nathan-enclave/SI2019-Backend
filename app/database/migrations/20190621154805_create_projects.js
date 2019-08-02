@@ -6,6 +6,11 @@ exports.up = knex =>
     table.foreign('categoryId').references('categories.id');
     table.string('technology');
     table.text('description');
+    table.integer('locationId');
+    table
+      .foreign('locationId')
+      .references('locations.id')
+      .onDelete('CASCADE');
     table.date('start');
     table.date('end');
     table.bigInteger('earning').defaultTo(40000000);

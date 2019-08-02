@@ -59,6 +59,7 @@ exports.seed = knex =>
       await Models.EngineerSkill.query().insertGraph(data);
     })
     .then(() => Models.Category.query().insertGraph(Factory.categories()))
+    .then(() => Models.Location.query().insertGraph(Factory.locations()))
     .then(async () => Models.Project.query().insertGraph(await Factory.project()))
     .then(async () => Models.Team.query().insertGraph(await Factory.team()))
     // Adding members to team
