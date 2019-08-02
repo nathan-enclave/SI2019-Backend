@@ -53,8 +53,18 @@ const Routes = [
   },
   {
     method: 'GET',
-    path: '/api/v1/dashboard/statistic/totalProject/{year}',
+    path: '/api/v1/dashboard/statistic/projects/perMonth/{year}',
     config: Handler.getStatistiProjectByYear
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/dashboard/statistic/teamProject',
+    config: Handler.getStatisticTeamAndProject
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/dashboard/statistic/projects/groupBy/category',
+    config: Handler.getStatistiProjectCategory
   }
 ];
 module.exports = Routes;
