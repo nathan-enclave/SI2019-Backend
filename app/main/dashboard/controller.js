@@ -91,7 +91,7 @@ class DashboardController extends BaseController {
 
   async getStatistiProjectByYear(request) {
     try {
-      const { year } = request.params;
+      const { year } = request.query;
       return await this.service.getStatistiProjectByYear(year);
     } catch (error) {
       throw error;

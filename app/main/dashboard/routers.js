@@ -53,7 +53,7 @@ const Routes = [
   },
   {
     method: 'GET',
-    path: '/api/v1/dashboard/statistic/projects/perMonth/{year}',
+    path: '/api/v1/dashboard/statistic/projects/perMonth',
     config: Handler.getStatistiProjectByYear
   },
   {

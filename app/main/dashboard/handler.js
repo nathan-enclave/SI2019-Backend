@@ -133,6 +133,11 @@ exports.getStatistiProjectByYear = {
   auth: {
     strategy: 'jwt',
     scope: ['Director', 'HR', 'PM']
+  },
+  validate: {
+    query: {
+      year: validator.year
+    }
   }
 };
 exports.getStatisticTeamAndProject = {
