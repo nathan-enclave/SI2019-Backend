@@ -10,6 +10,18 @@ class DashboardService {
       return model
         .query()
         .where('deletedAt', null)
+        .count(`id as ${name}`)
+        .first();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async countEngineer(model, name) {
+    try {
+      return model
+        .query()
+        .where('deletedAt', null)
         .andWhere('dateOut', null)
         .count(`id as ${name}`)
         .first();
@@ -30,7 +42,7 @@ class DashboardService {
   }
 
   async getTotal() {
-    const engineer = await this.count(Models.Engineer, 'Engineer');
+    const engineer = await this.countEngineer(Models.Engineer, 'Engineer');
     const project = await this.count(Models.Project, 'Project');
     const team = await this.count(Models.Team, 'Team');
     const manager = await this.countManager(Models.Manager, 'Manager');
@@ -448,6 +460,26 @@ class DashboardService {
       });
       return categoryProject;
     } catch (error) {
+      throw Boom.notFound('Not Found');
+    }
+  }
+
+  // Sum salary of engineer in team
+  async getStatistiSalaryTeam() {
+    try {
+      const team = await Models.Team.query()
+        .whereNull('deletedAt')
+        .eager('engineers(selectEngineer)', {
+          selectEngineer: builder => builder.select('engineers.salary')
+        })
+        .select('name');
+      team.forEach(e => {
+        e.totalSalary = _.sumBy(e.engineers, 'salary');
+        delete e.engineers;
+      });
+      return team;
+    } catch (error) {
+      console.log(error);
       throw Boom.notFound('Not Found');
     }
   }

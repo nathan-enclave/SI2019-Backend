@@ -122,6 +122,14 @@ class DashboardController extends BaseController {
       throw error;
     }
   }
+
+  async getStatistiSalaryTeam() {
+    try {
+      return await this.service.getStatistiSalaryTeam();
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = DashboardController;

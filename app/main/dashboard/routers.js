@@ -68,6 +68,11 @@ const Routes = [
   },
   {
     method: 'GET',
+    path: '/api/v1/dashboard/statistic/salary/team',
+    config: Handler.getStatistiSalaryTeam
+  },
+  {
+    method: 'GET',
     path: '/api/v1/dashboard/statistic/projects/location',
     config: Handler.getStatistiProjectLocation
   }
