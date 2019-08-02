@@ -68,13 +68,13 @@ const Routes = [
   },
   {
     method: 'GET',
-<<<<<<< HEAD
     path: '/api/v1/dashboard/statistic/salary/team',
     config: Handler.getStatistiSalaryTeam
-=======
+  },
+  {
+    method: 'GET',
     path: '/api/v1/dashboard/statistic/projects/location',
     config: Handler.getStatistiProjectLocation
->>>>>>> cae23f85d4058708289ff80fe678691834a2fe0c
   }
 ];
 module.exports = Routes;

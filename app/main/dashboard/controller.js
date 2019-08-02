@@ -114,16 +114,18 @@ class DashboardController extends BaseController {
     }
   }
 
-<<<<<<< HEAD
-  async getStatistiSalaryTeam() {
-    try {
-      return await this.service.getStatistiSalaryTeam();
-=======
   async getStatistiProjectLocation(request) {
     try {
       const { year } = request.query;
       return await this.service.getStatistiProjectLocation(year);
->>>>>>> cae23f85d4058708289ff80fe678691834a2fe0c
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getStatistiSalaryTeam() {
+    try {
+      return await this.service.getStatistiSalaryTeam();
     } catch (error) {
       throw error;
     }
