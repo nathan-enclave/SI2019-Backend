@@ -64,7 +64,6 @@ exports.createEngineer = code => {
 exports.createProject = (name, description, categoryId) => {
   const randomStartDate = faker.date.between('2018-01-01', '2019-12-31');
   const lengthOfProject = _.sample([60, 90, 150, 270, 210, 330, 180, 240, 120]);
-  const address = _.sample(data.address);
   const end = moment(randomStartDate)
     .clone()
     .add(lengthOfProject, 'days');
@@ -109,8 +108,10 @@ exports.createProject = (name, description, categoryId) => {
         })
       ],
     description,
-    address: `${address.city}, ${address.country}`,
-    location: address.location,
+    locationId: faker.random.number({
+      min: 1,
+      max: data.address.length
+    }),
     start: randomStartDate,
     end,
     status,
@@ -186,5 +187,14 @@ exports.createCashFlow = (month, year) => {
     year,
     cashIn,
     cashOut
+  };
+};
+
+exports.createLocation = (city, country, longitude, latitude) => {
+  return {
+    city,
+    country,
+    longitude,
+    latitude
   };
 };

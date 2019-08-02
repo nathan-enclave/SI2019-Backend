@@ -135,3 +135,19 @@ exports.getStatistiProjectByYear = {
     scope: ['Director', 'HR', 'PM']
   }
 };
+exports.getStatistiProjectLocation = {
+  description: 'Get statistic total project in location in a year',
+  notes: 'Return location and number project on each one ',
+  tags: ['api', 'v1'],
+  handler: controller.getStatistiProjectLocation.bind(controller),
+  // auth: {
+  //   strategy: 'jwt',
+  //   scope: ['Director', 'HR', 'PM']
+  // },
+  auth: false,
+  validate: {
+    query: {
+      year: validator.year
+    }
+  }
+};

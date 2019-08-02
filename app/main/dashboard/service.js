@@ -365,6 +365,33 @@ class DashboardService {
       throw Boom.notFound('Not found');
     }
   }
+
+  async getStatistiProjectLocation(query) {
+    try {
+      let location = await Models.Location.query()
+        .eager('projects(selectProject)', {
+          selectProject: builder =>
+            builder
+              .whereNull('deletedAt')
+              .andWhereRaw(`DATE_PART('year', "start")=${query}`)
+              .select('projects.id')
+        })
+        .select('locations.city', 'locations.country', 'locations.longitude', 'locations.latitude');
+      location = _.filter(location, element => {
+        return element.projects.length > 0;
+      });
+      location.forEach(e => {
+        e.numProjects = e.projects.length;
+        e.coordinates = [e.longitude, e.latitude];
+        delete e.projects;
+        delete e.longitude;
+        delete e.latitude;
+      });
+      return location;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = DashboardService;

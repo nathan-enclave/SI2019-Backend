@@ -168,6 +168,17 @@ class Factory {
     const data = json.categories;
     return data;
   }
+
+  static locations() {
+    const locations = json.address;
+    const data = [];
+    locations.forEach(e => {
+      data.push(
+        samples.createLocation(e.city, e.country, e.location.longitude, e.location.latitude)
+      );
+    });
+    return data;
+  }
 }
 
 module.exports = Factory;
