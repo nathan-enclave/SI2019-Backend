@@ -155,3 +155,14 @@ exports.getStatistiProjectCategory = {
     scope: ['Director', 'HR', 'PM']
   }
 };
+
+exports.getStatistiSalaryTeam = {
+  description: 'Get statistic project bye category',
+  notes: 'Return dashboard',
+  tags: ['api', 'v1'],
+  handler: controller.getStatistiSalaryTeam.bind(controller),
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  }
+};

@@ -425,6 +425,27 @@ class DashboardService {
       throw Boom.notFound('Not Found');
     }
   }
+
+  // Sum salary of engineer in team
+  async getStatistiSalaryTeam() {
+    try {
+      const team = await Models.Team.query()
+        .whereNull('deletedAt')
+        .eager('engineers(selectEngineer)', {
+          selectEngineer: builder => builder.sum('engineers.salary')
+        })
+        .select('name');
+      // team.forEach(e => {
+      //   // for (let i = 0; i < e.engineers.length; i += 1) {
+      //   e.engineers += e.engineers;
+      //   // }
+      // });
+      return team;
+    } catch (error) {
+      console.log(error);
+      throw Boom.notFound('Not Found');
+    }
+  }
 }
 
 module.exports = DashboardService;

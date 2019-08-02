@@ -65,6 +65,11 @@ const Routes = [
     method: 'GET',
     path: '/api/v1/dashboard/statistic/projects/groupBy/category',
     config: Handler.getStatistiProjectCategory
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/dashboard/statistic/salary/team',
+    config: Handler.getStatistiSalaryTeam
   }
 ];
 module.exports = Routes;
