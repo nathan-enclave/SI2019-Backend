@@ -91,7 +91,7 @@ class DashboardController extends BaseController {
 
   async getStatistiProjectByYear(request) {
     try {
-      const { year } = request.params;
+      const { year } = request.query;
       return await this.service.getStatistiProjectByYear(year);
     } catch (error) {
       throw error;
@@ -126,6 +126,14 @@ class DashboardController extends BaseController {
   async getStatistiSalaryTeam() {
     try {
       return await this.service.getStatistiSalaryTeam();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getStatistiDeadLine() {
+    try {
+      return await this.service.getStatistiDeadLine();
     } catch (error) {
       throw error;
     }

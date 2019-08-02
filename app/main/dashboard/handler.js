@@ -133,6 +133,11 @@ exports.getStatistiProjectByYear = {
   auth: {
     strategy: 'jwt',
     scope: ['Director', 'HR', 'PM']
+  },
+  validate: {
+    query: {
+      year: validator.year
+    }
   }
 };
 exports.getStatisticTeamAndProject = {
@@ -176,6 +181,16 @@ exports.getStatistiSalaryTeam = {
   notes: 'Return dashboard',
   tags: ['api', 'v1'],
   handler: controller.getStatistiSalaryTeam.bind(controller),
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  }
+};
+exports.getStatistiDeadLine = {
+  description: 'Get statistic project bye category',
+  notes: 'Return dashboard',
+  tags: ['api', 'v1'],
+  handler: controller.getStatistiDeadLine.bind(controller),
   auth: {
     strategy: 'jwt',
     scope: ['Director', 'HR', 'PM']
