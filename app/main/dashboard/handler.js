@@ -156,6 +156,7 @@ exports.getStatistiProjectCategory = {
   }
 };
 
+<<<<<<< HEAD
 exports.getStatistiSalaryTeam = {
   description: 'Get statistic project bye category',
   notes: 'Return dashboard',
@@ -164,5 +165,20 @@ exports.getStatistiSalaryTeam = {
   auth: {
     strategy: 'jwt',
     scope: ['Director', 'HR', 'PM']
+=======
+exports.getStatistiProjectLocation = {
+  description: 'Get statistic total project in location in a year',
+  notes: 'Return location and number project on each one ',
+  tags: ['api', 'v1'],
+  handler: controller.getStatistiProjectLocation.bind(controller),
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  },
+  validate: {
+    query: {
+      year: validator.year
+    }
+>>>>>>> cae23f85d4058708289ff80fe678691834a2fe0c
   }
 };

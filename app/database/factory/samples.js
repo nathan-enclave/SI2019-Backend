@@ -108,6 +108,10 @@ exports.createProject = (name, description, categoryId) => {
         })
       ],
     description,
+    locationId: faker.random.number({
+      min: 1,
+      max: data.address.length
+    }),
     start: randomStartDate,
     end,
     status,
@@ -183,5 +187,14 @@ exports.createCashFlow = (month, year) => {
     year,
     cashIn,
     cashOut
+  };
+};
+
+exports.createLocation = (city, country, longitude, latitude) => {
+  return {
+    city,
+    country,
+    longitude,
+    latitude
   };
 };
