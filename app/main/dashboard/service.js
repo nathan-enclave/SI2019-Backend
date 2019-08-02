@@ -122,10 +122,14 @@ class DashboardService {
         .andWhere('dateOut', null)
         .select('id', 'status');
       const availableCounr = _.filter(engineers, e => e.status === 1).length;
+      const onVacationCounr = _.filter(engineers, e => e.status === 2).length;
+      const absenceCounr = _.filter(engineers, e => e.status === 2).length;
       return {
         totalEngineer: engineers.length,
         available: availableCounr,
-        inTeam: engineers.length - availableCounr
+        onVacation: onVacationCounr,
+        adsence: absenceCounr,
+        inTeam: engineers.length - (availableCounr + absenceCounr + onVacationCounr)
       };
     } catch (error) {
       throw error;
@@ -242,6 +246,123 @@ class DashboardService {
       };
     } catch (error) {
       throw error;
+    }
+  }
+
+  async getStatisticEngineerSw() {
+    try {
+      let countSw1 = 0;
+      let countSw2 = 0;
+      let countSw3 = 0;
+      let countSw4 = 0;
+      const result = await Models.Engineer.query()
+        .where('deletedAt', null)
+        .andWhere('dateOut', null)
+        .select('expYear');
+      const array = _.map(result, 'expYear');
+      for (let i = 0; i < array.length; i += 1) {
+        if (array[i] < 3) {
+          countSw1 += 1;
+        }
+        if (array[i] >= 3 && array[i] < 5) {
+          countSw2 += 1;
+        }
+        if (array[i] >= 5 && array[i] < 7) {
+          countSw3 += 1;
+        }
+        if (array[i] >= 7) {
+          countSw4 += 1;
+        }
+      }
+      return { Sw1: countSw1, Sw2: countSw2, Sw3: countSw3, Sw4: countSw4 };
+    } catch (error) {
+      throw Boom.notFound('Not found');
+    }
+  }
+
+  async getStatisticEngineerSalary() {
+    try {
+      let countSalary1 = 0;
+      let countSalary2 = 0;
+      let countSalary3 = 0;
+      let countSalary4 = 0;
+      const result = await Models.Engineer.query()
+        .where('deletedAt', null)
+        .andWhere('dateOut', null)
+        .select('salary');
+      const array = _.map(result, 'salary');
+      for (let i = 0; i < array.length; i += 1) {
+        if (array[i] >= 8000000 && array[i] < 10000000) {
+          countSalary1 += 1;
+        }
+        if (array[i] >= 10000000 && array[i] < 15000000) {
+          countSalary2 += 1;
+        }
+        if (array[i] >= 15000000 && array[i] < 20000000) {
+          countSalary3 += 1;
+        }
+        if (array[i] >= 20000000) {
+          countSalary4 += 1;
+        }
+      }
+      return {
+        lever1: countSalary1,
+        lever2: countSalary2,
+        lever3: countSalary3,
+        lever4: countSalary4
+      };
+    } catch (error) {
+      throw Boom.notFound('Not found');
+    }
+  }
+
+  async getStatisticEngineerGender() {
+    try {
+      let countMale = 0;
+      let countFemale = 0;
+      const result = await Models.Engineer.query()
+        .where('deletedAt', null)
+        .andWhere('dateOut', null)
+        .select('gender');
+      const array = _.map(result, 'gender');
+      for (let i = 0; i < array.length; i += 1) {
+        if (array[i] === 'Male') {
+          countMale += 1;
+        }
+        if (array[i] === 'Female') {
+          countFemale += 1;
+        }
+      }
+      return {
+        Male: countMale,
+        Female: countFemale,
+        Other: array.length - (countMale + countFemale)
+      };
+    } catch (error) {
+      throw Boom.notFound('Not found');
+    }
+  }
+
+  // get statistic project in year
+
+  async getStatistiProjectByYear(year) {
+    try {
+      const project = await Models.Project.query()
+        .whereRaw(`DATE_PART('year', "start")=${year}`)
+        .whereNull('deletedAt')
+        .select('name', 'status', 'start', 'end');
+      const start = _.map(project, 'start');
+      for (let i = 0; i < start.length; i += 1) {
+        start[i] = moment(start[i]).month();
+      }
+      const result = [];
+      for (let i = 0; i < 12; i += 1) {
+        const numProject = start.filter(x => x === i).length;
+        result.push({ month: i + 1, numProject });
+      }
+      return result;
+    } catch (error) {
+      throw Boom.notFound('Not found');
     }
   }
 }

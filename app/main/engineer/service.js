@@ -29,9 +29,11 @@ class EngineerService extends BaseService {
               builder
                 .joinRelation('projects')
                 .select(
+                  'teams.id as teamId',
                   'teams.name as teamName',
                   'engineer_team.role as role',
                   'engineer_team.dateJoin as dateJoin',
+                  'projects.id as projectId',
                   'projects.name as projectName',
                   'projects.start as projectStartDay',
                   'projects.end as projectEndDay'
@@ -47,6 +49,7 @@ class EngineerService extends BaseService {
           'phoneNumber',
           'address',
           'birthday',
+          'gender',
           'avatar',
           'salary',
           'dateIn',
@@ -71,28 +74,32 @@ class EngineerService extends BaseService {
 
   // end GetOne
   async createOne(payload, authData) {
-    const { skills } = payload;
-    delete payload.skills;
-    payload.birthday = moment(payload.birthday);
-    payload.dateIn = moment(payload.dateIn);
-    payload.expYear = moment().diff(payload.dateIn, 'year', false);
-    const engineer = await Models.Engineer.query().insert(payload);
-    await engineer
-      .$relatedQuery('skills')
-      .relate(skills)
-      .returning('*');
+    try {
+      const { skills } = payload;
+      delete payload.skills;
+      payload.birthday = moment(payload.birthday);
+      payload.dateIn = moment(payload.dateIn);
+      payload.expYear = moment().diff(payload.dateIn, 'year', false);
+      const engineer = await Models.Engineer.query().insert(payload);
+      await engineer
+        .$relatedQuery('skills')
+        .relate(skills)
+        .returning('*');
 
-    const fireStoreData = {
-      userId: authData.id,
-      name: authData.englishName,
-      fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
-      role: authData.scope,
-      status: 'info',
-      action: `created ${engineer.englishName}'s profile`,
-      time: moment().format()
-    };
-    Firebase.save(fireStoreData);
-    return engineer;
+      const fireStoreData = {
+        userId: authData.id,
+        name: authData.englishName,
+        fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
+        role: authData.scope,
+        status: 'info',
+        action: `created ${engineer.englishName}'s profile`,
+        time: moment().format()
+      };
+      Firebase.save(fireStoreData);
+      return engineer;
+    } catch (error) {
+      throw Boom.notFound('Not Found');
+    }
   }
 
   async updateOne(id, payload, authData) {

@@ -90,6 +90,11 @@ class TeamService extends BaseService {
     try {
       const { name } = payload;
       const { engineers } = payload;
+      const { projectId } = payload;
+      const updateStatusProject = await Models.Project.query()
+        .update({ status: 'inProgress' })
+        .where('id', projectId)
+        .returning('id as idProjects', 'name', 'status');
       delete payload.engineers;
       const team = await Models.Team.query()
         .insert(payload)
@@ -124,7 +129,7 @@ class TeamService extends BaseService {
         time: moment().format()
       };
       Firebase.save(fireStoreData);
-      return { team, statusEmail };
+      return { team, statusEmail, updateStatusProject };
     } catch (error) {
       throw error;
     }

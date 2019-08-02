@@ -13,7 +13,7 @@ const Routes = [
   },
   {
     method: 'GET',
-    path: '/api/v1/dashboard/projects',
+    path: '/api/v1/dashboard/statistic/projects/status',
     config: Handler.getProject
   },
   {
@@ -35,6 +35,26 @@ const Routes = [
     method: 'GET',
     path: '/api/v1/dashboard/statistic/projects/earning/{year}',
     config: Handler.getStatisticProjectEarningByMonth
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/dashboard/statistic/engineers/sw',
+    config: Handler.getStatisticEngineerSw
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/dashboard/statistic/engineers/salary',
+    config: Handler.getStatisticEngineerSalary
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/dashboard/statistic/engineers/gender',
+    config: Handler.getStatisticEngineerGender
+  },
+  {
+    method: 'GET',
+    path: '/api/v1/dashboard/statistic/totalProject/{year}',
+    config: Handler.getStatistiProjectByYear
   }
 ];
 module.exports = Routes;

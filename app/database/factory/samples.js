@@ -28,6 +28,7 @@ exports.createEngineer = code => {
     englishName: firstName,
     phoneNumber: faker.phone.phoneNumber('0##########'),
     birthday: faker.date.past(30, '1999-01-01'),
+    gender: _.sample(['Male', 'Female', 'Other']),
     address: faker.address.streetAddress(),
     email: faker.internet.email(),
     expYear,
@@ -51,7 +52,10 @@ exports.createEngineer = code => {
       min: 0,
       max: 9
     }),
-    status: 1,
+    status: faker.random.number({
+      min: 0,
+      max: 3
+    }),
     skype: `eureka.m0${code.toString()}@enclave.vn`,
     dateIn
   };
