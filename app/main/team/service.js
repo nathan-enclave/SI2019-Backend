@@ -111,7 +111,7 @@ class TeamService extends BaseService {
       let statusEmail;
       for (let i = 0; i < idEngineer.length; i += 1) {
         const { email } = await this.pickEmail(idEngineer[i]);
-        const content = ` We has join you to team ${name} with role ${roleEngineer[i]}. You can check it on website Enclave`;
+        const content = ` We have join you to team ${name} with role ${roleEngineer[i]}.`;
         try {
           sendEmail.sendEmail(email, title, content);
           statusEmail = 'Has send email to all member of team';

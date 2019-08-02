@@ -477,9 +477,35 @@ class DashboardService {
         e.totalSalary = _.sumBy(e.engineers, 'salary');
         delete e.engineers;
       });
-      return team;
+      const salary = _.map(team, 'totalSalary');
+      let lever1 = 0; // 0>50
+      let lever2 = 0; // 50>70
+      let lever3 = 0; // 70>90
+      let lever4 = 0; // 90>110
+      let lever5 = 0; // >110
+      for (let i = 0; i < salary.length; i += 1) {
+        if (salary[i] < 50000000) {
+          lever1 += 1;
+        }
+        if (salary[i] >= 50000000 && salary[i] < 70000000) {
+          lever2 += 1;
+        }
+        if (salary[i] >= 70000000 && salary[i] < 90000000) {
+          lever3 += 1;
+        }
+        if (salary[i] >= 90000000 && salary[i] < 110000000) {
+          lever4 += 1;
+        }
+      }
+      lever5 = salary.length - (lever1 + lever2 + lever3 + lever4);
+      return {
+        lever1,
+        lever2,
+        lever3,
+        lever4,
+        lever5
+      };
     } catch (error) {
-      console.log(error);
       throw Boom.notFound('Not Found');
     }
   }
