@@ -444,14 +444,13 @@ class DashboardService {
       const team = await Models.Team.query()
         .whereNull('deletedAt')
         .eager('engineers(selectEngineer)', {
-          selectEngineer: builder => builder.sum('engineers.salary')
+          selectEngineer: builder => builder.select('engineers.salary')
         })
         .select('name');
-      // team.forEach(e => {
-      //   // for (let i = 0; i < e.engineers.length; i += 1) {
-      //   e.engineers += e.engineers;
-      //   // }
-      // });
+      team.forEach(e => {
+        e.totalSalary = _.sumBy(e.engineers, 'salary');
+        delete e.engineers;
+      });
       return team;
     } catch (error) {
       console.log(error);
