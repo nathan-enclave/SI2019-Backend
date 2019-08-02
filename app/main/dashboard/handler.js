@@ -135,3 +135,23 @@ exports.getStatistiProjectByYear = {
     scope: ['Director', 'HR', 'PM']
   }
 };
+exports.getStatisticTeamAndProject = {
+  description: 'Get statistic team, project and engineer',
+  notes: 'Return dashboard',
+  tags: ['api', 'v1'],
+  handler: controller.getStatisticTeamAndProject.bind(controller),
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  }
+};
+exports.getStatistiProjectCategory = {
+  description: 'Get statistic project bye category',
+  notes: 'Return dashboard',
+  tags: ['api', 'v1'],
+  handler: controller.getStatistiProjectCategory.bind(controller),
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  }
+};

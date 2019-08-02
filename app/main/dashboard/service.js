@@ -365,6 +365,66 @@ class DashboardService {
       throw Boom.notFound('Not found');
     }
   }
+
+  // get statistic team, project and engineer
+
+  async getStatisticTeamAndProject() {
+    try {
+      const project = await Models.Project.query()
+        .whereNull('deletedAt')
+        .count();
+      const engineer = await Models.Team.queryBuilder()
+        .joinRelation('projects')
+        .whereNull('projects.deletedAt')
+        .where('projects.status', 'inProgress')
+        .eager('engineers(selectEng)', {
+          selectEng: builder => builder.select('engineer_team.engineerId')
+        })
+        .select('teams.name', 'projects.status');
+      const getEngineer = _.map(engineer, 'engineers');
+      const mergedEngineer = _.flattenDeep(getEngineer);
+      const engineerId = [...new Set(mergedEngineer.map(e => e.engineerId))];
+      const projectPending = await Models.Project.queryBuilder()
+        .whereNull('deletedAt')
+        .where('status', 'pending')
+        .count();
+
+      const projetcProgress = await Models.Project.query()
+        .whereNull('deletedAt')
+        .where('status', 'inProgress')
+        .count();
+      const countProject = Number(_.map(project, 'count'));
+      const countEngineerInTeam = engineerId.length;
+      const countProjectPending = Number(_.map(projectPending, 'count'));
+      const countTeamInProgress = Number(_.map(projetcProgress, 'count'));
+      return {
+        countProject,
+        countEngineerInTeam,
+        countProjectPending,
+        countTeamInProgress
+      };
+    } catch (error) {
+      throw Boom.notFound('Not Found');
+    }
+  }
+
+  // Project group by category
+
+  async getStatistiProjectCategory() {
+    try {
+      const categoryProject = await Models.Category.query()
+        .eager('projects(selectCategory)', {
+          selectCategory: builder => builder.whereNull('projects.deletedAt').select('projects.id')
+        })
+        .select('name');
+      categoryProject.forEach(e => {
+        e.projects = e.projects.length;
+      });
+      return categoryProject;
+    } catch (error) {
+      throw Boom.notFound('Not Found');
+    }
+  }
 }
 
 module.exports = DashboardService;

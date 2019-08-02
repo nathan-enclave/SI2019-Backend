@@ -13,7 +13,7 @@ class Category extends CustomModel {
         modelClass: path.join(__dirname, './Project'),
         join: {
           from: 'categories.id',
-          to: 'projects.categoriesId'
+          to: 'projects.categoryId'
         }
       }
     };
