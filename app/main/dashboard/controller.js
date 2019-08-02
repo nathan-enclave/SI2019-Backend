@@ -88,6 +88,15 @@ class DashboardController extends BaseController {
       throw error;
     }
   }
+
+  async getStatistiProjectByYear(request) {
+    try {
+      const { year } = request.params;
+      return await this.service.getStatistiProjectByYear(year);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = DashboardController;

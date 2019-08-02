@@ -125,3 +125,13 @@ exports.getStatisticEngineerGender = {
     scope: ['Director', 'HR', 'PM']
   }
 };
+exports.getStatistiProjectByYear = {
+  description: 'Get statistic total project by month in year',
+  notes: 'Return dashboard',
+  tags: ['api', 'v1'],
+  handler: controller.getStatistiProjectByYear.bind(controller),
+  auth: {
+    strategy: 'jwt',
+    scope: ['Director', 'HR', 'PM']
+  }
+};
