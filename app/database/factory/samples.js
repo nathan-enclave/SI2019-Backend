@@ -60,6 +60,7 @@ exports.createEngineer = code => {
 exports.createProject = (name, description, categoryId) => {
   const randomStartDate = faker.date.between('2018-01-01', '2019-12-31');
   const lengthOfProject = _.sample([60, 90, 150, 270, 210, 330, 180, 240, 120]);
+  const address = _.sample(data.address);
   const end = moment(randomStartDate)
     .clone()
     .add(lengthOfProject, 'days');
@@ -104,6 +105,8 @@ exports.createProject = (name, description, categoryId) => {
         })
       ],
     description,
+    address: `${address.city}, ${address.country}`,
+    location: address.location,
     start: randomStartDate,
     end,
     status,
