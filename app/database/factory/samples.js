@@ -28,7 +28,19 @@ exports.createEngineer = code => {
     englishName: firstName,
     phoneNumber: faker.phone.phoneNumber('0##########'),
     birthday: faker.date.past(30, '1999-01-01'),
-    gender: _.sample(['Male', 'Female', 'Other']),
+    gender: _.sample([
+      'Male',
+      'Female',
+      'Male',
+      'Female',
+      'Male',
+      'Female',
+      'Male',
+      'Female',
+      'Male',
+      'Female',
+      'Others'
+    ]),
     address: faker.address.streetAddress(),
     email: faker.internet.email(),
     expYear,
@@ -121,7 +133,7 @@ exports.createProject = (name, description, categoryId) => {
 };
 
 exports.createTeam = projectId => ({
-  name: `Team ${projectId}`,
+  name: faker.company.companyName(0),
   projectId
 });
 
