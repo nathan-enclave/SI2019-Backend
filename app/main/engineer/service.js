@@ -154,7 +154,7 @@ class EngineerService extends BaseService {
         .where('engineerId', id)
         .select('id');
       if (check.length !== 0) {
-        throw Boom.notFound('You can not delete it');
+        throw Boom.forbidden('You can not delete it');
       }
       const result = await Models.Engineer.query()
         .findById(id)
@@ -165,7 +165,6 @@ class EngineerService extends BaseService {
       if (!result) {
         throw Boom.notFound(`Not found`);
       }
-
       const fireStoreData = {
         userId: authData.id,
         name: authData.englishName,
