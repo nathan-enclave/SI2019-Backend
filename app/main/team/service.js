@@ -118,8 +118,8 @@ class TeamService extends BaseService {
         name: authData.englishName,
         fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
         role: authData.scope,
-        status: 'info',
-        action: `created ${team.name}'s profile`,
+        status: 'Created',
+        action: `created ${team.name}'s`,
         time: moment().format()
       };
       Firebase.save(fireStoreData);
@@ -154,7 +154,7 @@ class TeamService extends BaseService {
         fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
         role: authData.scope,
         status: 'success',
-        action: `updated ${team.name}'s profile`,
+        action: `updated ${team.name}'s`,
         time: moment().format()
       };
       Firebase.save(fireStoreData);
@@ -181,7 +181,7 @@ class TeamService extends BaseService {
         fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
         role: authData.scope,
         status: 'warning',
-        action: `deleted ${result.name}'s profile`,
+        action: `deleted ${result.name}'s`,
         time: moment().format()
       };
       Firebase.save(fireStoreData);
