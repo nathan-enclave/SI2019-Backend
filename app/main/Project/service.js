@@ -24,22 +24,27 @@ class projectService extends BaseService {
             builder.select('categories.name', 'categories.id');
           }
         })
+        .joinRelation('location')
         .select(
-          'id',
-          'name',
-          'technology',
-          'description',
-          'earning',
-          'earningPerMonth',
-          'start',
-          'end',
-          'status'
+          'projects.id',
+          'projects.name',
+          'projects.technology',
+          'projects.description',
+          'projects.earning',
+          'projects.earningPerMonth',
+          'projects.start',
+          'projects.end',
+          'projects.status',
+          'location.id as locationId',
+          'location.city',
+          'location.country'
         );
       if (!result) {
         throw Boom.notFound(`Not found`);
       }
       return result;
     } catch (error) {
+      console.log(error);
       throw error;
     }
   }
