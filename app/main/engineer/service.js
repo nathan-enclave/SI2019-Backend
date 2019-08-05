@@ -80,7 +80,6 @@ class EngineerService extends BaseService {
       delete payload.skills;
       payload.birthday = moment(payload.birthday);
       payload.dateIn = moment(payload.dateIn);
-      payload.expYear = moment().diff(payload.dateIn, 'year', false);
       const engineer = await Models.Engineer.query().insert(payload);
       await engineer
         .$relatedQuery('skills')

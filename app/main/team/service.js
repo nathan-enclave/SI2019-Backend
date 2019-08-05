@@ -111,7 +111,7 @@ class TeamService extends BaseService {
       let statusEmail;
       for (let i = 0; i < idEngineer.length; i += 1) {
         const { email } = await this.pickEmail(idEngineer[i]);
-        const content = ` We have added you to the team ${name} with role ${roleEngineer[i]}.`;
+        const content = ` We has join you to team ${name} with role ${roleEngineer[i]}. You can check it on website Enclave`;
         try {
           sendEmail.sendEmail(email, title, content);
           statusEmail = 'Has send email to all member of team';
@@ -125,7 +125,7 @@ class TeamService extends BaseService {
         fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
         role: authData.scope,
         status: 'info',
-        action: `created ${team.name}`,
+        action: `created ${team.name}'s profile`,
         time: moment().format()
       };
       Firebase.save(fireStoreData);
@@ -160,7 +160,7 @@ class TeamService extends BaseService {
         fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
         role: authData.scope,
         status: 'success',
-        action: `updated ${team.name}'s information`,
+        action: `updated ${team.name}'s profile`,
         time: moment().format()
       };
       Firebase.save(fireStoreData);
@@ -187,7 +187,7 @@ class TeamService extends BaseService {
         fullName: `${authData.firstName} ${authData.lastName} (${authData.englishName})`,
         role: authData.scope,
         status: 'warning',
-        action: `deleted ${result.name}`,
+        action: `deleted ${result.name}'s profile`,
         time: moment().format()
       };
       Firebase.save(fireStoreData);
