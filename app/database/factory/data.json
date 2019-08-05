@@ -1085,10 +1085,10 @@
         {
             "city": "Moscow",
             "location": {
-                "longitude": -116.9986,
-                "latitude": 46.7307
+                "longitude": 37.6173,
+                "latitude": 55.7558
             },
-            "country": "United States"
+            "country": "Russia"
         },
         {
             "city": "Mumbai",
@@ -1219,12 +1219,36 @@
             "country": "United States"
         },
         {
+            "city": "Berlin",
+            "location": {
+                "longitude": 13.404954,
+                "latitude": 52.520008
+            },
+            "country": "Germany"
+        },
+        {
+            "city": "Rome",
+            "location": {
+                "longitude": 12.496365,
+                "latitude": 41.902782
+            },
+            "country": "Italy"
+        },
+        {
             "city": "Washington",
             "location": {
                 "longitude": -77.0369,
                 "latitude": 38.9072
             },
             "country": "United States"
-        }
+        },
+        {
+            "city": "Warsaw",
+            "location": {
+                "longitude": 21.012230,
+                "latitude": 52.229675
+            },
+            "country": "Poland"
+        },
     ]
 }
