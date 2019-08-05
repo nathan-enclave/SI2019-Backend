@@ -509,10 +509,10 @@ class DashboardService {
 
   async getStatistiDeadLine() {
     try {
-      const date = moment().subtract(2, 'days');
-      // console.log(d);
+      const date = moment().add(1, 'month');
       const getProject = await Models.Project.query()
-        .where('end', '>=', date)
+        .where('end', '>=', new Date())
+        .andWhere('end', '<', date)
         .whereNull('deletedAt')
         .eager('team(selectTeam)', {
           selectTeam: builder => builder.select('teams.id as teamId', 'teams.name as teamName')
