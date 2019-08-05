@@ -64,6 +64,80 @@ class DashboardController extends BaseController {
       throw error;
     }
   }
+
+  async getStatisticEngineerSw() {
+    try {
+      return await this.service.getStatisticEngineerSw();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getStatisticEngineerSalary() {
+    try {
+      return await this.service.getStatisticEngineerSalary();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getStatisticEngineerGender() {
+    try {
+      return await this.service.getStatisticEngineerGender();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getStatistiProjectByYear(request) {
+    try {
+      const { year } = request.query;
+      return await this.service.getStatistiProjectByYear(year);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getStatisticTeamAndProject() {
+    try {
+      return await this.service.getStatisticTeamAndProject();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getStatistiProjectCategory() {
+    try {
+      return await this.service.getStatistiProjectCategory();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getStatistiProjectLocation(request) {
+    try {
+      const { year } = request.query;
+      return await this.service.getStatistiProjectLocation(year);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getStatistiSalaryTeam() {
+    try {
+      return await this.service.getStatistiSalaryTeam();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getStatistiDeadLine() {
+    try {
+      return await this.service.getStatistiDeadLine();
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = DashboardController;

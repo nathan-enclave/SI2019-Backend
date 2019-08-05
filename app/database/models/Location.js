@@ -1,9 +1,9 @@
 const path = require('path');
 const CustomModel = require('./CustomModel');
 
-class Category extends CustomModel {
+class Location extends CustomModel {
   static get tableName() {
-    return 'categories';
+    return 'locations';
   }
 
   static get relationMappings() {
@@ -12,12 +12,12 @@ class Category extends CustomModel {
         relation: CustomModel.HasManyRelation,
         modelClass: path.join(__dirname, './Project'),
         join: {
-          from: 'categories.id',
-          to: 'projects.categoryId'
+          from: 'locations.id',
+          to: 'projects.locationId'
         }
       }
     };
   }
 }
 
-module.exports = Category;
+module.exports = Location;
