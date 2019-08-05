@@ -1,6 +1,6 @@
 const firebase = require('firebase-admin');
 
-const serviceAccount = require('./enclave-storage-firebase-adminsdk-ph6ho-de1373a3a5.json');
+const serviceAccount = require('./enclave-23839-firebase-adminsdk-9wxd8-8026daa48f.json');
 
 firebase.initializeApp({
   credential: firebase.credential.cert(serviceAccount)
