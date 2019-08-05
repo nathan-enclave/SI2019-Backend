@@ -49,6 +49,7 @@ class EngineerService extends BaseService {
           'phoneNumber',
           'address',
           'birthday',
+          'nationality',
           'gender',
           'avatar',
           'salary',

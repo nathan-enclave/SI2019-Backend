@@ -10,6 +10,18 @@ class DashboardService {
       return model
         .query()
         .where('deletedAt', null)
+        .count(`id as ${name}`)
+        .first();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async countEngineer(model, name) {
+    try {
+      return model
+        .query()
+        .where('deletedAt', null)
         .andWhere('dateOut', null)
         .count(`id as ${name}`)
         .first();
@@ -30,7 +42,7 @@ class DashboardService {
   }
 
   async getTotal() {
-    const engineer = await this.count(Models.Engineer, 'Engineer');
+    const engineer = await this.countEngineer(Models.Engineer, 'Engineer');
     const project = await this.count(Models.Project, 'Project');
     const team = await this.count(Models.Team, 'Team');
     const manager = await this.countManager(Models.Manager, 'Manager');
@@ -447,6 +459,75 @@ class DashboardService {
         e.projects = e.projects.length;
       });
       return categoryProject;
+    } catch (error) {
+      throw Boom.notFound('Not Found');
+    }
+  }
+
+  // Sum salary of engineer in team
+  async getStatistiSalaryTeam() {
+    try {
+      const team = await Models.Team.query()
+        .whereNull('deletedAt')
+        .eager('engineers(selectEngineer)', {
+          selectEngineer: builder => builder.select('engineers.salary')
+        })
+        .select('name');
+      team.forEach(e => {
+        e.totalSalary = _.sumBy(e.engineers, 'salary');
+        delete e.engineers;
+      });
+      const salary = _.map(team, 'totalSalary');
+      let lever1 = 0; // 0>50
+      let lever2 = 0; // 50>70
+      let lever3 = 0; // 70>90
+      let lever4 = 0; // 90
+      for (let i = 0; i < salary.length; i += 1) {
+        if (salary[i] < 50000000) {
+          lever1 += 1;
+        }
+        if (salary[i] >= 50000000 && salary[i] < 70000000) {
+          lever2 += 1;
+        }
+        if (salary[i] >= 70000000 && salary[i] < 90000000) {
+          lever3 += 1;
+        }
+      }
+      lever4 = salary.length - (lever1 + lever2 + lever3);
+      return {
+        lever1,
+        lever2,
+        lever3,
+        lever4
+      };
+    } catch (error) {
+      throw Boom.notFound('Not Found');
+    }
+  }
+
+  //  Dead line
+
+  async getStatistiDeadLine() {
+    try {
+      const date = moment().add(1, 'month');
+      const getProject = await Models.Project.query()
+        .where('end', '>=', new Date())
+        .andWhere('end', '<', date)
+        .whereNull('deletedAt')
+        .eager('team(selectTeam)', {
+          selectTeam: builder => builder.select('teams.id as teamId', 'teams.name as teamName')
+        })
+        .orderBy('end', 'asc')
+        .select('id', 'name', 'end', 'status');
+      getProject.forEach(e => {
+        e.project = {
+          id: e.id,
+          name: e.name
+        };
+        delete e.id;
+        delete e.name;
+      });
+      return getProject;
     } catch (error) {
       throw Boom.notFound('Not Found');
     }
