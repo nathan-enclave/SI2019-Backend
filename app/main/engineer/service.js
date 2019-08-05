@@ -150,6 +150,12 @@ class EngineerService extends BaseService {
   // start delete (update deleteAt)
   async deleteOne(id, authData) {
     try {
+      const check = await Models.Manager.query()
+        .where('engineerId', id)
+        .select('id');
+      if (check.length !== 0) {
+        throw Boom.notFound('You can not delete it');
+      }
       const result = await Models.Engineer.query()
         .findById(id)
         .update({
