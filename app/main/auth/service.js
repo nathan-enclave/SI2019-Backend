@@ -99,7 +99,7 @@ class AuthService {
   async sendcode(payload) {
     try {
       const { email } = payload;
-      const title = `Hear is verify code to change password.`;
+      const title = `Enclave manager verification code`;
       let result;
       const checkEmail = await Models.Engineer.query()
         .where('email', email)
@@ -151,8 +151,7 @@ class AuthService {
                               <tr>
                                  <td align="left" valign="top" style="font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;color:#222222;font-weight:400;font-size:14px;line-height:22px;padding:20px 0 0">
                                 
-                                 Hear is verify code to change password your account.</br>
-                                 Enter this number in textbox verify code.
+                                 This is your verification code to change your account password.</br> Enter this code in the verification code text box to reset your password.
                                     <tr>
                                        <td align="center" valign="border" style="font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;color:#f5aa42;font-weight:400;font-size:40px;line-height:22px;padding:20px;border:10px 0 0">
                                         <b><i>${verifycode}</i></b>
