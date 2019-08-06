@@ -20,6 +20,8 @@ class BaseController {
     try {
       return await this.service.getMany(request.query);
     } catch (err) {
+      console.log(err);
+
       throw err;
     }
   }
