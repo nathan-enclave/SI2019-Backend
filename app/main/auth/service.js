@@ -79,18 +79,13 @@ class AuthService {
       const idEng = Number(_.map(checkEmail, 'id'));
       const checkRole = await Models.Manager.query()
         .update({ verify: numCode })
-        .where('engineerId', idEng);
+        .where('engineerId', idEng)
+        .returning('id');
       if (checkRole.length === 0) {
         throw Boom.forbidden('User has no permistion');
       }
-
-      const getIdManager = await Models.Manager.query()
-        .where('engineerId', idEng)
-        .select('id');
-      const id = Number(_.map(getIdManager, 'id'));
-      if (!getIdManager) {
-        throw Boom.forbidden('Not Found');
-      } else {
+      const id = Number(_.map(checkRole, 'id'));
+      if (id !== 0) {
         result = `${email} is can changer password`;
       }
       return { result, email, id };
@@ -104,7 +99,7 @@ class AuthService {
   async sendcode(payload) {
     try {
       const { email } = payload;
-      const title = `Hear is verify code to change password.`;
+      const title = `Enclave manager verification code`;
       let result;
       const checkEmail = await Models.Engineer.query()
         .where('email', email)
@@ -156,8 +151,7 @@ class AuthService {
                               <tr>
                                  <td align="left" valign="top" style="font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;color:#222222;font-weight:400;font-size:14px;line-height:22px;padding:20px 0 0">
                                 
-                                 Hear is verify code to change password your account.</br>
-                                 Enter this number in textbox verify code.
+                                 This is your verification code to change your account password.</br> Enter this code in the verification code text box to reset your password.
                                     <tr>
                                        <td align="center" valign="border" style="font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;color:#f5aa42;font-weight:400;font-size:40px;line-height:22px;padding:20px;border:10px 0 0">
                                         <b><i>${verifycode}</i></b>
