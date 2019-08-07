@@ -62,5 +62,18 @@ class EngineerValidator extends BaseValidator {
       )
     };
   }
+
+  queryParams() {
+    return {
+      limit: Joi.number()
+        .min(1)
+        .default(10),
+      offset: Joi.number().default(0),
+      orderBy: Joi.string(),
+      filter: Joi.object(),
+      fields: Joi.array(),
+      q: Joi.string()
+    };
+  }
 }
 module.exports = EngineerValidator;

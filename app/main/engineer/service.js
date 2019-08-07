@@ -180,5 +180,14 @@ class EngineerService extends BaseService {
     }
   }
   // end delete
+
+  getSearchQuery(builder, q) {
+    return builder
+      .where('firstName', 'ilike', `%${q}%`)
+      .orWhere('lastName', 'ilike', `%${q}%`)
+      .orWhere('englishName', 'ilike', `%${q}%`)
+      .orWhere('email', 'ilike', `%${q}%`)
+      .orWhere('phoneNumber', 'ilike', `%${q}%`);
+  }
 }
 module.exports = EngineerService;
