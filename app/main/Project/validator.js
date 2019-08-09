@@ -29,7 +29,7 @@ class ProjectValidator extends BaseValidator {
       technology: Joi.string(),
       description: Joi.string(),
       earning: Joi.number(),
-      locationId: Joi.number().required(),
+      locationId: Joi.number(),
       start: Joi.date(),
       end: Joi.date(),
       status: Joi.string(),
