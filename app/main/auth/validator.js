@@ -6,6 +6,8 @@ class AuthValidator extends BaseValidator {
     super();
     this.login = this.login();
     this.register = this.register();
+    this.update = this.update();
+    this.email = this.email();
   }
 
   login() {
@@ -18,7 +20,21 @@ class AuthValidator extends BaseValidator {
   register() {
     return {
       username: super.strUsername().required(),
-      password: super.strPassword().required()
+      password: super.strPassword().required(),
+      engineerId: super.idNumber().required()
+    };
+  }
+
+  update() {
+    return {
+      verify: Joi.number(),
+      password: Joi.string()
+    };
+  }
+
+  email() {
+    return {
+      email: Joi.string().required()
     };
   }
 }

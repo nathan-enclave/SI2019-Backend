@@ -1,5 +1,7 @@
 // const bcrypt = require('bcrypt');
 const faker = require('faker');
+const _ = require('lodash');
+const moment = require('moment');
 const Models = require('../models');
 // const { SALT_ROUNDS } = require('../../constants');
 const Factory = require('../factory');
@@ -13,12 +15,16 @@ exports.seed = knex =>
     .then(async () =>
       Models.Role.query().insertGraph([
         {
-          name: 'superadmin',
-          description: 'Admin with highest AUTHORITY'
+          name: 'Director',
+          description: 'Diretor of the department'
         },
         {
-          name: 'admin',
-          description: 'Admin'
+          name: 'HR',
+          description: 'Human resource manager for human management'
+        },
+        {
+          name: 'PM',
+          description: 'Project manager for team and project management'
         }
       ])
     )
@@ -52,25 +58,83 @@ exports.seed = knex =>
       }
       await Models.EngineerSkill.query().insertGraph(data);
     })
-    .then(() => Models.Project.query().insertGraph(Factory.project(30)))
-    .then(() => Models.Team.query().insertGraph(Factory.team(20)))
+    .then(() => Models.Category.query().insertGraph(Factory.categories()))
+    .then(() => Models.Location.query().insertGraph(Factory.locations()))
+    .then(async () => Models.Project.query().insertGraph(await Factory.project()))
+    .then(async () => Models.Team.query().insertGraph(await Factory.team()))
     // Adding members to team
     .then(async () => {
       const totalEngineers = (await Models.Engineer.query().count())[0].count;
-      const totalTeams = (await Models.Team.query().count())[0].count;
+      const totalTeamWithProject = await Models.Team.query()
+        .joinRelation('projects')
+        .select('projects.start as projectStartDay', 'projects.end as projectEndDay');
       const data = [];
-      for (let index = 0; index < totalTeams; index += 1) {
+      for (let index = 0; index < totalTeamWithProject.length; index += 1) {
         for (let i = 0; i < 5; i += 1) {
-          data.push(
-            samples.createEngineerTeam(
-              faker.random.number({
-                min: 1,
-                max: totalEngineers
-              }),
-              index + 1
-            )
-          );
+          switch (i) {
+            case 0:
+              data.push(
+                samples.createEngineerTeam(
+                  faker.random.number({
+                    min: 1,
+                    max: totalEngineers
+                  }),
+                  index + 1,
+                  'leader',
+                  moment(totalTeamWithProject[i]).add(2, 'days')
+                )
+              );
+              break;
+            case 1:
+              data.push(
+                samples.createEngineerTeam(
+                  faker.random.number({
+                    min: 1,
+                    max: totalEngineers
+                  }),
+                  index + 1,
+                  'quality assurance',
+                  moment(totalTeamWithProject[i]).add(2, 'days')
+                )
+              );
+              break;
+
+            default:
+              data.push(
+                samples.createEngineerTeam(
+                  faker.random.number({
+                    min: 1,
+                    max: totalEngineers
+                  }),
+                  index + 1,
+                  'developer',
+                  moment(totalTeamWithProject[i]).add(2, 'days')
+                )
+              );
+              break;
+          }
         }
       }
       await Models.EngineerTeam.query().insertGraph(data);
-    });
+    })
+    // Handle status of engineers
+    .then(async () => {
+      const team = await Models.Team.query()
+        .joinRelation('projects')
+        .eager('engineers(selectEngineer)', {
+          selectEngineer: builder => builder.select('engineers.id')
+        })
+        .where('projects.status', 'inProgress')
+        .select('teams.id', 'projects.status');
+      let listEngineers = _.map(team, 'engineers');
+      // listEngineers = _.map(listEngineers, 'id');
+      listEngineers = [].concat(...listEngineers);
+      listEngineers = _.map(listEngineers, 'id');
+      listEngineers = [...new Set(listEngineers)];
+      await Models.Engineer.query()
+        .whereIn('id', listEngineers)
+        .update({
+          status: 0
+        });
+    })
+    .then(() => Models.CashFlow.query().insertGraph(Factory.cashFlow()));

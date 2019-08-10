@@ -1,5 +1,4 @@
 /* eslint no-console: 0 */
-
 const Hapi = require('hapi');
 const Inert = require('inert');
 const Vision = require('vision');
@@ -11,10 +10,8 @@ const CONSTANTS = require('./constants/index');
 require('dotenv').config();
 
 const server = new Hapi.Server({
-  // host: process.env.APP_HOST,
-  host: process.env.HOST,
-  // port: process.env.APP_PORT,
-  port: process.env.PORT,
+  host: process.env.APP_HOST || process.env.HOST,
+  port: process.env.APP_PORT || process.env.PORT,
   routes: {
     cors: true,
     validate: {
@@ -48,42 +45,25 @@ const apiVersionOptions = {
 const swaggerOptions = {
   pathPrefixSize: 3,
   host: process.env.HOST,
+  // port: process.env.PORT,
   basePath: apiVersionOptions.basePath,
   info: {
     title: ' Enclave Engineering Management RESTful API Documentation',
-    description:
-      'This is API documentation.' +
-      '\n' +
-      '###Basic api query use for getAll resources. Only support normal query if need complex or advanced use cases(fulltextsearch, geolocation...) contact server developers to support more.' +
-      '\n' +
-      '###$ Paginate with limit and offset. \nEx: ?limit=5&offset=5\n' +
-      '###$ Order by fields. \n Ex: ?order=yearExp asc,dayOffRemain desc' +
-      '\n' +
-      '###$ Select field on query. \nEx: ?fields=["firstName","lastName"]' +
-      '\n' +
-      '###$ Filter equal \nEx: ?filter={"firstName": "Doe"}' +
-      '\n' +
-      '###$ Filter less than \nEx: ?filter={"yearExp": {"$lt": 4}}' +
-      '\n' +
-      '###$ Filter greater than \nEx: ?filter={"yearExp": {"$gt": 2}}' +
-      '\n' +
-      '###$ Filter less than and equal \nEx: ?filter={"yearExp": {"$lte": 4}}' +
-      '\n' +
-      '###$ Filter greater than equal \nEx: ?filter={"yearExp": {"$gte": 2}}' +
-      '\n' +
-      '###$ Filter field in many choice \nEx: ?filter={"firstName": {"$in": ["John", "MMMM"]}}' +
-      '\n' +
-      '###$ Filter field by text \nEx: ?filter={"englishName": {"$like": "%en%"}}' +
-      '\n' +
-      '###$ Filter field by text and no distinction between upper and lowercase letters \nEx: ?filter={"englishName": {"$likeLower": "%Henry%"}}' +
-      '\n' +
-      '###$ See more: https://github.com/hoang3553/objection-filter#15c2a512509401dbf3477b11454ac02a30c095c8'
+    description: 'This is API documentation.'
   },
-  deReference: false
+  deReference: false,
+  securityDefinitions: {
+    Bearer: {
+      type: 'apiKey',
+      name: 'Authorization',
+      in: 'header'
+    }
+  },
+  security: [{ Bearer: [] }]
 };
 
 process.on('uncaughtException', err => {
-  console.log(err, 'Uncaught exception');
+  console.log(err, '===>Uncaught exception');
   process.exit(1);
 });
 

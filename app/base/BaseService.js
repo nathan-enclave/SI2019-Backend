@@ -1,5 +1,5 @@
+/* eslint-disable */
 const Boom = require('boom');
-
 class BaseService {
   constructor(model) {
     this.model = model;
@@ -29,14 +29,14 @@ class BaseService {
     return result;
   }
 
-  async createOne(payload) {
+  async createOne(payload,  authData = null) {
     return this.model
       .query()
       .insert(payload)
       .returning('*');
   }
 
-  async updateOne(id, payload) {
+  async updateOne(id, payload, authData = null) {
     try {
       const result = await this.model.query().patchAndFetchById(id, payload);
       if (!result) {
@@ -48,7 +48,7 @@ class BaseService {
     }
   }
 
-  async deleteOne(id) {
+  async deleteOne(id,  authData = null) {
     await this.model.query().deleteById(id);
     return { success: true };
   }
